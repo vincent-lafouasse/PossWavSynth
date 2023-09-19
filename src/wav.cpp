@@ -3,6 +3,8 @@
 #include <cstdio>
 #include <cstring>
 
+#define UNCOMPRESSED_PCM 1
+
 WavHeader WavHeader::init(i32 data_size,
                           i16 n_channels,
                           i32 sample_rate,
@@ -10,13 +12,13 @@ WavHeader WavHeader::init(i32 data_size,
 {
     WavHeader h;
 
-    memcpy(h.chunk_ID, "RIFF", 4);
+    memcpy(h.main_chunk_ID, "RIFF", 4);
     h.chunk_size = 36 + data_size;
-    memcpy(h.format, "WAVE", 4);
+    memcpy(h.riff_type, "WAVE", 4);
 
-    memcpy(h.fmt_chunk_ID, "fmt", 4);
+    memcpy(h.fmt_chunk_ID, "fmt ", 4);
     h.fmt_chunk_size = 16;
-    h.audio_format = 1;
+    h.audio_format = UNCOMPRESSED_PCM;
     h.n_channels = n_channels;
     h.sample_rate = sample_rate;
     h.bit_depth = bit_depth;
@@ -46,7 +48,7 @@ bool WavFile::write()
     if (!file)
         return false;
 
-    fwrite(&header, sizeof(*header), 1, file);
+    fwrite(header, sizeof(*header), 1, file);
     fwrite(data, header->data_chunk_size, 1, file);
 
     fclose(file);

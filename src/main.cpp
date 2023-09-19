@@ -27,8 +27,8 @@ int main()
         std::cout << sample_value << std::endl;
     }
 
-    WavHeader header =
-        WavHeader::init(data_size, n_channels, sample_rate, bit_depth);
+    WavHeader header = WavHeader::init(data_size * bit_depth, n_channels,
+                                       sample_rate, bit_depth);
 
     WavFile wav_file = WavFile::init("wave.wav", &header, data);
 

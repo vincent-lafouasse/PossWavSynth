@@ -9,9 +9,9 @@ struct WavHeader
                           i32 sample_rate,
                           i32 bit_depth);
     // the main chunk
-    unsigned char chunk_ID[4];
+    unsigned char main_chunk_ID[4];
     u32 chunk_size;
-    unsigned char format[4];
+    unsigned char riff_type[4];
 
     // sub chunk 1 "fmt "
     unsigned char fmt_chunk_ID[4];
