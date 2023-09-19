@@ -5,6 +5,10 @@
 
 #define UNCOMPRESSED_PCM 1
 
+#define CHUNK_HEADER_SIZE 8
+#define FMT_CHUNK_SIZE 16
+#define RIFF_TYPE_SIZE 4
+
 WavHeader WavHeader::init(i32 data_size,
                           i16 n_channels,
                           i32 sample_rate,
@@ -13,11 +17,12 @@ WavHeader WavHeader::init(i32 data_size,
     WavHeader h;
 
     memcpy(h.main_chunk_ID, "RIFF", 4);
-    h.chunk_size = 36 + data_size;
+    h.chunk_size = RIFF_TYPE_SIZE + CHUNK_HEADER_SIZE + FMT_CHUNK_SIZE +
+                   CHUNK_HEADER_SIZE + data_size;
     memcpy(h.riff_type, "WAVE", 4);
 
     memcpy(h.fmt_chunk_ID, "fmt ", 4);
-    h.fmt_chunk_size = 16;
+    h.fmt_chunk_size = FMT_CHUNK_SIZE;
     h.audio_format = UNCOMPRESSED_PCM;
     h.n_channels = n_channels;
     h.sample_rate = sample_rate;
@@ -26,7 +31,7 @@ WavHeader WavHeader::init(i32 data_size,
     h.block_align = n_channels * (bit_depth / 8);
 
     memcpy(h.data_chunk_ID, "data", 4);
-    h.data_chunk_size = data_size;
+    h.data_size = data_size;
 
     return h;
 }
@@ -49,7 +54,7 @@ bool WavFile::write()
         return false;
 
     fwrite(header, sizeof(*header), 1, file);
-    fwrite(data, header->data_chunk_size, 1, file);
+    fwrite(data, header->data_size, 1, file);
 
     fclose(file);
 

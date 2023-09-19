@@ -25,7 +25,7 @@ struct WavHeader
 
     // sub chunk 2 "data"
     unsigned char data_chunk_ID[4];
-    u32 data_chunk_size;
+    u32 data_size;
 
     // then comes the data!
 };
