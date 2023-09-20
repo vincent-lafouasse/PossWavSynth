@@ -13,13 +13,13 @@ int main()
     int n_channels = 1;
     int n_seconds = 4;
 
-    i32 data_size = sample_rate * n_seconds * n_channels;
+    i32 n_samples = sample_rate * n_seconds * n_channels;
     u16 bit_depth = 32;
 
-    i32* data = new int[data_size];
-    fill_data(data, data_size);
+    i32* data = new int[n_samples];
+    fill_data(data, n_samples);
 
-    WavHeader header = WavHeader::init(data_size * (bit_depth / 8), n_channels,
+    WavHeader header = WavHeader::init(n_samples * sizeof(*data), n_channels,
                                        sample_rate, bit_depth);
 
     WavFile wav_file = WavFile::init("wave.wav", &header, data);
