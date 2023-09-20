@@ -7,7 +7,8 @@
 
 #define CHUNK_HEADER_SIZE 8
 #define FMT_CHUNK_SIZE 16
-#define RIFF_TYPE_SIZE 4
+
+static void fill_four_char_code(void* dest, const char fourcc[4]);
 
 WavHeader WavHeader::init(i32 data_size,
                           i16 n_channels,
@@ -16,12 +17,11 @@ WavHeader WavHeader::init(i32 data_size,
 {
     WavHeader h;
 
-    memcpy(h.main_chunk_ID, "RIFF", 4);
-    h.chunk_size = RIFF_TYPE_SIZE + CHUNK_HEADER_SIZE + FMT_CHUNK_SIZE +
-                   CHUNK_HEADER_SIZE + data_size;
-    memcpy(h.riff_type, "WAVE", 4);
+    fill_four_char_code(h.main_chunk_ID, "RIFF");
+    h.chunk_size = (sizeof(h) - CHUNK_HEADER_SIZE) + data_size;
+    fill_four_char_code(h.riff_type, "WAVE");
 
-    memcpy(h.fmt_chunk_ID, "fmt ", 4);
+    fill_four_char_code(h.fmt_chunk_ID, "fmt ");
     h.fmt_chunk_size = FMT_CHUNK_SIZE;
     h.audio_format = UNCOMPRESSED_PCM;
     h.n_channels = n_channels;
@@ -30,7 +30,7 @@ WavHeader WavHeader::init(i32 data_size,
     h.byte_rate = n_channels * sample_rate * (bit_depth / 8);
     h.block_align = n_channels * (bit_depth / 8);
 
-    memcpy(h.data_chunk_ID, "data", 4);
+    fill_four_char_code(h.data_chunk_ID, "data");
     h.data_size = data_size;
 
     return h;
@@ -59,4 +59,9 @@ bool WavFile::write()
     fclose(file);
 
     return true;
+}
+
+static void fill_four_char_code(void* dest, const char fourcc[4])
+{
+    memcpy(dest, fourcc, 4);
 }
