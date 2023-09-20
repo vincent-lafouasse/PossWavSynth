@@ -38,6 +38,10 @@ run: $(TARGET)
 .PHONY: re
 re: clean update
 
+.PHONY: hex
+hex: run
+	hexdump wave.wav > $(BUILD_DIR)/hex.txt
+
 # Linking
 $(TARGET): $(OBJS)
 	@echo "Linking"
