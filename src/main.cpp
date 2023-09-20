@@ -19,7 +19,7 @@ int main()
     i32* data = new int[data_size];
     fill_data(data, data_size);
 
-    WavHeader header = WavHeader::init(data_size * bit_depth, n_channels,
+    WavHeader header = WavHeader::init(data_size * (bit_depth / 8), n_channels,
                                        sample_rate, bit_depth);
 
     WavFile wav_file = WavFile::init("wave.wav", &header, data);
@@ -34,17 +34,10 @@ int main()
 
 void fill_data(i32* data, i32 size)
 {
-    i32 frequency = 440;
-
-    i32 period = SAMPLE_RATE / frequency;
-
     i32 sample_value = 0;
     for (int i = 0; i < size; i++)
     {
-        if (i % period == 0)
-            sample_value = 0;
+        sample_value += 8000000;
         data[i] = sample_value;
-        sample_value += 8000;
-        std::cout << sample_value << std::endl;
     }
 }
