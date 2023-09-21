@@ -4,23 +4,24 @@
 #include "wav.h"
 
 #define SAMPLE_RATE 44100
+#define N_CHANNELS 1
+
+#define SAMPLE_TYPE i32
+#define BIT_DEPTH 8 * sizeof(SAMPLE_TYPE)
 
 void fill_data(i32* data, i32 size);
 
 int main()
 {
-    int sample_rate = SAMPLE_RATE;
-    int n_channels = 1;
     int n_seconds = 4;
 
-    i32 n_samples = sample_rate * n_seconds * n_channels;
-    u16 bit_depth = 32;
+    i32 n_samples = SAMPLE_RATE * n_seconds * N_CHANNELS;
 
     i32* data = new int[n_samples];
     fill_data(data, n_samples);
 
-    WavHeader header = WavHeader::init(n_samples * sizeof(*data), n_channels,
-                                       sample_rate, bit_depth);
+    WavHeader header = WavHeader::init(n_samples * (BIT_DEPTH / 8), N_CHANNELS,
+                                       SAMPLE_RATE, BIT_DEPTH);
 
     WavFile wav_file = WavFile::init("wave.wav", &header, data);
 
