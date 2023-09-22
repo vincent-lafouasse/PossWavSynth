@@ -70,7 +70,8 @@ struct Oscillator
 {
     static Oscillator init(Wavetable* wavetable, u32 sample_rate);
     void set_frequency(float f);
-    float next(void);
+    float get(void);
+    void advance(void);
 
     Wavetable* wavetable;
     u32 sample_rate;
@@ -97,7 +98,18 @@ void Oscillator::set_frequency(float f)
     increment = f / sample_rate;
 }
 
-void fill_data(i32* data, i32 size);
+float Oscillator::get()
+{
+    return wavetable->at(phase);
+}
+
+void Oscillator::advance()
+{
+    phase += increment;
+    phase -= (phase >= 1.0f);
+}
+
+void fill_data(i32* data, i32 size, Oscillator* oscillator);
 
 int main()
 {
@@ -109,7 +121,7 @@ int main()
     i32 n_samples = SAMPLE_RATE * n_seconds * N_CHANNELS;
 
     i32* data = new int[n_samples];
-    fill_data(data, n_samples);
+    fill_data(data, n_samples, &square_wave);
 
     WavHeader header = WavHeader::init(n_samples * (BIT_DEPTH / 8), N_CHANNELS,
                                        SAMPLE_RATE, BIT_DEPTH);
@@ -124,12 +136,11 @@ int main()
     delete[] data;
 }
 
-void fill_data(i32* data, i32 size)
+void fill_data(i32* data, i32 size, Oscillator* oscillator)
 {
-    i32 sample_value = 0;
     for (int i = 0; i < size; i++)
     {
-        sample_value += 8000000;
-        data[i] = sample_value;
+        data[i] = oscillator->get();
+        oscillator->advance();
     }
 }
