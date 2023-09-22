@@ -16,14 +16,18 @@ struct Wavetable
 {
     static Wavetable get_square(u32 size);
     float at(float pos);
+    float at(u32 pos);
 
     std::vector<float> data;
+    u32 size;
 };
 
 Wavetable Wavetable::get_square(u32 size)
 {
     Wavetable w;
     float sample;
+
+    w.size = size;
 
     w.data.reserve(size);
     for (u32 i = 0; i < size; i++)
@@ -33,6 +37,33 @@ Wavetable Wavetable::get_square(u32 size)
     }
 
     return w;
+}
+
+float positive_frac_part(float f)
+{
+    f = f - (int)f;
+    f += (f < 0);
+    return f;
+}
+
+float Wavetable::at(u32 pos)
+{
+    pos = pos % size;
+    return data.at(pos);
+}
+
+float Wavetable::at(float pos)
+{
+    pos = positive_frac_part(pos);
+
+    float float_index = pos * size;
+    u32 lower_index = float_index;
+    u32 upper_index = lower_index + 1;
+
+    float lower_contribution = (float_index - lower_index) * at(lower_index);
+    float upper_contribution = (upper_index - float_index) * at(upper_index);
+
+    return lower_contribution + upper_contribution;
 }
 
 struct Oscillator
