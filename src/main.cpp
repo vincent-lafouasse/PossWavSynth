@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "cool_ints.h"
+#include "oscillator.h"
 #include "wav.h"
 #include "wavetable.h"
 
@@ -11,49 +12,6 @@
 
 #define SAMPLE_TYPE i32
 #define BIT_DEPTH 8 * sizeof(SAMPLE_TYPE)
-
-struct Oscillator
-{
-    static Oscillator init(Wavetable* wavetable, u32 sample_rate);
-    void set_frequency(float f);
-    float get(void);
-    void advance(void);
-
-    Wavetable* wavetable;
-    u32 sample_rate;
-    float frequency;
-    float phase;
-    float increment;
-};
-
-Oscillator Oscillator::init(Wavetable* wavetable, u32 sample_rate)
-{
-    Oscillator o;
-
-    o.wavetable = wavetable;
-    o.sample_rate = sample_rate;
-    o.phase = 0.0f;
-    o.set_frequency(440.0f);
-
-    return o;
-}
-
-void Oscillator::set_frequency(float f)
-{
-    frequency = f;
-    increment = f / sample_rate;
-}
-
-float Oscillator::get()
-{
-    return wavetable->at(phase);
-}
-
-void Oscillator::advance()
-{
-    phase += increment;
-    phase -= (phase >= 1.0f);
-}
 
 void fill_data(i32* data, i32 size, Oscillator* oscillator);
 
