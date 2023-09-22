@@ -68,27 +68,33 @@ float Wavetable::at(float pos)
 
 struct Oscillator
 {
-    static Oscillator init(Wavetable* wavetable,
-                           u32 sample_rate,
-                           float frequency);
+    static Oscillator init(Wavetable* wavetable, u32 sample_rate);
+    void set_frequency(float f);
+    float next(void);
+
     Wavetable* wavetable;
     u32 sample_rate;
     float frequency;
     float phase;
+    float increment;
 };
 
-Oscillator Oscillator::init(Wavetable* wavetable,
-                            u32 sample_rate,
-                            float frequency)
+Oscillator Oscillator::init(Wavetable* wavetable, u32 sample_rate)
 {
     Oscillator o;
 
     o.wavetable = wavetable;
     o.sample_rate = sample_rate;
-    o.frequency = frequency;
     o.phase = 0.0f;
+    o.set_frequency(440.0f);
 
     return o;
+}
+
+void Oscillator::set_frequency(float f)
+{
+    frequency = f;
+    increment = f / sample_rate;
 }
 
 void fill_data(i32* data, i32 size);
@@ -96,8 +102,8 @@ void fill_data(i32* data, i32 size);
 int main()
 {
     Wavetable square_wavetable = Wavetable::get_square(WAVETABLE_RESOLUTION);
-    Oscillator square_wave =
-        Oscillator::init(&square_wavetable, SAMPLE_RATE, 440.0f);
+    Oscillator square_wave = Oscillator::init(&square_wavetable, SAMPLE_RATE);
+    square_wave.set_frequency(440.0f);
     int n_seconds = 4;
 
     i32 n_samples = SAMPLE_RATE * n_seconds * N_CHANNELS;
