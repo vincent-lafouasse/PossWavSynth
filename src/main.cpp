@@ -32,7 +32,7 @@ int main()
         float_data.data[i] = sine_wave.get();
         sine_wave.advance();
         if (i == n_samples / 2)
-            sine_wave.set_frequency(449.0f);
+            sine_wave.set_frequency(440.0f);
     }
 
     Data<SAMPLE_TYPE> data(&float_data, BIT_DEPTH, SAMPLE_IS_SIGNED);
