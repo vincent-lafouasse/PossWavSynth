@@ -1,3 +1,4 @@
+#include <fstream>
 #include <iostream>
 
 #include "cool_ints.h"
@@ -13,10 +14,49 @@
 #define SAMPLE_TYPE i32
 #define BIT_DEPTH 8 * sizeof(SAMPLE_TYPE)
 
+struct Data
+{
+    Data(u32 size_);
+
+    void write_to_csv(void);
+    ~Data();
+
+    float* data;
+    u32 size;
+};
+
+Data::Data(u32 size_)
+{
+    size = size_;
+    data = new float[size];
+
+    for (u32 i = 0; i < size; i++)
+        data[i] = 0.0f;
+}
+
+Data::~Data()
+{
+    delete[] data;
+}
+
+void Data::write_to_csv(void)
+{
+    std::ofstream csv;
+    csv.open("data.csv");
+    for (u32 i = 0; i < size; i++)
+    {
+        csv << data[i] << ",";
+    }
+    csv << std::endl;
+    csv.close();
+}
+
 void fill_data(i32* data, i32 size, Oscillator* oscillator);
 
 int main()
 {
+    Data data_(24);
+    data_.write_to_csv();
     Wavetable square_wavetable = Wavetable::get_square(WAVETABLE_RESOLUTION);
     Oscillator square_wave = Oscillator::init(&square_wavetable, SAMPLE_RATE);
     square_wave.set_frequency(440.0f);
