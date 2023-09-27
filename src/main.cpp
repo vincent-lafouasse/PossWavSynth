@@ -54,6 +54,35 @@ void FloatData::write_to_csv(void)
 
 void FloatData::normalize(void) {}
 
+template <typename T>
+struct Data
+{
+	Data();
+	Data(FloatData* float_data);
+	~Data();
+
+	T* data;
+	u32 size;
+	u32 bit_depth;
+};
+
+template <typename T>
+Data<T>::Data()
+{
+	data = nullptr;
+	size = 0;
+	bit_depth = 0;
+}
+	
+template <typename T>
+Data<T>::~Data()
+{
+	if (data == nullptr)
+		return;
+
+	delete[] data;
+}
+
 void fill_data(i32* data, i32 size, Oscillator* oscillator);
 
 int main()
@@ -76,6 +105,8 @@ int main()
     float_data.normalize();
 
     float_data.write_to_csv();
+
+	Data<SAMPLE_TYPE> data_;
 
     i32* data = new int[n_samples];
     fill_data(data, n_samples, &square_wave);
