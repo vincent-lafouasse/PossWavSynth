@@ -6,13 +6,27 @@
 #include "wav.h"
 #include "wavetable.h"
 
+#define PRINT(expr) std::cout << +expr << std::endl;
+
 #define SAMPLE_RATE 44100
 #define N_CHANNELS 1
 
 #define WAVETABLE_RESOLUTION 1024
 
-#define SAMPLE_TYPE i32
-#define BIT_DEPTH 8 * sizeof(SAMPLE_TYPE)
+// do not use u64
+#define SAMPLE_TYPE u8
+#define BIT_DEPTH 7
+#define SAMPLE_IS_SIGNED false
+
+template <typename T>
+T clamp(T item, T min, T max)
+{
+    if (item > max)
+        item = max;
+    if (item < min)
+        item = min;
+    return item;
+}
 
 struct FloatData
 {
@@ -43,7 +57,7 @@ FloatData::~FloatData()
 void FloatData::write_to_csv(void)
 {
     std::ofstream csv;
-    csv.open("data.csv");
+    csv.open("float_data.csv");
     for (u32 i = 0; i < size; i++)
     {
         csv << data[i] << ",";
@@ -57,30 +71,74 @@ void FloatData::normalize(void) {}
 template <typename T>
 struct Data
 {
-	Data();
-	Data(FloatData* float_data);
-	~Data();
+    Data();
+    Data(FloatData* float_data, u32 bit_depth_, bool sample_is_signed);
+    ~Data();
 
-	T* data;
-	u32 size;
-	u32 bit_depth;
+    void write_to_csv(void);
+
+    T* data;
+    u32 size;
+    u32 bit_depth;
 };
 
 template <typename T>
 Data<T>::Data()
 {
-	data = nullptr;
-	size = 0;
-	bit_depth = 0;
+    data = nullptr;
+    size = 0;
+    bit_depth = 0;
 }
-	
+
 template <typename T>
 Data<T>::~Data()
 {
-	if (data == nullptr)
-		return;
+    if (data == nullptr)
+        return;
 
-	delete[] data;
+    delete[] data;
+}
+
+template <typename T>
+T max_binary_value(u32 bit_depth, bool sample_is_signed)
+{
+    u32 actual_bit_depth = bit_depth - sample_is_signed;
+    u64 out = (1 << actual_bit_depth) - 1;
+    return out;
+}
+
+template <typename T>
+Data<T>::Data(FloatData* float_data, u32 bit_depth_, bool sample_is_signed)
+{
+    size = float_data->size;
+    data = new T[size];
+    float_data->normalize();
+
+    bit_depth = bit_depth_;
+    T max = max_binary_value<T>(bit_depth_, sample_is_signed);
+    T min = sample_is_signed * (-max);
+
+    for (u32 i = 0; i < size; i++)
+    {
+        data[i] = (T)(!sample_is_signed + (float_data->data[i]) * (float)max);
+        data[i] = clamp<T>(data[i], min, max);
+    }
+
+    std::cout << +min << std::endl;
+    std::cout << +max << std::endl;
+}
+
+template <typename T>
+void Data<T>::write_to_csv(void)
+{
+    std::ofstream csv;
+    csv.open("int_data.csv");
+    for (u32 i = 0; i < size; i++)
+    {
+        csv << +data[i] << ",";
+    }
+    csv << std::endl;
+    csv.close();
 }
 
 void fill_data(i32* data, i32 size, Oscillator* oscillator);
@@ -91,7 +149,7 @@ int main()
     Oscillator square_wave = Oscillator::init(&square_wavetable, SAMPLE_RATE);
     square_wave.set_frequency(440.0f);
 
-    int n_seconds = 2;
+    float n_seconds = 0.02;
     u32 n_samples = SAMPLE_RATE * n_seconds * N_CHANNELS;
 
     FloatData float_data(n_samples);
@@ -106,7 +164,8 @@ int main()
 
     float_data.write_to_csv();
 
-	Data<SAMPLE_TYPE> data_;
+    Data<SAMPLE_TYPE> data_(&float_data, BIT_DEPTH, SAMPLE_IS_SIGNED);
+    data_.write_to_csv();
 
     i32* data = new int[n_samples];
     fill_data(data, n_samples, &square_wave);
