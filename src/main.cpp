@@ -14,10 +14,10 @@
 #define SAMPLE_TYPE i32
 #define BIT_DEPTH 8 * sizeof(SAMPLE_TYPE)
 
-struct Data
+struct FloatData
 {
-    Data(u32 size_);
-    ~Data();
+    FloatData(u32 size_);
+    ~FloatData();
 
     void write_to_csv(void);
     void normalize(void);
@@ -26,7 +26,7 @@ struct Data
     u32 size;
 };
 
-Data::Data(u32 size_)
+FloatData::FloatData(u32 size_)
 {
     size = size_;
     data = new float[size];
@@ -35,12 +35,12 @@ Data::Data(u32 size_)
         data[i] = 0.0f;
 }
 
-Data::~Data()
+FloatData::~FloatData()
 {
     delete[] data;
 }
 
-void Data::write_to_csv(void)
+void FloatData::write_to_csv(void)
 {
     std::ofstream csv;
     csv.open("data.csv");
@@ -52,7 +52,7 @@ void Data::write_to_csv(void)
     csv.close();
 }
 
-void Data::normalize(void) {}
+void FloatData::normalize(void) {}
 
 void fill_data(i32* data, i32 size, Oscillator* oscillator);
 
@@ -65,17 +65,17 @@ int main()
     int n_seconds = 2;
     u32 n_samples = SAMPLE_RATE * n_seconds * N_CHANNELS;
 
-    Data data_(n_samples);
+    FloatData float_data(n_samples);
 
     for (u32 i = 0; i < n_samples; i++)
     {
-        data_.data[i] = square_wave.get();
+        float_data.data[i] = square_wave.get();
         square_wave.advance();
     }
 
-    data_.normalize();
+    float_data.normalize();
 
-    data_.write_to_csv();
+    float_data.write_to_csv();
 
     i32* data = new int[n_samples];
     fill_data(data, n_samples, &square_wave);
