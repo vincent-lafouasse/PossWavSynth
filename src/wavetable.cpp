@@ -4,8 +4,6 @@
 
 #define PI 3.141592653589f
 
-static float positive_frac_part(float f);
-
 Wavetable Wavetable::get_square(u32 size)
 {
     Wavetable w;
@@ -49,7 +47,10 @@ float Wavetable::at(u32 pos)
 
 float Wavetable::at(float pos)
 {
-    pos = positive_frac_part(pos);
+    while (std::isgreater(pos, 1.0f))
+        pos -= 1.0f;
+    while (std::isgreater(0.0f, pos))
+        pos += 1.0f;
 
     float float_index = pos * size;
     u32 lower_index = float_index;
@@ -59,11 +60,4 @@ float Wavetable::at(float pos)
     float upper_contribution = (upper_index - float_index) * at(upper_index);
 
     return lower_contribution + upper_contribution;
-}
-
-float positive_frac_part(float f)
-{
-    f = f - (int)f;
-    f += (f < 0);
-    return f;
 }
