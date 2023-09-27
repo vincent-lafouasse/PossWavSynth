@@ -18,7 +18,7 @@
 
 int main()
 {
-    Wavetable square_wavetable = Wavetable::get_square(WAVETABLE_RESOLUTION);
+    Wavetable square_wavetable = Wavetable::get_sine(WAVETABLE_RESOLUTION);
     Oscillator square_wave = Oscillator::init(&square_wavetable, SAMPLE_RATE);
     square_wave.set_frequency(440.0f / 1.5f);
 
