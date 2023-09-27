@@ -1,4 +1,5 @@
 **/**.wav
+**/**.csv
 wav
 .cache
 build
