@@ -18,52 +18,6 @@
 #define BIT_DEPTH 32
 #define SAMPLE_IS_SIGNED true
 
-struct Note
-{
-    Note(float frequency_, float length_secs_);
-
-    u32 get_n_samples(u32 sample_rate);
-
-    float frequency;
-    float length_secs;
-};
-
-Note::Note(float frequency_, float length_secs_)
-{
-    frequency = frequency_;
-    length_secs = length_secs_;
-}
-
-u32 Note::get_n_samples(u32 sample_rate)
-{
-    return length_secs * (float)sample_rate;
-}
-
-struct Melody
-{
-    void add_note(float frequency, float length_secs);
-    u32 get_total_n_samples(u32 sample_rate);
-
-    std::vector<Note> notes;
-};
-
-void Melody::add_note(float frequency, float length_secs)
-{
-    notes.push_back(Note(frequency, length_secs));
-}
-
-u32 Melody::get_total_n_samples(u32 sample_rate)
-{
-    u32 n_samples = 0;
-
-    for (size_t i = 0; i < notes.size(); i++)
-    {
-        n_samples += notes.at(i).get_n_samples(sample_rate);
-    }
-
-    return n_samples;
-}
-
 int main()
 {
     Melody melody;
