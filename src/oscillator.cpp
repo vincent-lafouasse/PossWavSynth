@@ -20,6 +20,8 @@ void Oscillator::set_frequency(float f)
 
 float Oscillator::get()
 {
+    if (frequency == 0.0f)
+        return 0.0f;
     return wavetable->at(phase);
 }
 
