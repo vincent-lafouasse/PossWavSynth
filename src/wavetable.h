@@ -15,6 +15,9 @@ struct Wavetable
 
     float at(float pos);
     float at(u32 pos);
+    void normalize(void);
+
+    void write_to_csv(std::string name);
 
     std::vector<float> data;
     u32 size;
@@ -31,7 +34,7 @@ struct AdditiveWavetableFactory
 {
     AdditiveWavetableFactory();
 
-    Wavetable get();
+    Wavetable get(u32 size);
     void add_harmonic(u32 multiplier, float amplitude);
 
     std::vector<Harmonic> harmonics;

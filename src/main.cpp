@@ -35,17 +35,17 @@ int main()
     melody.add_note(B4, 1 * TIME_INC);
 
     AdditiveWavetableFactory additive_factory;
-
     additive_factory.add_harmonic(2, 0.5f);
 
-    Wavetable second_harmonic_wavetable =
-        Wavetable::get_harmonic(2, WAVETABLE_RESOLUTION);
-    Oscillator second_harmonic_wave =
-        Oscillator::init(&second_harmonic_wavetable, SAMPLE_RATE);
+    Wavetable additive_wavetable = additive_factory.get(SAMPLE_RATE);
+
+    Wavetable* wavetable_ptr = &additive_wavetable;
+
+    Oscillator oscillator = Oscillator::init(wavetable_ptr, SAMPLE_RATE);
 
     u32 n_samples = melody.get_total_n_samples(SAMPLE_RATE) * N_CHANNELS;
 
-    FloatData float_data(&melody, &second_harmonic_wave);
+    FloatData float_data(&melody, &oscillator);
 
     Data<SAMPLE_TYPE> data(&float_data, BIT_DEPTH, SAMPLE_IS_SIGNED);
 
@@ -59,5 +59,3 @@ int main()
     else
         std::cout << "rip" << std::endl;
 }
-
-#define TIME_INC 1.0f
