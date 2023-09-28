@@ -18,12 +18,18 @@
 #define BIT_DEPTH 32
 #define SAMPLE_IS_SIGNED true
 
+#define A4 get_frequency(4, 9)
+#define Cs5 get_frequency(5, 1)
+#define E5 get_frequency(5, 4)
+
+#define TIME_INC 1.0f
+
 int main()
 {
     Melody melody;
-    melody.add_note(440.0f, 1.0f);
-    melody.add_note(440.0f * 1.5f, 1.0f);
-    melody.add_note(440.0f, 1.0f);
+    melody.add_note(A4, 1 * TIME_INC);
+    melody.add_note(Cs5, 1 * TIME_INC);
+    melody.add_note(E5, 1 * TIME_INC);
 
     Wavetable sine_wavetable = Wavetable::get_sine(WAVETABLE_RESOLUTION);
     Oscillator sine_wave = Oscillator::init(&sine_wavetable, SAMPLE_RATE);
@@ -44,3 +50,5 @@ int main()
     else
         std::cout << "rip" << std::endl;
 }
+
+#define TIME_INC 1.0f

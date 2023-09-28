@@ -20,3 +20,5 @@ struct Melody
 
     std::vector<Note> notes;
 };
+
+float get_frequency(i16 octave, i16 semitones);
