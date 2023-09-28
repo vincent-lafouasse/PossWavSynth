@@ -78,21 +78,15 @@ int main()
 
     u32 data_index = 0;
 
-    Note a4 = melody.notes.at(0);
-    Note e5 = melody.notes.at(1);
-
-    sine_wave.set_frequency(a4.f);
-    for (u32 i = 0; i < a4.get_n_samples(SAMPLE_RATE); i++, data_index++)
+    for (Note note : melody.notes)
     {
-        float_data.data[data_index] = sine_wave.get();
-        sine_wave.advance();
-    }
-
-    sine_wave.set_frequency(e5.f);
-    for (u32 i = 0; i < e5.get_n_samples(SAMPLE_RATE); i++, data_index++)
-    {
-        float_data.data[data_index] = sine_wave.get();
-        sine_wave.advance();
+        sine_wave.set_frequency(note.f);
+		u32 note_n_samples = note.get_n_samples(SAMPLE_RATE);
+        for (u32 i = 0; i < note_n_samples; i++, data_index++)
+        {
+            float_data.data[data_index] = sine_wave.get();
+            sine_wave.advance();
+        }
     }
 
     Data<SAMPLE_TYPE> data(&float_data, BIT_DEPTH, SAMPLE_IS_SIGNED);
