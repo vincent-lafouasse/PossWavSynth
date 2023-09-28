@@ -3,6 +3,7 @@
 
 #include "cool_ints.h"
 #include "data.h"
+#include "melody.h"
 #include "oscillator.h"
 #include "wav.h"
 #include "wavetable.h"
@@ -19,36 +20,36 @@
 
 struct Note
 {
-    Note(float f_, float len_s_);
+    Note(float frequency_, float length_secs_);
 
     u32 get_n_samples(u32 sample_rate);
 
-    float f;
-    float len_s;
+    float frequency;
+    float length_secs;
 };
 
-Note::Note(float f_, float len_s_)
+Note::Note(float frequency_, float length_secs_)
 {
-    f = f_;
-    len_s = len_s_;
+    frequency = frequency_;
+    length_secs = length_secs_;
 }
 
 u32 Note::get_n_samples(u32 sample_rate)
 {
-    return len_s * (float)sample_rate;
+    return length_secs * (float)sample_rate;
 }
 
 struct Melody
 {
-    void add_note(float f, float len_s);
+    void add_note(float frequency, float length_secs);
     u32 get_total_n_samples(u32 sample_rate);
 
     std::vector<Note> notes;
 };
 
-void Melody::add_note(float f, float len_s)
+void Melody::add_note(float frequency, float length_secs)
 {
-    notes.push_back(Note(f, len_s));
+    notes.push_back(Note(frequency, length_secs));
 }
 
 u32 Melody::get_total_n_samples(u32 sample_rate)
@@ -80,8 +81,8 @@ int main()
 
     for (Note note : melody.notes)
     {
-        sine_wave.set_frequency(note.f);
-		u32 note_n_samples = note.get_n_samples(SAMPLE_RATE);
+        sine_wave.set_frequency(note.frequency);
+        u32 note_n_samples = note.get_n_samples(SAMPLE_RATE);
         for (u32 i = 0; i < note_n_samples; i++, data_index++)
         {
             float_data.data[data_index] = sine_wave.get();
