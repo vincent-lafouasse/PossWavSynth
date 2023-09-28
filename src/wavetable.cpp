@@ -20,12 +20,24 @@ Harmonic::Harmonic(u32 multiplier_, float amplitude_)
     amplitude = amplitude_;
 }
 
-Wavetable Wavetable::get_saw(u32 size)
+Wavetable Wavetable::get_empty(u32 size)
 {
     Wavetable w;
 
     w.size = size;
     w.data.reserve(size);
+
+    for (u32 i = 0; i < size; i++)
+    {
+        w.data.push_back(0.0f);
+    }
+
+    return w;
+}
+
+Wavetable Wavetable::get_saw(u32 size)
+{
+    Wavetable w = Wavetable::get_empty(size);
 
     float increment = 2.0f / (float)size;
     float sample = -1.0f;
@@ -41,10 +53,7 @@ Wavetable Wavetable::get_saw(u32 size)
 
 Wavetable Wavetable::get_triangle(u32 size)
 {
-    Wavetable w;
-
-    w.size = size;
-    w.data.reserve(size);
+    Wavetable w = Wavetable::get_empty(size);
 
     float sample = -1.0f;
     float increment = 4.0f / (float)size;
@@ -64,11 +73,8 @@ Wavetable Wavetable::get_triangle(u32 size)
 
 Wavetable Wavetable::get_square(u32 size)
 {
-    Wavetable w;
+    Wavetable w = Wavetable::get_empty(size);
     float sample;
-
-    w.size = size;
-    w.data.reserve(size);
 
     for (u32 i = 0; i < size; i++)
     {
@@ -81,12 +87,10 @@ Wavetable Wavetable::get_square(u32 size)
 
 Wavetable Wavetable::get_sine(u32 size)
 {
-    Wavetable w;
+    Wavetable w = Wavetable::get_empty(size);
+
     float sample;
     float phase_increment = 2 * PI / (float)size;
-
-    w.size = size;
-    w.data.reserve(size);
 
     for (u32 i = 0; i < size; i++)
     {
@@ -99,12 +103,10 @@ Wavetable Wavetable::get_sine(u32 size)
 
 Wavetable Wavetable::get_harmonic(u32 multiplier, u32 size)
 {
-    Wavetable w;
+    Wavetable w = Wavetable::get_empty(size);
+
     float sample;
     float phase_increment = multiplier * 2 * PI / (float)size;
-
-    w.size = size;
-    w.data.reserve(size);
 
     for (u32 i = 0; i < size; i++)
     {
