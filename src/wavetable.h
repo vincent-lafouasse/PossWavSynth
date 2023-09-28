@@ -10,6 +10,8 @@ struct Wavetable
     static Wavetable get_triangle(u32 size);
     static Wavetable get_sine(u32 size);
 
+    static Wavetable get_harmonic(u32 multiplier, u32 size);
+
     float at(float pos);
     float at(u32 pos);
 

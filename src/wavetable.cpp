@@ -81,6 +81,24 @@ Wavetable Wavetable::get_sine(u32 size)
     return w;
 }
 
+Wavetable Wavetable::get_harmonic(u32 multiplier, u32 size)
+{
+    Wavetable w;
+    float sample;
+    float phase_increment = multiplier * 2 * PI / (float)size;
+
+    w.size = size;
+    w.data.reserve(size);
+
+    for (u32 i = 0; i < size; i++)
+    {
+        sample = std::sin(phase_increment * (float)i);
+        w.data.push_back(sample);
+    }
+
+    return w;
+}
+
 float Wavetable::at(u32 pos)
 {
     pos = pos % size;
