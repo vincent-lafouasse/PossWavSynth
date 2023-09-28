@@ -19,17 +19,19 @@
 #define SAMPLE_IS_SIGNED true
 
 #define A4 get_frequency(4, 9)
-#define Cs5 get_frequency(5, 1)
-#define E5 get_frequency(5, 4)
+#define Bb4 get_frequency(4, 10)
+#define B4 get_frequency(4, 11)
+#define C5 get_frequency(5, 0)
 
 #define TIME_INC 1.0f
 
 int main()
 {
     Melody melody;
+    melody.add_note(Bb4, 1 * TIME_INC);
     melody.add_note(A4, 1 * TIME_INC);
-    melody.add_note(Cs5, 1 * TIME_INC);
-    melody.add_note(E5, 1 * TIME_INC);
+    melody.add_note(C5, 1 * TIME_INC);
+    melody.add_note(B4, 1 * TIME_INC);
 
     Wavetable sine_wavetable = Wavetable::get_sine(WAVETABLE_RESOLUTION);
     Oscillator sine_wave = Oscillator::init(&sine_wavetable, SAMPLE_RATE);
