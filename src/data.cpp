@@ -1,5 +1,25 @@
 #include "data.h"
 
+FloatData::FloatData(Melody* melody, Oscillator* oscillator)
+{
+    size = melody->get_total_n_samples(oscillator->sample_rate);
+    data = new float[size];
+
+    u32 i = 0;
+    u32 note_n_samples;
+
+    for (Note note : melody->notes)
+    {
+        oscillator->set_frequency(note.frequency);
+        note_n_samples = note.get_n_samples(oscillator->sample_rate);
+        for (u32 _ = 0; _ < note_n_samples; i++, _++)
+        {
+            data[i] = oscillator->get();
+            oscillator->advance();
+        }
+    }
+}
+
 FloatData::FloatData(u32 size_)
 {
     size = size_;

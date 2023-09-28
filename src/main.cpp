@@ -23,26 +23,14 @@ int main()
     Melody melody;
     melody.add_note(440.0f, 1.0f);
     melody.add_note(440.0f * 1.5f, 1.0f);
+    melody.add_note(440.0f, 1.0f);
 
     Wavetable sine_wavetable = Wavetable::get_sine(WAVETABLE_RESOLUTION);
     Oscillator sine_wave = Oscillator::init(&sine_wavetable, SAMPLE_RATE);
 
     u32 n_samples = melody.get_total_n_samples(SAMPLE_RATE) * N_CHANNELS;
 
-    FloatData float_data(n_samples);
-
-    u32 data_index = 0;
-
-    for (Note note : melody.notes)
-    {
-        sine_wave.set_frequency(note.frequency);
-        u32 note_n_samples = note.get_n_samples(SAMPLE_RATE);
-        for (u32 i = 0; i < note_n_samples; i++, data_index++)
-        {
-            float_data.data[data_index] = sine_wave.get();
-            sine_wave.advance();
-        }
-    }
+    FloatData float_data(&melody, &sine_wave);
 
     Data<SAMPLE_TYPE> data(&float_data, BIT_DEPTH, SAMPLE_IS_SIGNED);
 

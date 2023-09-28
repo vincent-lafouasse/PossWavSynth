@@ -1,10 +1,14 @@
 #pragma once
 
 #include <fstream>
+
 #include "cool_ints.h"
+#include "melody.h"
+#include "oscillator.h"
 
 struct FloatData
 {
+    FloatData(Melody* melody, Oscillator* oscillator);
     FloatData(u32 size_);
     ~FloatData();
 
