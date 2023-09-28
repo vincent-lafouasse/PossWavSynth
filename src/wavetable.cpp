@@ -4,6 +4,22 @@
 
 #define PI 3.141592653589f
 
+AdditiveWavetableFactory::AdditiveWavetableFactory()
+{
+    harmonics.push_back(Harmonic(1, 1.0f));
+}
+
+void AdditiveWavetableFactory::add_harmonic(u32 multiplier, float amplitude)
+{
+    harmonics.push_back(Harmonic(multiplier, amplitude));
+}
+
+Harmonic::Harmonic(u32 multiplier_, float amplitude_)
+{
+    multiplier = multiplier_;
+    amplitude = amplitude_;
+}
+
 Wavetable Wavetable::get_saw(u32 size)
 {
     Wavetable w;

@@ -34,6 +34,10 @@ int main()
     melody.add_note(REST, 1 * TIME_INC);
     melody.add_note(B4, 1 * TIME_INC);
 
+    AdditiveWavetableFactory additive_factory;
+
+    additive_factory.add_harmonic(2, 0.5f);
+
     Wavetable second_harmonic_wavetable =
         Wavetable::get_harmonic(2, WAVETABLE_RESOLUTION);
     Oscillator second_harmonic_wave =

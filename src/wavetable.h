@@ -18,3 +18,19 @@ struct Wavetable
     std::vector<float> data;
     u32 size;
 };
+
+struct Harmonic
+{
+    Harmonic(u32 multiplier_, float amplitude_);
+    u32 multiplier;
+    float amplitude;
+};
+
+struct AdditiveWavetableFactory
+{
+    AdditiveWavetableFactory();
+
+    void add_harmonic(u32 multiplier, float amplitude);
+
+    std::vector<Harmonic> harmonics;
+};
