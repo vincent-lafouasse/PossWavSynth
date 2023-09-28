@@ -34,12 +34,14 @@ int main()
     melody.add_note(REST, 1 * TIME_INC);
     melody.add_note(B4, 1 * TIME_INC);
 
-    Wavetable sine_wavetable = Wavetable::get_sine(WAVETABLE_RESOLUTION);
-    Oscillator sine_wave = Oscillator::init(&sine_wavetable, SAMPLE_RATE);
+    Wavetable triangle_wavetable =
+        Wavetable::get_triangle(WAVETABLE_RESOLUTION);
+    Oscillator triangle_wave =
+        Oscillator::init(&triangle_wavetable, SAMPLE_RATE);
 
     u32 n_samples = melody.get_total_n_samples(SAMPLE_RATE) * N_CHANNELS;
 
-    FloatData float_data(&melody, &sine_wave);
+    FloatData float_data(&melody, &triangle_wave);
 
     Data<SAMPLE_TYPE> data(&float_data, BIT_DEPTH, SAMPLE_IS_SIGNED);
 

@@ -4,14 +4,56 @@
 
 #define PI 3.141592653589f
 
+Wavetable Wavetable::get_saw(u32 size)
+{
+    Wavetable w;
+
+    w.size = size;
+    w.data.reserve(size);
+
+    float increment = 2.0f / (float)size;
+    float sample = -1.0f;
+
+    for (u32 _ = 0; _ < size; _++)
+    {
+        w.data.push_back(sample);
+        sample += increment;
+    }
+
+    return w;
+}
+
+Wavetable Wavetable::get_triangle(u32 size)
+{
+    Wavetable w;
+
+    w.size = size;
+    w.data.reserve(size);
+
+    float sample = -1.0f;
+    float increment = 4.0f / (float)size;
+
+    for (u32 i = 0; i < size; i++)
+    {
+        if (i == size / 2)
+        {
+            increment *= -1;
+        }
+        w.data.push_back(sample);
+        sample += increment;
+    }
+
+    return w;
+}
+
 Wavetable Wavetable::get_square(u32 size)
 {
     Wavetable w;
     float sample;
 
     w.size = size;
-
     w.data.reserve(size);
+
     for (u32 i = 0; i < size; i++)
     {
         sample = (i < size / 2) ? 1.0f : -1.0f;
@@ -28,8 +70,8 @@ Wavetable Wavetable::get_sine(u32 size)
     float phase_increment = 2 * PI / (float)size;
 
     w.size = size;
-
     w.data.reserve(size);
+
     for (u32 i = 0; i < size; i++)
     {
         sample = std::sin(phase_increment * (float)i);
