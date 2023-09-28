@@ -18,21 +18,27 @@
 #define BIT_DEPTH 32
 #define SAMPLE_IS_SIGNED true
 
+#define G4 get_frequency(4, 7)
 #define A4 get_frequency(4, 9)
-#define Bb4 get_frequency(4, 10)
 #define B4 get_frequency(4, 11)
 #define C5 get_frequency(5, 0)
+#define D5 get_frequency(5, 2)
 #define REST 0.0f
 
-#define TIME_INC 1.0f
+#define TEMPO_BPM 120.0f
+#define QUARTER_NOTE_SEC (60.0f / TEMPO_BPM)
+#define EIGTH_TRIPLET_SEC (QUARTER_NOTE_SEC / 3.0f)
 
 int main()
 {
     Melody melody;
-    melody.add_note(Bb4, 1 * TIME_INC);
-    melody.add_note(A4, 1 * TIME_INC);
-    melody.add_note(REST, 1 * TIME_INC);
-    melody.add_note(B4, 1 * TIME_INC);
+    melody.add_note(A4, 2 * EIGTH_TRIPLET_SEC);
+    melody.add_note(B4, 1 * EIGTH_TRIPLET_SEC);
+    melody.add_note(C5, 2 * EIGTH_TRIPLET_SEC);
+    melody.add_note(D5, 1 * EIGTH_TRIPLET_SEC);
+    melody.add_note(B4, 3 * EIGTH_TRIPLET_SEC);
+    melody.add_note(G4, 2 * EIGTH_TRIPLET_SEC);
+    melody.add_note(A4, 4 * EIGTH_TRIPLET_SEC);
 
     AdditiveWavetableFactory additive_factory;
     additive_factory.add_harmonic(2, 0.5f);
