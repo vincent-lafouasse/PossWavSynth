@@ -17,7 +17,7 @@ Following roughly [this tutorial](https://blog.demofox.org/diy-synthesizer/)
 
 - write to `wav`
 - basic wavetable engine with the classic wavetables
-- basic additive engine using pure sine wavetables
+- basic additive engine buy summing pure sine wavetables
 - compose and load some basic melodies into it
 
 ## ressources that helped me
