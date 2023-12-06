@@ -1,4 +1,4 @@
-# PossDSP
+# PossWavSynth
 
 An exploration of digital audio, the `wav` audio format and wavetable synthesis disguised as a non real-time synth using only standard C++17
 
