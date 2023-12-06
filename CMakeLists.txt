@@ -17,34 +17,8 @@ src/cool_ints.h
 src/data.h
 src/melody.h
 src/oscillator.h
-src/third_party
 src/wav.h
 src/wavetable.h
-src/third_party/lib/BaseChunk.cpp
-src/third_party/lib/BaseChunk.h
-src/third_party/lib/Event.cpp
-src/third_party/lib/Event.h
-src/third_party/lib/HeaderChunk.cpp
-src/third_party/lib/HeaderChunk.h
-src/third_party/lib/MTrkEvent.cpp
-src/third_party/lib/MTrkEvent.h
-src/third_party/lib/MetaEvent.cpp
-src/third_party/lib/MetaEvent.h
-src/third_party/lib/Midi.cpp
-src/third_party/lib/Midi.h
-src/third_party/lib/MidiEvent.cpp
-src/third_party/lib/MidiEvent.h
-src/third_party/lib/Options.h
-src/third_party/lib/ReadNumber.cpp
-src/third_party/lib/ReadNumber.h
-src/third_party/lib/SysExEvent.cpp
-src/third_party/lib/SysExEvent.h
-src/third_party/lib/TrackChunk.cpp
-src/third_party/lib/TrackChunk.h
-src/third_party/lib/VLQ.cpp
-src/third_party/lib/VLQ.h
-src/third_party/lib/list.h
-src/third_party/lib/types.h
 )
 
 # LSP stuff, don't worry about it
