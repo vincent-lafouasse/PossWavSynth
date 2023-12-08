@@ -1,0 +1,24 @@
+DOXYFILE_ENCODING      = UTF-8
+PROJECT_NAME           = "PossWavSynth"
+PROJECT_NUMBER         = 0.1.0
+PROJECT_BRIEF          = "A wav synth in standard C++17"
+OUTPUT_DIRECTORY       = "./doc"
+
+BUILTIN_STL_SUPPORT    = YES
+INPUT                  = ./src
+RECURSIVE              = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+
+EXTRACT_ALL          = YES
+CLASS_DIAGRAMS       = YES
+HIDE_UNDOC_RELATIONS = NO
+HAVE_DOT             = YES
+CLASS_GRAPH          = YES
+COLLABORATION_GRAPH  = YES
+UML_LOOK             = YES
+UML_LIMIT_NUM_FIELDS = 50
+TEMPLATE_RELATIONS   = YES
+DOT_GRAPH_MAX_NODES  = 100
+MAX_DOT_GRAPH_DEPTH  = 0
+DOT_TRANSPARENT      = YES

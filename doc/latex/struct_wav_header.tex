@@ -1,0 +1,154 @@
+\doxysection{Wav\+Header Struct Reference}
+\hypertarget{struct_wav_header}{}\label{struct_wav_header}\index{WavHeader@{WavHeader}}
+
+
+{\ttfamily \#include $<$wav.\+h$>$}
+
+
+
+Collaboration diagram for Wav\+Header\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_wav_header__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{struct_wav_header}{Wav\+Header}} \mbox{\hyperlink{struct_wav_header_a5c08ec5e4eac14ab9e13fc1712a3c4af}{init}} (\mbox{\hyperlink{cool__ints_8h_a48d6cd8e4135fb2ff7e7f2dac84089ec}{i32}} \mbox{\hyperlink{struct_wav_header_ae09fa9485d86e0c12c0fb6c275309526}{data\+\_\+size}}, \mbox{\hyperlink{cool__ints_8h_ad309dbcaeea13aa602d686964156ea0b}{i16}} \mbox{\hyperlink{struct_wav_header_a18301707b002bc0371a074eb09c69fe1}{n\+\_\+channels}}, \mbox{\hyperlink{cool__ints_8h_a48d6cd8e4135fb2ff7e7f2dac84089ec}{i32}} \mbox{\hyperlink{struct_wav_header_adc728d1494fb26c2ab8c15d2ca76f97e}{sample\+\_\+rate}}, \mbox{\hyperlink{cool__ints_8h_a48d6cd8e4135fb2ff7e7f2dac84089ec}{i32}} \mbox{\hyperlink{struct_wav_header_aa0c87b0cfbbfa15792606e7e7cb6f917}{bit\+\_\+depth}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \mbox{\hyperlink{struct_wav_header_a8a46f801cbe78333e37b485c7cb1c903}{main\+\_\+chunk\+\_\+\+ID}} \mbox{[}4\mbox{]}
+\item 
+\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}} \mbox{\hyperlink{struct_wav_header_a462abfe1d9abb0ff0a879aefacbb6fd4}{chunk\+\_\+size}}
+\item 
+unsigned char \mbox{\hyperlink{struct_wav_header_ab8a438f3ad14e6afb0b724a0a6e4e8cc}{riff\+\_\+type}} \mbox{[}4\mbox{]}
+\item 
+unsigned char \mbox{\hyperlink{struct_wav_header_a37848d2104293a5cd0a4936dce947b62}{fmt\+\_\+chunk\+\_\+\+ID}} \mbox{[}4\mbox{]}
+\item 
+\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}} \mbox{\hyperlink{struct_wav_header_a7c829de5d3c3d60aea5b12a312b9af06}{fmt\+\_\+chunk\+\_\+size}}
+\item 
+\mbox{\hyperlink{cool__ints_8h_ace9d960e74685e2cd84b36132dbbf8aa}{u16}} \mbox{\hyperlink{struct_wav_header_a546e7084d01ca7d88fffd19b39fcca42}{audio\+\_\+format}}
+\item 
+\mbox{\hyperlink{cool__ints_8h_ace9d960e74685e2cd84b36132dbbf8aa}{u16}} \mbox{\hyperlink{struct_wav_header_a18301707b002bc0371a074eb09c69fe1}{n\+\_\+channels}}
+\item 
+\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}} \mbox{\hyperlink{struct_wav_header_adc728d1494fb26c2ab8c15d2ca76f97e}{sample\+\_\+rate}}
+\item 
+\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}} \mbox{\hyperlink{struct_wav_header_a6e51d105d384d44970db5fce6f76b1b4}{byte\+\_\+rate}}
+\item 
+\mbox{\hyperlink{cool__ints_8h_ace9d960e74685e2cd84b36132dbbf8aa}{u16}} \mbox{\hyperlink{struct_wav_header_a0e2f226945699ff74111cce3dc189f10}{block\+\_\+align}}
+\item 
+\mbox{\hyperlink{cool__ints_8h_ace9d960e74685e2cd84b36132dbbf8aa}{u16}} \mbox{\hyperlink{struct_wav_header_aa0c87b0cfbbfa15792606e7e7cb6f917}{bit\+\_\+depth}}
+\item 
+unsigned char \mbox{\hyperlink{struct_wav_header_a70b95dec6a74fc5c08c6caa119e067bb}{data\+\_\+chunk\+\_\+\+ID}} \mbox{[}4\mbox{]}
+\item 
+\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}} \mbox{\hyperlink{struct_wav_header_ae09fa9485d86e0c12c0fb6c275309526}{data\+\_\+size}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_wav_header_a5c08ec5e4eac14ab9e13fc1712a3c4af}\label{struct_wav_header_a5c08ec5e4eac14ab9e13fc1712a3c4af} 
+\index{WavHeader@{WavHeader}!init@{init}}
+\index{init@{init}!WavHeader@{WavHeader}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_wav_header}{Wav\+Header}} Wav\+Header\+::init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{cool__ints_8h_a48d6cd8e4135fb2ff7e7f2dac84089ec}{i32}}}]{data\+\_\+size,  }\item[{\mbox{\hyperlink{cool__ints_8h_ad309dbcaeea13aa602d686964156ea0b}{i16}}}]{n\+\_\+channels,  }\item[{\mbox{\hyperlink{cool__ints_8h_a48d6cd8e4135fb2ff7e7f2dac84089ec}{i32}}}]{sample\+\_\+rate,  }\item[{\mbox{\hyperlink{cool__ints_8h_a48d6cd8e4135fb2ff7e7f2dac84089ec}{i32}}}]{bit\+\_\+depth }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{struct_wav_header_a5c08ec5e4eac14ab9e13fc1712a3c4af_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_wav_header_a546e7084d01ca7d88fffd19b39fcca42}\label{struct_wav_header_a546e7084d01ca7d88fffd19b39fcca42} 
+\index{WavHeader@{WavHeader}!audio\_format@{audio\_format}}
+\index{audio\_format@{audio\_format}!WavHeader@{WavHeader}}
+\doxysubsubsection{\texorpdfstring{audio\_format}{audio\_format}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cool__ints_8h_ace9d960e74685e2cd84b36132dbbf8aa}{u16}} Wav\+Header\+::audio\+\_\+format}
+
+\Hypertarget{struct_wav_header_aa0c87b0cfbbfa15792606e7e7cb6f917}\label{struct_wav_header_aa0c87b0cfbbfa15792606e7e7cb6f917} 
+\index{WavHeader@{WavHeader}!bit\_depth@{bit\_depth}}
+\index{bit\_depth@{bit\_depth}!WavHeader@{WavHeader}}
+\doxysubsubsection{\texorpdfstring{bit\_depth}{bit\_depth}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cool__ints_8h_ace9d960e74685e2cd84b36132dbbf8aa}{u16}} Wav\+Header\+::bit\+\_\+depth}
+
+\Hypertarget{struct_wav_header_a0e2f226945699ff74111cce3dc189f10}\label{struct_wav_header_a0e2f226945699ff74111cce3dc189f10} 
+\index{WavHeader@{WavHeader}!block\_align@{block\_align}}
+\index{block\_align@{block\_align}!WavHeader@{WavHeader}}
+\doxysubsubsection{\texorpdfstring{block\_align}{block\_align}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cool__ints_8h_ace9d960e74685e2cd84b36132dbbf8aa}{u16}} Wav\+Header\+::block\+\_\+align}
+
+\Hypertarget{struct_wav_header_a6e51d105d384d44970db5fce6f76b1b4}\label{struct_wav_header_a6e51d105d384d44970db5fce6f76b1b4} 
+\index{WavHeader@{WavHeader}!byte\_rate@{byte\_rate}}
+\index{byte\_rate@{byte\_rate}!WavHeader@{WavHeader}}
+\doxysubsubsection{\texorpdfstring{byte\_rate}{byte\_rate}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}} Wav\+Header\+::byte\+\_\+rate}
+
+\Hypertarget{struct_wav_header_a462abfe1d9abb0ff0a879aefacbb6fd4}\label{struct_wav_header_a462abfe1d9abb0ff0a879aefacbb6fd4} 
+\index{WavHeader@{WavHeader}!chunk\_size@{chunk\_size}}
+\index{chunk\_size@{chunk\_size}!WavHeader@{WavHeader}}
+\doxysubsubsection{\texorpdfstring{chunk\_size}{chunk\_size}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}} Wav\+Header\+::chunk\+\_\+size}
+
+\Hypertarget{struct_wav_header_a70b95dec6a74fc5c08c6caa119e067bb}\label{struct_wav_header_a70b95dec6a74fc5c08c6caa119e067bb} 
+\index{WavHeader@{WavHeader}!data\_chunk\_ID@{data\_chunk\_ID}}
+\index{data\_chunk\_ID@{data\_chunk\_ID}!WavHeader@{WavHeader}}
+\doxysubsubsection{\texorpdfstring{data\_chunk\_ID}{data\_chunk\_ID}}
+{\footnotesize\ttfamily unsigned char Wav\+Header\+::data\+\_\+chunk\+\_\+\+ID\mbox{[}4\mbox{]}}
+
+\Hypertarget{struct_wav_header_ae09fa9485d86e0c12c0fb6c275309526}\label{struct_wav_header_ae09fa9485d86e0c12c0fb6c275309526} 
+\index{WavHeader@{WavHeader}!data\_size@{data\_size}}
+\index{data\_size@{data\_size}!WavHeader@{WavHeader}}
+\doxysubsubsection{\texorpdfstring{data\_size}{data\_size}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}} Wav\+Header\+::data\+\_\+size}
+
+\Hypertarget{struct_wav_header_a37848d2104293a5cd0a4936dce947b62}\label{struct_wav_header_a37848d2104293a5cd0a4936dce947b62} 
+\index{WavHeader@{WavHeader}!fmt\_chunk\_ID@{fmt\_chunk\_ID}}
+\index{fmt\_chunk\_ID@{fmt\_chunk\_ID}!WavHeader@{WavHeader}}
+\doxysubsubsection{\texorpdfstring{fmt\_chunk\_ID}{fmt\_chunk\_ID}}
+{\footnotesize\ttfamily unsigned char Wav\+Header\+::fmt\+\_\+chunk\+\_\+\+ID\mbox{[}4\mbox{]}}
+
+\Hypertarget{struct_wav_header_a7c829de5d3c3d60aea5b12a312b9af06}\label{struct_wav_header_a7c829de5d3c3d60aea5b12a312b9af06} 
+\index{WavHeader@{WavHeader}!fmt\_chunk\_size@{fmt\_chunk\_size}}
+\index{fmt\_chunk\_size@{fmt\_chunk\_size}!WavHeader@{WavHeader}}
+\doxysubsubsection{\texorpdfstring{fmt\_chunk\_size}{fmt\_chunk\_size}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}} Wav\+Header\+::fmt\+\_\+chunk\+\_\+size}
+
+\Hypertarget{struct_wav_header_a8a46f801cbe78333e37b485c7cb1c903}\label{struct_wav_header_a8a46f801cbe78333e37b485c7cb1c903} 
+\index{WavHeader@{WavHeader}!main\_chunk\_ID@{main\_chunk\_ID}}
+\index{main\_chunk\_ID@{main\_chunk\_ID}!WavHeader@{WavHeader}}
+\doxysubsubsection{\texorpdfstring{main\_chunk\_ID}{main\_chunk\_ID}}
+{\footnotesize\ttfamily unsigned char Wav\+Header\+::main\+\_\+chunk\+\_\+\+ID\mbox{[}4\mbox{]}}
+
+\Hypertarget{struct_wav_header_a18301707b002bc0371a074eb09c69fe1}\label{struct_wav_header_a18301707b002bc0371a074eb09c69fe1} 
+\index{WavHeader@{WavHeader}!n\_channels@{n\_channels}}
+\index{n\_channels@{n\_channels}!WavHeader@{WavHeader}}
+\doxysubsubsection{\texorpdfstring{n\_channels}{n\_channels}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cool__ints_8h_ace9d960e74685e2cd84b36132dbbf8aa}{u16}} Wav\+Header\+::n\+\_\+channels}
+
+\Hypertarget{struct_wav_header_ab8a438f3ad14e6afb0b724a0a6e4e8cc}\label{struct_wav_header_ab8a438f3ad14e6afb0b724a0a6e4e8cc} 
+\index{WavHeader@{WavHeader}!riff\_type@{riff\_type}}
+\index{riff\_type@{riff\_type}!WavHeader@{WavHeader}}
+\doxysubsubsection{\texorpdfstring{riff\_type}{riff\_type}}
+{\footnotesize\ttfamily unsigned char Wav\+Header\+::riff\+\_\+type\mbox{[}4\mbox{]}}
+
+\Hypertarget{struct_wav_header_adc728d1494fb26c2ab8c15d2ca76f97e}\label{struct_wav_header_adc728d1494fb26c2ab8c15d2ca76f97e} 
+\index{WavHeader@{WavHeader}!sample\_rate@{sample\_rate}}
+\index{sample\_rate@{sample\_rate}!WavHeader@{WavHeader}}
+\doxysubsubsection{\texorpdfstring{sample\_rate}{sample\_rate}}
+{\footnotesize\ttfamily \mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}} Wav\+Header\+::sample\+\_\+rate}
+
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{wav_8h}{wav.\+h}}\item 
+src/\mbox{\hyperlink{wav_8cpp}{wav.\+cpp}}\end{DoxyCompactItemize}

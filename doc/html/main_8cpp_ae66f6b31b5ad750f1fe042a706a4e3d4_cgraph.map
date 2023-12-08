@@ -1,0 +1,28 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,206,55,232"/>
+<area shape="rect" id="Node000002" href="$struct_additive_wavetable_factory.html#acc0f6aaa0a2bd1cddb428cba8478fff9" title=" " alt="" coords="116,5,289,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="31,205,38,175,51,135,71,92,101,56,104,53,108,57,105,60,76,95,56,137,43,176,36,206"/>
+<area shape="rect" id="Node000003" href="$struct_melody.html#abfdb7c9f5257c2049720423d2179bab7" title=" " alt="" coords="140,70,265,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="34,204,57,156,76,128,101,105,124,93,126,98,104,109,81,132,62,158,38,207"/>
+<area shape="rect" id="Node000004" href="$struct_additive_wavetable_factory.html#a237f50a09222e6eb911221385e61922b" title=" " alt="" coords="103,120,302,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="41,204,67,179,101,155,117,148,119,153,104,160,71,183,45,208"/>
+<area shape="rect" id="Node000008" href="$struct_melody.html#ad2c78fcd0aed090905e167f10fe356ad" title=" " alt="" coords="135,169,270,210"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="55,212,119,201,120,206,56,217"/>
+<area shape="rect" id="Node000009" href="$struct_wav_file.html#a50f90a57a31b36eea38d9014b0a9a1f9" title=" " alt="" coords="156,234,249,260"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="56,220,141,234,140,240,55,226"/>
+<area shape="rect" id="Node000010" href="$struct_wav_header.html#a5c08ec5e4eac14ab9e13fc1712a3c4af" title=" " alt="" coords="145,284,260,309"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="47,230,73,251,104,270,131,280,129,285,101,275,69,255,44,234"/>
+<area shape="rect" id="Node000011" href="$struct_oscillator.html#a2234b4859b555f065a4a392ee8fc2578" title=" " alt="" coords="152,333,253,359"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="39,231,63,275,82,299,104,319,137,334,135,339,101,324,78,303,59,278,34,234"/>
+<area shape="rect" id="Node000013" href="$struct_wav_file.html#af461d9ee55efde479c50739e79d7178e" title=" " alt="" coords="150,382,255,408"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="36,232,43,261,56,298,76,336,104,369,136,385,134,390,101,373,71,339,51,300,38,262,31,233"/>
+<area shape="rect" id="Node000005" href="$struct_wavetable.html#adfd565554e2a5be1f5a22e9657776fcc" title=" " alt="" coords="566,94,718,120"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="267,116,350,104,454,100,551,100,550,106,454,105,350,110,268,121"/>
+<area shape="rect" id="Node000006" href="$struct_wavetable.html#a052338dcd4c6d7c9527afe93e1c1c06e" title=" " alt="" coords="350,120,518,145"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="302,130,334,130,334,135,302,135"/>
+<area shape="rect" id="Node000007" href="$struct_wavetable.html#a969593eb13cd53b493f72f19268c433e" title=" " alt="" coords="361,169,507,195"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="267,143,356,162,355,168,266,148"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="519,119,551,115,551,121,519,125"/>
+<area shape="rect" id="Node000012" href="$struct_oscillator.html#ae3cedeb746ec8a6fb27b6c9a1d8d48a5" title=" " alt="" coords="351,333,517,359"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="253,343,336,343,336,348,253,348"/>
+</map>

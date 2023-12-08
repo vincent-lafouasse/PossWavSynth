@@ -1,0 +1,112 @@
+\doxysection{data.\+h}
+\hypertarget{data_8h_source}{}\label{data_8h_source}\index{src/data.h@{src/data.h}}
+\mbox{\hyperlink{data_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{cool__ints_8h}{cool\_ints.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{melody_8h}{melody.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{oscillator_8h}{oscillator.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_float_data}{FloatData}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{struct_float_data}{FloatData}}(\mbox{\hyperlink{struct_melody}{Melody}}*\ melody,\ \mbox{\hyperlink{struct_oscillator}{Oscillator}}*\ oscillator);}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{struct_float_data}{FloatData}}(\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ size\_);}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{struct_float_data_ac63c3e0a7ce157a06d2c3af5bc6299b4}{\string~FloatData}}();}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_float_data_aa1ad1fb7f0aa0adf438d6af5243ac796}{write\_to\_csv}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_float_data_ab2a9eda2a302286a257f009b5cc0f8c4}{normalize}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{float}*\ \mbox{\hyperlink{struct_float_data_a29b209d34cb9c59d820be6a0041ffdfe}{data}};}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ \mbox{\hyperlink{struct_float_data_ac59ce2bebcac373312aa69b01788443b}{size}};}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00023\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_data}{Data}}}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{struct_data_ab37beb31b788e0c806211af241b86bba}{Data}}();}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{struct_data_ab37beb31b788e0c806211af241b86bba}{Data}}(\mbox{\hyperlink{struct_float_data}{FloatData}}*\ float\_data,\ \mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ bit\_depth\_,\ \textcolor{keywordtype}{bool}\ sample\_is\_signed);}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{struct_data_aa5e287f616f4982a7cb75b99bd2eb248}{\string~Data}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_data_a36693f1beb1f14a93a48f6bcd0122795}{write\_to\_csv}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ T*\ \mbox{\hyperlink{struct_data_a18d5da93f179f88dffbc2925bdc49142}{data}};}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ \mbox{\hyperlink{struct_data_a32abd8a55af03dda1dc35554aa2889ae}{size}};}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ \mbox{\hyperlink{struct_data_a3fd7722bd921b1fce2791b2a65877156}{bit\_depth}};}
+\DoxyCodeLine{00034\ \};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00037\ \textcolor{keyword}{static}\ T\ clamp(T\ item,\ T\ min,\ T\ max);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00040\ \textcolor{keyword}{static}\ T\ max\_binary\_value(\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ bit\_depth,\ \textcolor{keywordtype}{bool}\ sample\_is\_signed);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00043\ \mbox{\hyperlink{struct_data_ab37beb31b788e0c806211af241b86bba}{Data<T>::Data}}()}
+\DoxyCodeLine{00044\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ data\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00046\ \ \ \ \ size\ =\ 0;}
+\DoxyCodeLine{00047\ \ \ \ \ bit\_depth\ =\ 0;}
+\DoxyCodeLine{00048\ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00051\ \mbox{\hyperlink{struct_data_aa5e287f616f4982a7cb75b99bd2eb248}{Data<T>::\string~Data}}()}
+\DoxyCodeLine{00052\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{delete}[]\ data;}
+\DoxyCodeLine{00057\ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00060\ \mbox{\hyperlink{struct_data_ab37beb31b788e0c806211af241b86bba}{Data<T>::Data}}(\mbox{\hyperlink{struct_float_data}{FloatData}}*\ float\_data,\ \mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ bit\_depth\_,\ \textcolor{keywordtype}{bool}\ sample\_is\_signed)}
+\DoxyCodeLine{00061\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ size\ =\ float\_data-\/>\mbox{\hyperlink{struct_float_data_ac59ce2bebcac373312aa69b01788443b}{size}};}
+\DoxyCodeLine{00063\ \ \ \ \ data\ =\ \textcolor{keyword}{new}\ T[size];}
+\DoxyCodeLine{00064\ \ \ \ \ float\_data-\/>\mbox{\hyperlink{struct_float_data_ab2a9eda2a302286a257f009b5cc0f8c4}{normalize}}();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ bit\_depth\ =\ bit\_depth\_;}
+\DoxyCodeLine{00067\ \ \ \ \ T\ max\ =\ max\_binary\_value<T>(bit\_depth\_,\ sample\_is\_signed);}
+\DoxyCodeLine{00068\ \ \ \ \ T\ min\ =\ sample\_is\_signed\ *\ (-\/max);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ i\ =\ 0;\ i\ <\ size;\ i++)}
+\DoxyCodeLine{00071\ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ data[i]\ =\ (T)(!sample\_is\_signed\ +\ (float\_data-\/>\mbox{\hyperlink{struct_float_data_a29b209d34cb9c59d820be6a0041ffdfe}{data}}[i])\ *\ (float)max);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ data[i]\ =\ clamp<T>(data[i],\ min,\ max);}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00078\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_data_a36693f1beb1f14a93a48f6bcd0122795}{Data<T>::write\_to\_csv}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{00079\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ std::ofstream\ csv;}
+\DoxyCodeLine{00081\ \ \ \ \ csv.open(\textcolor{stringliteral}{"{}int\_data.csv"{}});}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ i\ =\ 0;\ i\ <\ size;\ i++)}
+\DoxyCodeLine{00083\ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ csv\ <<\ +data[i]\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ csv\ <<\ std::endl;}
+\DoxyCodeLine{00087\ \ \ \ \ csv.close();}
+\DoxyCodeLine{00088\ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00091\ \textcolor{keyword}{static}\ T\ clamp(T\ item,\ T\ min,\ T\ max)}
+\DoxyCodeLine{00092\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordflow}{if}\ (item\ >\ max)}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ item\ =\ max;}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordflow}{if}\ (item\ <\ min)}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ item\ =\ min;}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordflow}{return}\ item;}
+\DoxyCodeLine{00098\ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00101\ \textcolor{keyword}{static}\ T\ max\_binary\_value(\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ bit\_depth,\ \textcolor{keywordtype}{bool}\ sample\_is\_signed)}
+\DoxyCodeLine{00102\ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ actual\_bit\_depth\ =\ bit\_depth\ -\/\ sample\_is\_signed;}
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{cool__ints_8h_a3f7e2bcbb0b4c338f3c4f6c937cd4234}{u64}}\ out\ =\ (1\ <<\ actual\_bit\_depth)\ -\/\ 1;}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{return}\ out;}
+\DoxyCodeLine{00106\ \}}
+
+\end{DoxyCode}

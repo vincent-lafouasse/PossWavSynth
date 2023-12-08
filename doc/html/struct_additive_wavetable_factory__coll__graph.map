@@ -1,0 +1,15 @@
+<map id="AdditiveWavetableFactory" name="AdditiveWavetableFactory">
+<area shape="rect" id="Node000001" title=" " alt="" coords="85,390,269,496"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="100,262,255,327"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,327,180,373,175,373,175,327"/>
+<area shape="rect" id="Node000003" href="$struct_harmonic.html" title=" " alt="" coords="73,134,161,199"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="126,198,140,237,145,246,141,249,135,239,121,200"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,5,64,71"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="42,70,48,89,57,108,66,120,61,123,52,111,43,91,37,71"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="111,5,148,71"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="129,71,125,117,119,117,124,70"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="185,134,292,199"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="219,213,195,263,190,261,215,211"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="228,5,249,71"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="241,70,241,116,236,116,236,70"/>
+</map>

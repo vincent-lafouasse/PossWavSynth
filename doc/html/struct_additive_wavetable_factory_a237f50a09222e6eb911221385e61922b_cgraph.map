@@ -1,0 +1,10 @@
+<map id="AdditiveWavetableFactory::get" name="AdditiveWavetableFactory::get">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,205,56"/>
+<area shape="rect" id="Node000002" href="$struct_wavetable.html#adfd565554e2a5be1f5a22e9657776fcc" title=" " alt="" coords="469,5,620,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,27,252,16,356,11,453,12,453,17,357,16,253,21,171,33"/>
+<area shape="rect" id="Node000003" href="$struct_wavetable.html#a052338dcd4c6d7c9527afe93e1c1c06e" title=" " alt="" coords="253,31,421,56"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,41,237,41,237,46,205,46"/>
+<area shape="rect" id="Node000004" href="$struct_wavetable.html#a969593eb13cd53b493f72f19268c433e" title=" " alt="" coords="264,80,410,106"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="170,54,259,74,258,79,168,60"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="421,31,453,27,454,32,422,36"/>
+</map>

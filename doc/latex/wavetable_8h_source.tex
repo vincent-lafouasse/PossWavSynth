@@ -1,0 +1,47 @@
+\doxysection{wavetable.\+h}
+\hypertarget{wavetable_8h_source}{}\label{wavetable_8h_source}\index{src/wavetable.h@{src/wavetable.h}}
+\mbox{\hyperlink{wavetable_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{cool__ints_8h}{cool\_ints.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_wavetable}{Wavetable}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_wavetable}{Wavetable}}\ \mbox{\hyperlink{struct_wavetable_a08d8905721243896a24d4486047ca723}{get\_square}}(\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ \mbox{\hyperlink{struct_wavetable_a5132040b9c065248ba483530e850abfe}{size}});}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_wavetable}{Wavetable}}\ \mbox{\hyperlink{struct_wavetable_a285c61720a733d7b06402d9c8487c32e}{get\_saw}}(\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ \mbox{\hyperlink{struct_wavetable_a5132040b9c065248ba483530e850abfe}{size}});}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_wavetable}{Wavetable}}\ \mbox{\hyperlink{struct_wavetable_a5a128afd804a12b734daa79bc779dc49}{get\_triangle}}(\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ \mbox{\hyperlink{struct_wavetable_a5132040b9c065248ba483530e850abfe}{size}});}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_wavetable}{Wavetable}}\ \mbox{\hyperlink{struct_wavetable_af46f84cd3bd942762b64edc08c060e00}{get\_sine}}(\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ \mbox{\hyperlink{struct_wavetable_a5132040b9c065248ba483530e850abfe}{size}});}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_wavetable}{Wavetable}}\ \mbox{\hyperlink{struct_wavetable_a052338dcd4c6d7c9527afe93e1c1c06e}{get\_harmonic}}(\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ multiplier,\ \mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ \mbox{\hyperlink{struct_wavetable_a5132040b9c065248ba483530e850abfe}{size}});}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_wavetable}{Wavetable}}\ \mbox{\hyperlink{struct_wavetable_adfd565554e2a5be1f5a22e9657776fcc}{get\_empty}}(\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ \mbox{\hyperlink{struct_wavetable_a5132040b9c065248ba483530e850abfe}{size}});}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_wavetable_a7b19d20906fe6ec3f43de2eca2aac17c}{at}}(\textcolor{keywordtype}{float}\ pos);}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_wavetable_a7b19d20906fe6ec3f43de2eca2aac17c}{at}}(\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ pos);}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_wavetable_a969593eb13cd53b493f72f19268c433e}{normalize}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_wavetable_a100c73a73c2679897e7fef2b7c63701a}{write\_to\_csv}}(std::string\ name);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ std::vector<float>\ \mbox{\hyperlink{struct_wavetable_adef553be08bf08cae9178079f57f7aa3}{data}};}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ \mbox{\hyperlink{struct_wavetable_a5132040b9c065248ba483530e850abfe}{size}};}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_harmonic}{Harmonic}}}
+\DoxyCodeLine{00027\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{struct_harmonic}{Harmonic}}(\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ multiplier\_,\ \textcolor{keywordtype}{float}\ amplitude\_);}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ \mbox{\hyperlink{struct_harmonic_a4662068ab4d5a9efdf7e66d46a0f27dc}{multiplier}};}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_harmonic_a8ed484c6d6b97240742e36eaf8f135b6}{amplitude}};}
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_additive_wavetable_factory}{AdditiveWavetableFactory}}}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{struct_additive_wavetable_factory_abe1b304179d87683a8396ec33f90f06e}{AdditiveWavetableFactory}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{struct_wavetable}{Wavetable}}\ \mbox{\hyperlink{struct_additive_wavetable_factory_a237f50a09222e6eb911221385e61922b}{get}}(\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ size);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_additive_wavetable_factory_acc0f6aaa0a2bd1cddb428cba8478fff9}{add\_harmonic}}(\mbox{\hyperlink{cool__ints_8h_afaa62991928fb9fb18ff0db62a040aba}{u32}}\ multiplier,\ \textcolor{keywordtype}{float}\ amplitude);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ std::vector<Harmonic>\ \mbox{\hyperlink{struct_additive_wavetable_factory_a53c02825da82406c29f38d99b10d1317}{harmonics}};}
+\DoxyCodeLine{00041\ \};}
+
+\end{DoxyCode}

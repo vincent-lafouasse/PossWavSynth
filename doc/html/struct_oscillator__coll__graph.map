@@ -1,0 +1,17 @@
+<map id="Oscillator" name="Oscillator">
+<area shape="rect" id="Node000001" title=" " alt="" coords="55,729,169,854"/>
+<area shape="rect" id="Node000002" href="$struct_wavetable.html" title=" " alt="" coords="57,420,167,666"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,665,115,712,109,712,109,665"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="39,262,163,327"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="104,327,106,396,106,403,101,403,100,396,99,327"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,134,43,199"/>
+<area shape="poly" id="edge8_Node000001_Node000004" title=" " alt="" coords="23,199,17,281,14,398,22,532,33,599,48,665,67,713,62,715,43,666,27,600,17,532,9,398,11,281,18,199"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="36,198,53,237,61,247,56,250,49,239,31,200"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="88,134,195,199"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="129,214,114,263,109,261,124,212"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="131,5,152,71"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="144,70,144,116,139,116,139,70"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="192,262,251,327"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="228,327,233,398,233,494,229,547,221,601,209,655,190,706,181,724,176,721,186,704,203,653,216,600,224,546,228,493,228,398,223,328"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="195,324,173,353,149,405,144,403,168,350,190,321"/>
+</map>

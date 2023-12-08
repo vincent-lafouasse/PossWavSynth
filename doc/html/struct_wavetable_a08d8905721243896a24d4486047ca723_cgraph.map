@@ -1,0 +1,5 @@
+<map id="Wavetable::get_square" name="Wavetable::get_square">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,160,31"/>
+<area shape="rect" id="Node000002" href="$struct_wavetable.html#adfd565554e2a5be1f5a22e9657776fcc" title=" " alt="" coords="208,5,359,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,16,192,16,192,21,160,21"/>
+</map>
