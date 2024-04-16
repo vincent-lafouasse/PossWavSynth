@@ -18,30 +18,11 @@
 #define BIT_DEPTH 32
 #define SAMPLE_IS_SIGNED true
 
-#define G4 get_frequency(4, 7)
-#define A4 get_frequency(4, 9)
-#define B4 get_frequency(4, 11)
-#define C5 get_frequency(5, 0)
-#define D5 get_frequency(5, 2)
-#define REST 0.0f
-
 #define TEMPO_BPM 120.0f
 #define QUARTER_NOTE_SEC (60.0f / TEMPO_BPM)
 #define EIGTH_TRIPLET_SEC (QUARTER_NOTE_SEC / 3.0f)
 
-Melody a_cool_melody(void)
-{
-    Melody melody;
-    melody.add_note(A4, 2 * EIGTH_TRIPLET_SEC);
-    melody.add_note(B4, 1 * EIGTH_TRIPLET_SEC);
-    melody.add_note(C5, 2 * EIGTH_TRIPLET_SEC);
-    melody.add_note(D5, 1 * EIGTH_TRIPLET_SEC);
-    melody.add_note(B4, 3 * EIGTH_TRIPLET_SEC);
-    melody.add_note(G4, 2 * EIGTH_TRIPLET_SEC);
-    melody.add_note(A4, 4 * EIGTH_TRIPLET_SEC);
-
-    return melody;
-}
+Melody a_cool_melody(void);
 
 int main()
 {
@@ -71,4 +52,24 @@ int main()
         std::cout << "success" << std::endl;
     else
         std::cout << "rip" << std::endl;
+}
+
+Melody a_cool_melody(void)
+{
+    const float g4_frequency = get_frequency(4, 7);
+    const float a4_frequency = get_frequency(4, 9);
+    const float b4_frequency = get_frequency(4, 11);
+    const float c5_frequency = get_frequency(5, 0);
+    const float d5_frequency = get_frequency(5, 2);
+
+    Melody melody;
+    melody.add_note(a4_frequency, 2 * EIGTH_TRIPLET_SEC);
+    melody.add_note(b4_frequency, 1 * EIGTH_TRIPLET_SEC);
+    melody.add_note(c5_frequency, 2 * EIGTH_TRIPLET_SEC);
+    melody.add_note(d5_frequency, 1 * EIGTH_TRIPLET_SEC);
+    melody.add_note(b4_frequency, 3 * EIGTH_TRIPLET_SEC);
+    melody.add_note(g4_frequency, 2 * EIGTH_TRIPLET_SEC);
+    melody.add_note(a4_frequency, 4 * EIGTH_TRIPLET_SEC);
+
+    return melody;
 }
