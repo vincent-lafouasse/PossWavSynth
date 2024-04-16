@@ -183,9 +183,9 @@ void Wavetable::normalize(void)
     }
 }
 
-void Wavetable::write_to_csv(std::string name)
+void Wavetable::write_to_csv(const std::string& output_filename)
 {
-    std::ofstream csv(name);
+    std::ofstream csv(output_filename);
 
     for (u32 i = 0; i < size; i++)
     {
