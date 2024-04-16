@@ -35,9 +35,9 @@ int main()
 
     u32 n_samples = melody.get_total_n_samples(SAMPLE_RATE) * N_CHANNELS;
 
-    FloatData float_data(&melody, &oscillator);
+    FloatData buffer(&melody, &oscillator);
 
-    Data<SAMPLE_TYPE> data(&float_data, BIT_DEPTH, SAMPLE_IS_SIGNED);
+    Data<SAMPLE_TYPE> data(&buffer, BIT_DEPTH, SAMPLE_IS_SIGNED);
 
     WavHeader header = WavHeader::init(n_samples * (BIT_DEPTH / 8), N_CHANNELS,
                                        SAMPLE_RATE, BIT_DEPTH);
