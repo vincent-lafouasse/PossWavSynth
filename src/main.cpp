@@ -11,8 +11,6 @@
 #define SAMPLE_RATE 44100
 #define N_CHANNELS 1
 
-#define WAVETABLE_RESOLUTION 1024
-
 // do not use u64
 #define SAMPLE_TYPE i32
 #define BIT_DEPTH 32
@@ -31,7 +29,7 @@ int main()
     AdditiveWavetableFactory additive_factory;
     additive_factory.add_harmonic(2, 0.5f);
 
-    Wavetable additive_wavetable = additive_factory.get(SAMPLE_RATE);
+    Wavetable additive_wavetable = additive_factory.get();
 
     Wavetable* wavetable_ptr = &additive_wavetable;
 
