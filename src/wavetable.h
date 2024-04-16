@@ -25,7 +25,7 @@ struct Wavetable
 
 struct Harmonic
 {
-    Harmonic(u32 multiplier_, float amplitude_);
+    Harmonic(float multiplier, float amplitude);
     u32 multiplier;
     float amplitude;
 };

@@ -7,39 +7,48 @@
 
 constexpr u32 default_wavetable_resolution = 1024;
 
-AdditiveWavetableFactory::AdditiveWavetableFactory()
+float Wavetable::at(u32 pos)
 {
-    harmonics.push_back(Harmonic(1, 1.0f));
+    pos = pos % size;
+    return data.at(pos);
 }
 
-Wavetable AdditiveWavetableFactory::get()
+float Wavetable::at(float pos)
 {
-    Wavetable w = Wavetable::get_empty();
+    while (std::isgreater(pos, 1.0f))
+        pos -= 1.0f;
+    while (std::isgreater(0.0f, pos))
+        pos += 1.0f;
 
-    for (u32 i = 0; i < harmonics.size(); i++)
+    float float_index = pos * size;
+    u32 lower_index = float_index;
+    u32 upper_index = lower_index + 1;
+
+    float lower_contribution = (float_index - lower_index) * at(lower_index);
+    float upper_contribution = (upper_index - float_index) * at(upper_index);
+
+    return lower_contribution + upper_contribution;
+}
+
+void Wavetable::normalize(void)
+{
+    float max_abs = 0.0f;
+    float current;
+
+    for (u32 i = 0; i < size; i++)
     {
-        Wavetable harmonic = Wavetable::get_harmonic(harmonics[i].multiplier);
-
-        for (u32 j = 0; j < w.size; j++)
-        {
-            w.data[j] += harmonics[i].amplitude * harmonic.data.at(j);
-        }
+        current = fabs(data[i]);
+        if (isgreater(current, max_abs))
+            max_abs = current;
     }
 
-    w.normalize();
+    if (max_abs == 0.0f)
+        return;
 
-    return w;
-}
-
-void AdditiveWavetableFactory::add_harmonic(u32 multiplier, float amplitude)
-{
-    harmonics.push_back(Harmonic(multiplier, amplitude));
-}
-
-Harmonic::Harmonic(u32 multiplier_, float amplitude_)
-{
-    multiplier = multiplier_;
-    amplitude = amplitude_;
+    for (u32 i = 0; i < size; i++)
+    {
+        data[i] = data[i] / max_abs;
+    }
 }
 
 Wavetable Wavetable::get_empty()
@@ -139,48 +148,39 @@ Wavetable Wavetable::get_harmonic(u32 multiplier)
     return w;
 }
 
-float Wavetable::at(u32 pos)
+AdditiveWavetableFactory::AdditiveWavetableFactory()
 {
-    pos = pos % size;
-    return data.at(pos);
+    harmonics.push_back(Harmonic(1, 1.0f));
 }
 
-float Wavetable::at(float pos)
+Wavetable AdditiveWavetableFactory::get()
 {
-    while (std::isgreater(pos, 1.0f))
-        pos -= 1.0f;
-    while (std::isgreater(0.0f, pos))
-        pos += 1.0f;
+    Wavetable w = Wavetable::get_empty();
 
-    float float_index = pos * size;
-    u32 lower_index = float_index;
-    u32 upper_index = lower_index + 1;
+    for (u32 i = 0; i < harmonics.size(); i++)
+    {
+        Wavetable harmonic = Wavetable::get_harmonic(harmonics[i].multiplier);
 
-    float lower_contribution = (float_index - lower_index) * at(lower_index);
-    float upper_contribution = (upper_index - float_index) * at(upper_index);
+        for (u32 j = 0; j < w.size; j++)
+        {
+            w.data[j] += harmonics[i].amplitude * harmonic.data.at(j);
+        }
+    }
 
-    return lower_contribution + upper_contribution;
+    w.normalize();
+
+    return w;
 }
 
-void Wavetable::normalize(void)
+void AdditiveWavetableFactory::add_harmonic(u32 multiplier, float amplitude)
 {
-    float max_abs = 0.0f;
-    float current;
+    harmonics.push_back(Harmonic(multiplier, amplitude));
+}
 
-    for (u32 i = 0; i < size; i++)
-    {
-        current = fabs(data[i]);
-        if (isgreater(current, max_abs))
-            max_abs = current;
-    }
-
-    if (max_abs == 0.0f)
-        return;
-
-    for (u32 i = 0; i < size; i++)
-    {
-        data[i] = data[i] / max_abs;
-    }
+Harmonic::Harmonic(float multiplier, float amplitude)
+{
+    this->multiplier = multiplier;
+    this->amplitude = amplitude;
 }
 
 void Wavetable::write_to_csv(const std::string& output_filename)
