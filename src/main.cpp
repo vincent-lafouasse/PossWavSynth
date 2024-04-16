@@ -21,15 +21,13 @@
 #define EIGTH_TRIPLET_SEC (QUARTER_NOTE_SEC / 3.0f)
 
 Melody a_cool_melody(void);
+Wavetable a_cool_additive_wavetable(void);
 
 int main()
 {
     Melody melody = a_cool_melody();
 
-    AdditiveWavetableFactory additive_factory;
-    additive_factory.add_harmonic(2, 0.5f);
-
-    Wavetable additive_wavetable = additive_factory.get();
+    Wavetable additive_wavetable = a_cool_additive_wavetable();
 
     Wavetable* wavetable_ptr = &additive_wavetable;
 
@@ -70,4 +68,12 @@ Melody a_cool_melody(void)
     melody.add_note(a4_frequency, 4 * EIGTH_TRIPLET_SEC);
 
     return melody;
+}
+
+Wavetable a_cool_additive_wavetable(void)
+{
+    AdditiveWavetableFactory additive_factory;
+    additive_factory.add_harmonic(2, 0.5f);
+
+    return additive_factory.get();
 }
