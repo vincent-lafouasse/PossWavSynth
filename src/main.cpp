@@ -29,7 +29,7 @@
 #define QUARTER_NOTE_SEC (60.0f / TEMPO_BPM)
 #define EIGTH_TRIPLET_SEC (QUARTER_NOTE_SEC / 3.0f)
 
-int main()
+Melody a_cool_melody(void)
 {
     Melody melody;
     melody.add_note(A4, 2 * EIGTH_TRIPLET_SEC);
@@ -39,6 +39,13 @@ int main()
     melody.add_note(B4, 3 * EIGTH_TRIPLET_SEC);
     melody.add_note(G4, 2 * EIGTH_TRIPLET_SEC);
     melody.add_note(A4, 4 * EIGTH_TRIPLET_SEC);
+
+    return melody;
+}
+
+int main()
+{
+    Melody melody = a_cool_melody();
 
     AdditiveWavetableFactory additive_factory;
     additive_factory.add_harmonic(2, 0.5f);
