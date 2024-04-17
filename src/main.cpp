@@ -28,10 +28,7 @@ int main()
     Melody melody = a_cool_melody();
 
     Wavetable additive_wavetable = a_cool_additive_wavetable();
-
-    Wavetable* wavetable_ptr = &additive_wavetable;
-
-    Oscillator oscillator = Oscillator::init(wavetable_ptr, SAMPLE_RATE);
+    Oscillator oscillator = Oscillator::init(&additive_wavetable, SAMPLE_RATE);
 
     u32 n_samples = melody.get_total_n_samples(SAMPLE_RATE) * N_CHANNELS;
 
@@ -74,6 +71,7 @@ Wavetable a_cool_additive_wavetable(void)
 {
     AdditiveWavetableFactory additive_factory;
     additive_factory.add_harmonic(2, 0.5f);
+    additive_factory.add_harmonic(5, 0.25f);
 
     return additive_factory.get();
 }
