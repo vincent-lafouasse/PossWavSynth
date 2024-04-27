@@ -5,14 +5,6 @@
 
 struct Wavetable
 {
-    static Wavetable get_square();
-    static Wavetable get_saw();
-    static Wavetable get_triangle();
-    static Wavetable get_sine();
-    static Wavetable get_harmonic(u32 multiplier);
-
-    static Wavetable get_empty();
-
     float at(float pos) const;
     float at(u32 pos) const;
     void normalize(void);
@@ -22,6 +14,17 @@ struct Wavetable
     std::vector<float> data;
     u32 size;
 };
+
+namespace Wavetables
+{
+    Wavetable get_empty();
+    Wavetable get_sine();
+    Wavetable get_square();
+    Wavetable get_saw();
+    Wavetable get_triangle();
+    Wavetable get_harmonic(u32 multiplier);
+    Wavetable a_cool_additive_wavetable(void);
+}
 
 struct Harmonic
 {
@@ -40,4 +43,3 @@ struct AdditiveWavetableFactory
     std::vector<Harmonic> harmonics;
 };
 
-Wavetable a_cool_additive_wavetable(void);

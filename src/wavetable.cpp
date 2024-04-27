@@ -51,7 +51,9 @@ void Wavetable::normalize(void)
     }
 }
 
-Wavetable Wavetable::get_empty()
+namespace Wavetables
+{
+Wavetable get_empty()
 {
     Wavetable w;
 
@@ -66,9 +68,9 @@ Wavetable Wavetable::get_empty()
     return w;
 }
 
-Wavetable Wavetable::get_saw()
+Wavetable get_saw()
 {
-    Wavetable w = Wavetable::get_empty();
+    Wavetable w = Wavetables::get_empty();
 
     float increment = 2.0f / (float)w.size;
     float sample = -1.0f;
@@ -82,9 +84,9 @@ Wavetable Wavetable::get_saw()
     return w;
 }
 
-Wavetable Wavetable::get_triangle()
+Wavetable get_triangle()
 {
-    Wavetable w = Wavetable::get_empty();
+    Wavetable w = Wavetables::get_empty();
 
     float sample = -1.0f;
     float increment = 4.0f / (float)w.size;
@@ -102,9 +104,9 @@ Wavetable Wavetable::get_triangle()
     return w;
 }
 
-Wavetable Wavetable::get_square()
+Wavetable get_square()
 {
-    Wavetable w = Wavetable::get_empty();
+    Wavetable w = Wavetables::get_empty();
     float sample;
 
     for (u32 i = 0; i < w.size; i++)
@@ -116,9 +118,9 @@ Wavetable Wavetable::get_square()
     return w;
 }
 
-Wavetable Wavetable::get_sine()
+Wavetable get_sine()
 {
-    Wavetable w = Wavetable::get_empty();
+    Wavetable w = Wavetables::get_empty();
 
     float sample;
     float phase_increment = 2 * PI / (float)w.size;
@@ -132,9 +134,9 @@ Wavetable Wavetable::get_sine()
     return w;
 }
 
-Wavetable Wavetable::get_harmonic(u32 multiplier)
+Wavetable get_harmonic(u32 multiplier)
 {
-    Wavetable w = Wavetable::get_empty();
+    Wavetable w = Wavetables::get_empty();
 
     float sample;
     float phase_increment = multiplier * 2 * PI / (float)w.size;
@@ -148,6 +150,17 @@ Wavetable Wavetable::get_harmonic(u32 multiplier)
     return w;
 }
 
+Wavetable a_cool_additive_wavetable(void)
+{
+    AdditiveWavetableFactory additive_factory;
+    additive_factory.add_harmonic(2, 0.5f);
+    additive_factory.add_harmonic(5, 0.25f);
+
+    return additive_factory.get();
+}
+
+}
+
 AdditiveWavetableFactory::AdditiveWavetableFactory()
 {
     harmonics.push_back(Harmonic(1, 1.0f));
@@ -155,11 +168,11 @@ AdditiveWavetableFactory::AdditiveWavetableFactory()
 
 Wavetable AdditiveWavetableFactory::get()
 {
-    Wavetable w = Wavetable::get_empty();
+    Wavetable w = Wavetables::get_empty();
 
     for (u32 i = 0; i < harmonics.size(); i++)
     {
-        Wavetable harmonic = Wavetable::get_harmonic(harmonics[i].multiplier);
+        Wavetable harmonic = Wavetables::get_harmonic(harmonics[i].multiplier);
 
         for (u32 j = 0; j < w.size; j++)
         {
@@ -199,13 +212,4 @@ void Wavetable::write_to_csv(const std::string& output_filename)
     }
     csv << std::endl;
     csv.close();
-}
-
-Wavetable a_cool_additive_wavetable(void)
-{
-    AdditiveWavetableFactory additive_factory;
-    additive_factory.add_harmonic(2, 0.5f);
-    additive_factory.add_harmonic(5, 0.25f);
-
-    return additive_factory.get();
 }

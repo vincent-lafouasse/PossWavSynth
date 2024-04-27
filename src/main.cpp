@@ -9,7 +9,7 @@
 
 #define SAMPLE_RATE 44100
 
-struct Wavetables
+struct MyWavetables
 {
     Wavetable sine;  
     Wavetable square;  
@@ -17,11 +17,11 @@ struct Wavetables
     Wavetable saw;  
 };
 
-const Wavetables pure_wavetables = {
-    Wavetable::get_sine(),
-    Wavetable::get_square(),
-    Wavetable::get_triangle(),
-    Wavetable::get_saw(),
+const MyWavetables pure_wavetables = {
+    Wavetables::get_sine(),
+    Wavetables::get_square(),
+    Wavetables::get_triangle(),
+    Wavetables::get_saw(),
 };
 
 static Melody a_cool_melody(void);
