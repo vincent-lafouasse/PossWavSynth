@@ -9,6 +9,21 @@
 
 #define SAMPLE_RATE 44100
 
+struct Wavetables
+{
+    Wavetable sine;  
+    Wavetable square;  
+    Wavetable triangle;  
+    Wavetable saw;  
+};
+
+const Wavetables pure_wavetables = {
+    Wavetable::get_sine(),
+    Wavetable::get_square(),
+    Wavetable::get_triangle(),
+    Wavetable::get_saw(),
+};
+
 static Melody a_cool_melody(void);
 
 Melody soprano()
@@ -17,8 +32,8 @@ Melody soprano()
     const float c5 = get_frequency(5, 0);
 
     Melody m;
-    m.add_note(b4, 2);
-    m.add_note(c5, 2);
+    m.add_note(b4, 1);
+    m.add_note(c5, 1);
     return m;
 }
 
@@ -28,19 +43,15 @@ Melody bass()
     const float c3 = get_frequency(3, 0);
 
     Melody m;
-    m.add_note(g3, 2);
-    m.add_note(c3, 2);
+    m.add_note(g3, 1);
+    m.add_note(c3, 1);
     return m;
 }
 
 int main()
 {
-
-    Wavetable triangle = Wavetable::get_triangle();
-    Oscillator triangle_osc(&triangle, SAMPLE_RATE);
-
-    Wavetable square = Wavetable::get_square();
-    Oscillator square_osc(&square, SAMPLE_RATE);
+    Oscillator triangle_osc(&pure_wavetables.triangle, SAMPLE_RATE);
+    Oscillator square_osc(&pure_wavetables.square, SAMPLE_RATE);
 
     Melody soprano_melody = soprano();
     Signal soprano(&soprano_melody, &square_osc);
