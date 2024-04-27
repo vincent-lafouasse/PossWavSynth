@@ -19,14 +19,13 @@ int main()
     Wavetable additive_wavetable = a_cool_additive_wavetable();
     Oscillator oscillator = Oscillator::init(&additive_wavetable, SAMPLE_RATE);
 
-    Signal buffer(&melody, &oscillator);
+    Signal signal(&melody, &oscillator);
 
-    Data32 data(buffer, SAMPLE_RATE);
-    WavHeader header(data);
+    Data32 data(signal, SAMPLE_RATE);
 
-    WavFile wav_file = WavFile::init("wave.wav", &header, data.get());
+    WavFile wav_file(data);
 
-    const char* status = wav_file.write() ? "success" : "rip";
+    const char* status = wav_file.write("wave.wav") ? "success" : "rip";
     std::cout << status << std::endl;
 }
 

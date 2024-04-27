@@ -40,25 +40,20 @@ void WavHeader::init(i32 data_size,
     this->data_size = data_size;
 }
 
-WavFile WavFile::init(const char* name, WavHeader* header, void* data)
+WavFile::WavFile(const Data& data)
 {
-    WavFile f;
-
-    f.name = name;
-    f.header = header;
-    f.data = data;
-
-    return f;
+    header = WavHeader(data);
+    this->binary_data = data.get();
 }
 
-bool WavFile::write()
+bool WavFile::write(const char* name)
 {
     FILE* file = fopen(name, "w+b");
     if (!file)
         return false;
 
-    fwrite(header, sizeof(*header), 1, file);
-    fwrite(data, header->data_size, 1, file);
+    fwrite(&header, sizeof(header), 1, file);
+    fwrite(binary_data, header.data_size, 1, file);
 
     fclose(file);
 

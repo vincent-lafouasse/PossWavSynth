@@ -32,10 +32,10 @@ struct WavHeader
 
 struct WavFile
 {
-    static WavFile init(const char* name, WavHeader* header, void* data);
-    bool write(void);
+    WavFile() = default;
+    WavFile(const Data& data);
+    bool write(const char* name);
 
-    const char* name;
-    WavHeader* header;
-    void* data;
+    WavHeader header;
+    void* binary_data;
 };
