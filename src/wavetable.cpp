@@ -7,13 +7,13 @@
 
 constexpr u32 default_wavetable_resolution = 1024;
 
-float Wavetable::at(u32 pos)
+float Wavetable::at(u32 pos) const
 {
     pos = pos % size;
     return data.at(pos);
 }
 
-float Wavetable::at(float pos)
+float Wavetable::at(float pos) const
 {
     while (std::isgreater(pos, 1.0f))
         pos -= 1.0f;
@@ -199,4 +199,13 @@ void Wavetable::write_to_csv(const std::string& output_filename)
     }
     csv << std::endl;
     csv.close();
+}
+
+Wavetable a_cool_additive_wavetable(void)
+{
+    AdditiveWavetableFactory additive_factory;
+    additive_factory.add_harmonic(2, 0.5f);
+    additive_factory.add_harmonic(5, 0.25f);
+
+    return additive_factory.get();
 }

@@ -10,14 +10,13 @@
 #define SAMPLE_RATE 44100
 
 static Melody a_cool_melody(void);
-static Wavetable a_cool_additive_wavetable(void);
 
 int main()
 {
     Melody melody = a_cool_melody();
 
-    Wavetable additive_wavetable = a_cool_additive_wavetable();
-    Oscillator oscillator = Oscillator::init(&additive_wavetable, SAMPLE_RATE);
+    Wavetable square_wave = Wavetable::get_square();
+    Oscillator oscillator(&square_wave, SAMPLE_RATE);
 
     Signal signal(&melody, &oscillator);
 
@@ -51,13 +50,4 @@ constexpr float eigth_triplet_sec = (quarter_note_sec / 3.0f);
     melody.add_note(a4_frequency, 4 * eigth_triplet_sec);
 
     return melody;
-}
-
-Wavetable a_cool_additive_wavetable(void)
-{
-    AdditiveWavetableFactory additive_factory;
-    additive_factory.add_harmonic(2, 0.5f);
-    additive_factory.add_harmonic(5, 0.25f);
-
-    return additive_factory.get();
 }

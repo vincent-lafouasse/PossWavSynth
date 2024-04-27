@@ -5,12 +5,13 @@
 
 struct Oscillator
 {
-    static Oscillator init(Wavetable* wavetable, u32 sample_rate);
+    Oscillator() = default;
+    Oscillator(const Wavetable* wavetable, u32 sample_rate);
     void set_frequency(float f);
     float get(void);
     void advance(void);
 
-    Wavetable* wavetable;
+    const Wavetable* wavetable;
     u32 sample_rate;
     float frequency;
     float phase;

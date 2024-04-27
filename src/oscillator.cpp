@@ -1,15 +1,12 @@
 #include "oscillator.h"
 
-Oscillator Oscillator::init(Wavetable* wavetable, u32 sample_rate)
+Oscillator::Oscillator(const Wavetable* wavetable, u32 sample_rate)
 {
-    Oscillator o;
+    this->wavetable = wavetable;
+    this->sample_rate = sample_rate;
 
-    o.wavetable = wavetable;
-    o.sample_rate = sample_rate;
-    o.phase = 0.0f;
-    o.set_frequency(440.0f);
-
-    return o;
+    phase = 0.0f;
+    set_frequency(440.0f);
 }
 
 void Oscillator::set_frequency(float f)

@@ -13,8 +13,8 @@ struct Wavetable
 
     static Wavetable get_empty();
 
-    float at(float pos);
-    float at(u32 pos);
+    float at(float pos) const;
+    float at(u32 pos) const;
     void normalize(void);
 
     void write_to_csv(const std::string& output_filename);
@@ -39,3 +39,5 @@ struct AdditiveWavetableFactory
 
     std::vector<Harmonic> harmonics;
 };
+
+Wavetable a_cool_additive_wavetable(void);
