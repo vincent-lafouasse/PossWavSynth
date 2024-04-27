@@ -30,10 +30,12 @@ const MyWavetables band_limited = {
 
 int main()
 {
-    Oscillator square(&band_limited.sine, SAMPLE_RATE);
-    Oscillator triangle(&band_limited.sine, SAMPLE_RATE);
+    Oscillator sine1(&band_limited.sine, SAMPLE_RATE);
+    Oscillator sine2(&band_limited.sine, SAMPLE_RATE);
+    Oscillator sine3(&band_limited.sine, SAMPLE_RATE);
+    Oscillator sine4(&band_limited.sine, SAMPLE_RATE);
 
-    Signal soprano(bass_melody(), &square);
+    Signal soprano(bass_melody(), &sine1);
 
     Signal signal = soprano;
 

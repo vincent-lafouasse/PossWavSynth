@@ -34,7 +34,25 @@ Signal Signal::sum(const Signal& s1, const Signal& s2, float amp1, float amp2)
         s.data[i] += amp1 * s1.data[i];
     for (u32 i = 0; i < s2.size; i++)
         s.data[i] += amp2 * s2.data[i];
-    s.normalize();
+    return s;
+}
+
+Signal Signal::sum(const std::vector<std::pair<const Signal&, float>>& signals)
+{
+    u32 size = signals[0].first.size;
+
+    for (const auto& [sig, amp]: signals)
+    {
+        if (sig.size > size)
+            size = sig.size;
+    }
+
+    Signal s(size);
+    for (const auto& [sig, amp]: signals)
+    {
+        for (u32 i = 0; i < sig.size; i++)
+            s.data[i] += amp * sig.data[i];
+    }
     return s;
 }
 
