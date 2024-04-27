@@ -6,8 +6,7 @@ Following roughly [this tutorial](https://blog.demofox.org/diy-synthesizer/)
 
 ## todo
 
-- polyphonic capabilities (summing `FloatData` instances)
-- Band limited wavetables (using the additive engine + brushing up on Fourier series)
+
 - loading `mid` info (thanks to @MStefan99's [parser](https://github.com/MStefan99/Midi-Parser/tree/master))
 - VCA envelopes
 - maybe write some algorithmic reverb to make it sound good _good_
@@ -19,6 +18,8 @@ Following roughly [this tutorial](https://blog.demofox.org/diy-synthesizer/)
 - basic wavetable engine with the classic wavetables
 - basic additive engine buy summing pure sine wavetables
 - compose and load some basic melodies into it
+- polyphonic capabilities (summing `Signal` instances)
+- Band limited wavetables (using the additive engine + brushing up on Fourier series)
 
 ## ressources that helped me
 
