@@ -30,9 +30,9 @@ int main()
 
 Melody a_cool_melody(void)
 {
-constexpr float tempo_bpm = 120.0f;
-constexpr float quarter_note_sec = (60.0f / tempo_bpm);
-constexpr float eigth_triplet_sec = (quarter_note_sec / 3.0f);
+    constexpr float tempo_bpm = 120.0f;
+    constexpr float quarter_note_sec = (60.0f / tempo_bpm);
+    constexpr float eigth_triplet_sec = (quarter_note_sec / 3.0f);
 
     const float g4_frequency = get_frequency(4, 7);
     const float a4_frequency = get_frequency(4, 9);
