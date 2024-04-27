@@ -2,7 +2,8 @@
 #include <vector>
 
 #include "cool_ints.h"
-#include "data.h"
+#include "Signal.h"
+#include "WavData.hpp"
 #include "melody.h"
 #include "oscillator.h"
 #include "wav.h"

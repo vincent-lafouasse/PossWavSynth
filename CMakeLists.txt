@@ -7,14 +7,15 @@ add_compile_options(-Wall -Wextra -Wpedantic)
 add_compile_options(-g3)
 
 add_executable(PossWavSynth
-src/data.cpp
+src/Signal.cpp
 src/main.cpp
 src/melody.cpp
 src/oscillator.cpp
 src/wav.cpp
 src/wavetable.cpp
 src/cool_ints.h
-src/data.h
+src/WavData.hpp
+src/Signal.h
 src/melody.h
 src/oscillator.h
 src/wav.h

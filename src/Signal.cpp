@@ -1,6 +1,8 @@
-#include "data.h"
+#include "Signal.h"
 
 #include <cmath>
+#include <iostream>
+#include <fstream>
 
 Signal::Signal(Melody* melody, Oscillator* oscillator)
 {

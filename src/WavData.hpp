@@ -3,21 +3,7 @@
 #include <fstream>
 
 #include "cool_ints.h"
-#include "melody.h"
-#include "oscillator.h"
-
-struct Signal
-{
-    Signal(Melody* melody, Oscillator* oscillator);
-    Signal(u32 size_);
-    ~Signal();
-
-    void write_to_csv(void);
-    void normalize(void);
-
-    float* data;
-    u32 size;
-};
+#include "Signal.h"
 
 template <typename T>
 struct WavData
