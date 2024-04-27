@@ -2,8 +2,8 @@
 
 #include <fstream>
 
-#include "cool_ints.h"
 #include "Signal.h"
+#include "cool_ints.h"
 
 template <typename T>
 struct WavData

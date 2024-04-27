@@ -1,9 +1,9 @@
 #include <iostream>
 #include <vector>
 
-#include "cool_ints.h"
 #include "Signal.h"
 #include "WavData.hpp"
+#include "cool_ints.h"
 #include "melody.h"
 #include "oscillator.h"
 #include "wav.h"
