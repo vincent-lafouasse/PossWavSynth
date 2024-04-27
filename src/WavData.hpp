@@ -77,9 +77,9 @@ template <typename T>
 static T clamp(T item, T min, T max)
 {
     if (item > max)
-        item = max;
+        return max;
     if (item < min)
-        item = min;
+        return min;
     return item;
 }
 
