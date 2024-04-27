@@ -1,13 +1,13 @@
 #pragma once
 
 #include "cool_ints.h"
+#include "Data.h"
 
 struct WavHeader
 {
-    static WavHeader init(i32 data_size,
-                          i16 n_channels,
-                          i32 sample_rate,
-                          i32 bit_depth);
+    WavHeader() = default;
+    WavHeader(const Data& data);
+    void init(i32 data_size, i16 n_channels, i32 sample_rate, i32 bit_depth);
     // the main chunk
     unsigned char main_chunk_ID[4];
     u32 chunk_size;

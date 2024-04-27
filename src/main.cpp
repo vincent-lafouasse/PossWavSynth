@@ -53,23 +53,16 @@ int main()
 
     Signal buffer(&melody, &oscillator);
 
-    Data32 data32(buffer, SAMPLE_RATE);
-
-    Data* data_ptr = &data32;
-
-    data_ptr->write(NULL);
 
     WavData<SAMPLE_TYPE> data(&buffer, BIT_DEPTH, SAMPLE_IS_SIGNED);
 
-    WavHeader header = WavHeader::init(n_samples * (BIT_DEPTH / 8), N_CHANNELS,
-                                       SAMPLE_RATE, BIT_DEPTH);
+    Data32 data32(buffer, SAMPLE_RATE);
+    WavHeader header(data32);
 
     WavFile wav_file = WavFile::init("wave.wav", &header, data.data);
 
-    if (wav_file.write())
-        std::cout << "success" << std::endl;
-    else
-        std::cout << "rip" << std::endl;
+    const char* status = wav_file.write() ? "success" : "rip";
+    std::cout << status << std::endl;
 }
 
 Melody a_cool_melody(void)
