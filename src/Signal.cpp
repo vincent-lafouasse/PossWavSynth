@@ -4,15 +4,15 @@
 #include <fstream>
 #include <iostream>
 
-Signal::Signal(Melody* melody, Oscillator* oscillator)
+Signal::Signal(const Melody& melody, Oscillator* oscillator)
 {
-    size = melody->get_total_n_samples(oscillator->sample_rate);
+    size = melody.get_total_n_samples(oscillator->sample_rate);
     data = new float[size];
 
     u32 i = 0;
     u32 note_n_samples;
 
-    for (Note note : melody->notes)
+    for (Note note : melody.notes)
     {
         oscillator->set_frequency(note.frequency);
         note_n_samples = note.get_n_samples(oscillator->sample_rate);

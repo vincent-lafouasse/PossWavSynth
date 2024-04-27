@@ -5,7 +5,7 @@
 
 struct Signal
 {
-    Signal(Melody* melody, Oscillator* oscillator);
+    Signal(const Melody& melody, Oscillator* oscillator);
     Signal(u32 size_);
     ~Signal();
 

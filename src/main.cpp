@@ -34,11 +34,8 @@ int main()
     Oscillator square(&band_limited.square, SAMPLE_RATE);
     Oscillator triangle(&band_limited.triangle, SAMPLE_RATE);
 
-    Melody soprano_melody = soprano();
-    Signal soprano(&soprano_melody, &square);
-
-    Melody bass_melody = bass();
-    Signal bass(&bass_melody, &triangle);
+    Signal soprano(soprano_melody(), &square);
+    Signal bass(bass_melody(), &triangle);
 
     Signal signal = Signal::sum(soprano, bass, 1.5, 1);
 

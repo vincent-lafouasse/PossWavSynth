@@ -10,7 +10,7 @@ Note::Note(float frequency_, float length_secs_)
     length_secs = length_secs_;
 }
 
-u32 Note::get_n_samples(u32 sample_rate)
+u32 Note::get_n_samples(u32 sample_rate) const
 {
     return length_secs * (float)sample_rate;
 }
@@ -20,7 +20,7 @@ void Melody::add_note(float frequency, float length_secs)
     notes.push_back(Note(frequency, length_secs));
 }
 
-u32 Melody::get_total_n_samples(u32 sample_rate)
+u32 Melody::get_total_n_samples(u32 sample_rate) const
 {
     u32 n_samples = 0;
 
@@ -51,7 +51,7 @@ float get_frequency(float octave, float semitones)
 }
 
 
-Melody soprano()
+Melody soprano_melody()
 {
     const float b4 = get_frequency(4, 11);
     const float c5 = get_frequency(5, 0);
@@ -62,7 +62,7 @@ Melody soprano()
     return m;
 }
 
-Melody bass()
+Melody bass_melody()
 {
     const float g3 = get_frequency(3, 7);
     const float c3 = get_frequency(3, 0);
