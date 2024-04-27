@@ -41,14 +41,14 @@ Signal Signal::sum(const std::vector<std::pair<const Signal&, float>>& signals)
 {
     u32 size = signals[0].first.size;
 
-    for (const auto& [sig, amp]: signals)
+    for (const auto& [sig, amp] : signals)
     {
         if (sig.size > size)
             size = sig.size;
     }
 
     Signal s(size);
-    for (const auto& [sig, amp]: signals)
+    for (const auto& [sig, amp] : signals)
     {
         for (u32 i = 0; i < sig.size; i++)
             s.data[i] += amp * sig.data[i];

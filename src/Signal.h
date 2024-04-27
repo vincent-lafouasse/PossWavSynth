@@ -15,7 +15,8 @@ struct Signal
                       const Signal& s2,
                       float amp1,
                       float amp2);
-    static Signal sum(const std::vector<std::pair<const Signal&, float>>& signals);
+    static Signal sum(
+        const std::vector<std::pair<const Signal&, float>>& signals);
 
     void write_to_csv(void);
     void normalize(void);

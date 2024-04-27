@@ -7,6 +7,8 @@
 #include "wav.h"
 #include "wavetable.h"
 
+#include "Midi.h"
+
 #define SAMPLE_RATE 44100
 
 struct MyWavetables
@@ -30,6 +32,8 @@ const MyWavetables band_limited = {
 
 int main()
 {
+    Midi mid{"./mid/a_melody.mid"};
+
     Oscillator sine1(&band_limited.sine, SAMPLE_RATE);
     Oscillator sine2(&band_limited.sine, SAMPLE_RATE);
     Oscillator sine3(&band_limited.sine, SAMPLE_RATE);
