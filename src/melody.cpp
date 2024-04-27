@@ -55,18 +55,18 @@ constexpr float quarter = (60.0f / tempo_bpm);
 constexpr float half = 2 * quarter;
 constexpr float whole = 4 * quarter;
 
-const float g3 = get_frequency(3, 7);
-const float fs3 = get_frequency(3, 6);
-const float f3 = get_frequency(3, 5);
-const float e3 = get_frequency(3, 4);
-const float d3 = get_frequency(3, 2);
-const float c3 = get_frequency(3, 0);
-const float bb2 = get_frequency(2, 10);
-const float a2 = get_frequency(2, 9);
-const float g2 = get_frequency(2, 7);
-const float f2 = get_frequency(2, 5);
-const float e2 = get_frequency(2, 4);
-const float d2 = get_frequency(2, 2);
+const float g3 = get_frequency(4, 7);
+const float fs3 = get_frequency(4, 6);
+const float f3 = get_frequency(4, 5);
+const float e3 = get_frequency(4, 4);
+const float d3 = get_frequency(4, 2);
+const float c3 = get_frequency(4, 0);
+const float bb2 = get_frequency(3, 10);
+const float a2 = get_frequency(3, 9);
+const float g2 = get_frequency(3, 7);
+const float f2 = get_frequency(3, 5);
+const float e2 = get_frequency(3, 4);
+const float d2 = get_frequency(3, 2);
 const float rest = 0;
 
 Melody soprano_melody()

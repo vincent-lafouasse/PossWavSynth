@@ -35,9 +35,17 @@ int main()
     Oscillator sine3(&band_limited.sine, SAMPLE_RATE);
     Oscillator sine4(&band_limited.sine, SAMPLE_RATE);
 
-    Signal soprano(bass_melody(), &sine1);
+    Signal soprano(soprano_melody(), &sine1);
+    Signal alto(alto_melody(), &sine2);
+    Signal tenor(tenor_melody(), &sine3);
+    Signal bass(bass_melody(), &sine4);
 
-    Signal signal = soprano;
+    Signal signal = Signal::sum({
+        std::make_pair(soprano, 1),
+        std::make_pair(alto, 1),
+        std::make_pair(tenor, 1),
+        std::make_pair(bass, 1),
+    });
 
     Data32 data(signal, SAMPLE_RATE);
 
