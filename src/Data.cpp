@@ -14,9 +14,11 @@ Data32::Data32(Signal& signal, u32 sample_rate)
 
     data = new i32[signal.size];
 
+    constexpr float headroom = 0.9f;
+
     signal.normalize();
     for (u32 i = 0; i < size; i++)
-        data[i] = static_cast<u32>(INT32_MAX * signal.data[i]);
+        data[i] = static_cast<u32>(INT32_MAX * headroom * signal.data[i]);
 }
 
 void* Data32::get() const

@@ -15,8 +15,8 @@ int main()
 {
     Melody melody = a_cool_melody();
 
-    Wavetable square_wave = Wavetable::get_square();
-    Oscillator oscillator(&square_wave, SAMPLE_RATE);
+    Wavetable triangle_wave = Wavetable::get_triangle();
+    Oscillator oscillator(&triangle_wave, SAMPLE_RATE);
 
     Signal signal(&melody, &oscillator);
 
