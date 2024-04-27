@@ -12,6 +12,7 @@ struct WavData
     WavData(Signal* float_data, u32 bit_depth_, bool sample_is_signed);
     ~WavData();
 
+    void write_binary(FILE* file, u32 buffer_size_bytes);
     void write_to_csv(void);
 
     T* data;
