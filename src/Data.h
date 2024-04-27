@@ -11,6 +11,7 @@ public:
 
     u32 size;
     u32 sample_rate;
+    u32 sample_size_byte;
     u16 bit_depth;
 };
 
