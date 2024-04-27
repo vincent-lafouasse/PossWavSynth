@@ -6,7 +6,7 @@
 #include "VLQ.h"
 
 
-VLQ::VLQ(const char* filePath, long addr): length {0}, data {0} {
+VLQ::VLQ(const char* filePath, long addr): data {0}, length {0} {
 	FILE* f = fopen(filePath, "rb");
 	fseek(f, addr, SEEK_SET);
 	uint8_t byte;
