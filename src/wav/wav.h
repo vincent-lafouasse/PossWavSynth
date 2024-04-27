@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Data.h"
-#include "cool_ints.h"
+#include "utils/cool_ints.h"
 
 struct WavHeader
 {

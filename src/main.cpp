@@ -1,11 +1,11 @@
 #include <iostream>
 
-#include "Data.h"
-#include "Signal.h"
-#include "melody.h"
-#include "oscillator.h"
-#include "wav.h"
-#include "wavetable.h"
+#include "DSP/Signal.h"
+#include "melody/melody.h"
+#include "synth/oscillator.h"
+#include "synth/wavetable.h"
+#include "wav/Data.h"
+#include "wav/wav.h"
 
 #include "Midi.h"
 

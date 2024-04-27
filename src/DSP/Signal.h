@@ -1,9 +1,9 @@
 #pragma once
-#include "melody.h"
+#include "melody/melody.h"
 
 #include <vector>
 
-#include "oscillator.h"
+#include "synth/oscillator.h"
 
 struct Signal
 {

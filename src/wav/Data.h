@@ -2,7 +2,7 @@
 
 #include <cstdio>
 
-#include "Signal.h"
+#include "DSP/Signal.h"
 
 class Data
 {

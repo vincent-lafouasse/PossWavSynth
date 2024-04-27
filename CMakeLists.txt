@@ -10,12 +10,16 @@ add_compile_options(-g3)
 add_executable(PossWavSynth)
 target_sources(PossWavSynth PRIVATE
 	src/main.cpp
-	src/Signal.cpp
-	src/melody.cpp
-	src/oscillator.cpp
-	src/wav.cpp
-	src/wavetable.cpp
-	src/Data.cpp
+
+	src/synth/wavetable.cpp
+	src/synth/oscillator.cpp
+
+	src/DSP/Signal.cpp
+
+	src/wav/wav.cpp
+	src/wav/Data.cpp
+
+	src/melody/melody.cpp
 )
 target_include_directories(PossWavSynth PUBLIC src)
 

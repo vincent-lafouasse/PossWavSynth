@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "cool_ints.h"
+#include "utils/cool_ints.h"
 
 struct Wavetable
 {
