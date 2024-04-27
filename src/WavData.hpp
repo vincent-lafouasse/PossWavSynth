@@ -51,7 +51,7 @@ WavData<T>::WavData(Signal* float_data, u32 bit_depth_, bool sample_is_signed)
 
     bit_depth = bit_depth_;
     T max = max_binary_value<T>(bit_depth_, sample_is_signed);
-    T min = sample_is_signed * (-max);
+    T min = sample_is_signed ? -max : 0;
 
     for (u32 i = 0; i < size; i++)
     {
