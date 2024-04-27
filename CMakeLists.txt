@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 17)
 add_compile_options(-Wall -Wextra -Wpedantic)
 add_compile_options(-g3)
 
+add_subdirectory(lib)
+
 add_executable(PossWavSynth
 src/Signal.cpp
 src/main.cpp
