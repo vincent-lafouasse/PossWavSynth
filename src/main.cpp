@@ -28,16 +28,14 @@ const MyWavetables band_limited = {
     Wavetables::band_limited_triangle(8),
 };
 
-
 int main()
 {
-    Oscillator square(&band_limited.square, SAMPLE_RATE);
-    Oscillator triangle(&band_limited.triangle, SAMPLE_RATE);
+    Oscillator square(&band_limited.sine, SAMPLE_RATE);
+    Oscillator triangle(&band_limited.sine, SAMPLE_RATE);
 
-    Signal soprano(soprano_melody(), &square);
-    Signal bass(bass_melody(), &triangle);
+    Signal soprano(bass_melody(), &square);
 
-    Signal signal = Signal::sum(soprano, bass, 1.5, 1);
+    Signal signal = soprano;
 
     Data32 data(signal, SAMPLE_RATE);
 

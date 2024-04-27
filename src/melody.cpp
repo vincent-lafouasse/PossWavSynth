@@ -50,25 +50,68 @@ float get_frequency(float octave, float semitones)
     return up_semi;
 }
 
+constexpr float tempo_bpm = 100.f;
+constexpr float quarter = (60.0f / tempo_bpm);
+constexpr float half = 2 * quarter;
+constexpr float whole = 4 * quarter;
+
+const float g3 = get_frequency(3, 7);
+const float fs3 = get_frequency(3, 6);
+const float f3 = get_frequency(3, 5);
+const float e3 = get_frequency(3, 4);
+const float d3 = get_frequency(3, 2);
+const float c3 = get_frequency(3, 0);
+const float bb2 = get_frequency(2, 10);
+const float a2 = get_frequency(2, 9);
+const float g2 = get_frequency(2, 7);
+const float f2 = get_frequency(2, 5);
+const float e2 = get_frequency(2, 4);
+const float d2 = get_frequency(2, 2);
+const float rest = 0;
 
 Melody soprano_melody()
 {
-    const float b4 = get_frequency(4, 11);
-    const float c5 = get_frequency(5, 0);
-
     Melody m;
-    m.add_note(b4, 1);
-    m.add_note(c5, 1);
+    m.add_note(d3, whole);
+    m.add_note(fs3, half);
+    m.add_note(rest, quarter);
+    m.add_note(e3, quarter);
+    m.add_note(f3, half);
+    m.add_note(g3, half);
+    m.add_note(fs3, whole);
+    return m;
+}
+
+Melody alto_melody()
+{
+    Melody m;
+    m.add_note(d3, 4 * whole);
+    return m;
+}
+
+Melody tenor_melody()
+{
+    Melody m;
+    m.add_note(d3, half);
+    m.add_note(c3, whole);
+    m.add_note(rest, quarter);
+    m.add_note(bb2, quarter);
+    m.add_note(bb2, half);
+    m.add_note(bb2, half);
+    m.add_note(a2, whole);
     return m;
 }
 
 Melody bass_melody()
 {
-    const float g3 = get_frequency(3, 7);
-    const float c3 = get_frequency(3, 0);
-
     Melody m;
-    m.add_note(g3, 1);
-    m.add_note(c3, 1);
+    m.add_note(d3, half);
+    m.add_note(c3, half);
+    m.add_note(a2, half);
+    m.add_note(rest, quarter);
+    m.add_note(g2, quarter);
+    m.add_note(f2, half);
+    m.add_note(e2, half);
+    m.add_note(d2, whole);
     return m;
 }

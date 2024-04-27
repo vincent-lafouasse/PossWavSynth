@@ -9,7 +9,10 @@ struct Signal
     Signal(u32 size_);
     ~Signal();
 
-    static Signal sum(const Signal& s1, const Signal& s2, float amp1, float amp2);
+    static Signal sum(const Signal& s1,
+                      const Signal& s2,
+                      float amp1,
+                      float amp2);
 
     void write_to_csv(void);
     void normalize(void);

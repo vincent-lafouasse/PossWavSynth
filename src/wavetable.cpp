@@ -170,7 +170,7 @@ static float triangle_fourier_amplitude(u32 n)
 {
     if (n % 2 == 0)
         return 0;
-    
+
     float one_over_n2 = 1 / static_cast<float>(n * n);
 
     if (((n - 1) / 2) % 2)
