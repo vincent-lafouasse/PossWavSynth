@@ -2,7 +2,6 @@
 
 #include "Data.h"
 #include "Signal.h"
-#include "WavData.hpp"
 #include "cool_ints.h"
 #include "melody.h"
 #include "oscillator.h"
@@ -33,7 +32,7 @@ class Sample32Bit : Sample
 {
    public:
     i32 data;
-    void write(FILE* file) {};
+    void write(FILE* file){};
 };
 
 Melody a_cool_melody(void);
@@ -46,19 +45,12 @@ int main()
     Wavetable additive_wavetable = a_cool_additive_wavetable();
     Oscillator oscillator = Oscillator::init(&additive_wavetable, SAMPLE_RATE);
 
-    u32 n_samples = melody.get_total_n_samples(SAMPLE_RATE) * N_CHANNELS;
-
-    Sample32Bit bar;
-    bar.data = -34;
-
     Signal buffer(&melody, &oscillator);
 
-    WavData<SAMPLE_TYPE> data(&buffer, BIT_DEPTH, SAMPLE_IS_SIGNED);
+    Data32 data(buffer, SAMPLE_RATE);
+    WavHeader header(data);
 
-    Data32 data32(buffer, SAMPLE_RATE);
-    WavHeader header(data32);
-
-    WavFile wav_file = WavFile::init("wave.wav", &header, data.data);
+    WavFile wav_file = WavFile::init("wave.wav", &header, data.get());
 
     const char* status = wav_file.write() ? "success" : "rip";
     std::cout << status << std::endl;

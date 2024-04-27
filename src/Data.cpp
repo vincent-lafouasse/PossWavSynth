@@ -1,8 +1,5 @@
 #include "Data.h"
 
-template <typename T>
-static T clamp(T item, T min, T max);
-
 Data32::Data32()
 {
     this->data = nullptr;
@@ -22,6 +19,11 @@ Data32::Data32(Signal& signal, u32 sample_rate)
         data[i] = static_cast<u32>(INT32_MAX * signal.data[i]);
 }
 
+void* Data32::get()
+{
+    return static_cast<void*>(data);
+}
+
 void Data32::write(FILE* file)
 {
     printf("writing");
@@ -31,14 +33,4 @@ void Data32::write(FILE* file)
 Data32::~Data32()
 {
     delete[] data;
-}
-
-template <typename T>
-static T clamp(T item, T min, T max)
-{
-    if (item > max)
-        return max;
-    if (item < min)
-        return min;
-    return item;
 }
