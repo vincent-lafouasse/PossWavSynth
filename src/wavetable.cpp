@@ -166,6 +166,29 @@ static float square_fourier_amplitude(u32 n)
     return 1 / static_cast<float>(n);
 }
 
+static float triangle_fourier_amplitude(u32 n)
+{
+    if (n % 2 == 0)
+        return 0;
+    
+    float one_over_n2 = 1 / static_cast<float>(n * n);
+
+    if (((n - 1) / 2) % 2)
+        return one_over_n2;
+    else
+        return -one_over_n2;
+}
+
+Wavetable band_limited_triangle(u32 top_harmonic)
+{
+    AdditiveWavetableFactory factory;
+
+    for (u32 i = 2; i <= top_harmonic; i++)
+        factory.add_harmonic(i, triangle_fourier_amplitude(i));
+
+    return factory.get();
+}
+
 Wavetable band_limited_square(u32 top_harmonic)
 {
     AdditiveWavetableFactory factory;
@@ -176,8 +199,6 @@ Wavetable band_limited_square(u32 top_harmonic)
     return factory.get();
 }
 
-
-static float triangle_fourier_amplitude(u32 n);
 static float saw_fourier_amplitude(u32 n);
 
 }  // namespace Wavetables

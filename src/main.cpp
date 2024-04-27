@@ -52,14 +52,14 @@ int main()
 {
     Wavetable square8_wavetable = Wavetables::band_limited_square(8);
     Oscillator square8(&square8_wavetable, SAMPLE_RATE);
-    Oscillator triangle_osc(&pure_wavetables.triangle, SAMPLE_RATE);
-    Oscillator square_osc(&pure_wavetables.square, SAMPLE_RATE);
+    Wavetable triangle8_wavetable = Wavetables::band_limited_triangle(8);
+    Oscillator triangle8(&triangle8_wavetable, SAMPLE_RATE);
 
     Melody soprano_melody = soprano();
     Signal soprano(&soprano_melody, &square8);
 
     Melody bass_melody = bass();
-    Signal bass(&bass_melody, &square8);
+    Signal bass(&bass_melody, &triangle8);
 
     Signal signal = Signal::sum(soprano, bass);
 
