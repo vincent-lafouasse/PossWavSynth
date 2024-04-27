@@ -14,7 +14,6 @@ src/oscillator.cpp
 src/wav.cpp
 src/wavetable.cpp
 src/cool_ints.h
-src/WavData.hpp
 src/Signal.h
 src/melody.h
 src/oscillator.h
