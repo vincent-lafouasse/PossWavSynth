@@ -22,3 +22,8 @@ struct Melody
 };
 
 float get_frequency(float octave, float semitones);
+
+Melody soprano();
+Melody alto();
+Melody tenor();
+Melody bass();

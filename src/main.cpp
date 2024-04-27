@@ -14,52 +14,31 @@ struct MyWavetables
     Wavetable sine;
     Wavetable square;
     Wavetable triangle;
-    Wavetable saw;
 };
 
 const MyWavetables pure_wavetables = {
     Wavetables::get_sine(),
     Wavetables::get_square(),
     Wavetables::get_triangle(),
-    Wavetables::get_saw(),
 };
 
-static Melody a_cool_melody(void);
+const MyWavetables band_limited = {
+    Wavetables::get_sine(),
+    Wavetables::band_limited_square(8),
+    Wavetables::band_limited_triangle(8),
+};
 
-Melody soprano()
-{
-    const float b4 = get_frequency(4, 11);
-    const float c5 = get_frequency(5, 0);
-
-    Melody m;
-    m.add_note(b4, 1);
-    m.add_note(c5, 1);
-    return m;
-}
-
-Melody bass()
-{
-    const float g3 = get_frequency(3, 7);
-    const float c3 = get_frequency(3, 0);
-
-    Melody m;
-    m.add_note(g3, 1);
-    m.add_note(c3, 1);
-    return m;
-}
 
 int main()
 {
-    Wavetable square8_wavetable = Wavetables::band_limited_square(8);
-    Oscillator square8(&square8_wavetable, SAMPLE_RATE);
-    Wavetable triangle8_wavetable = Wavetables::band_limited_triangle(8);
-    Oscillator triangle8(&triangle8_wavetable, SAMPLE_RATE);
+    Oscillator square(&band_limited.square, SAMPLE_RATE);
+    Oscillator triangle(&band_limited.triangle, SAMPLE_RATE);
 
     Melody soprano_melody = soprano();
-    Signal soprano(&soprano_melody, &square8);
+    Signal soprano(&soprano_melody, &square);
 
     Melody bass_melody = bass();
-    Signal bass(&bass_melody, &triangle8);
+    Signal bass(&bass_melody, &triangle);
 
     Signal signal = Signal::sum(soprano, bass, 1.5, 1);
 
@@ -71,6 +50,7 @@ int main()
     std::cout << status << std::endl;
 }
 
+/*
 Melody a_cool_melody(void)
 {
     constexpr float tempo_bpm = 120.0f;
@@ -94,3 +74,4 @@ Melody a_cool_melody(void)
 
     return melody;
 }
+*/

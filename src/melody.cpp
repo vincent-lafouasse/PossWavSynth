@@ -1,5 +1,7 @@
 #include "melody.h"
 
+#include <cmath>
+
 #define C0_FREQUENCY 16.351597831287414
 
 Note::Note(float frequency_, float length_secs_)
@@ -46,4 +48,27 @@ float get_frequency(float octave, float semitones)
     const double up_semi = up_semitones(up_oct, semitones);
 
     return up_semi;
+}
+
+
+Melody soprano()
+{
+    const float b4 = get_frequency(4, 11);
+    const float c5 = get_frequency(5, 0);
+
+    Melody m;
+    m.add_note(b4, 1);
+    m.add_note(c5, 1);
+    return m;
+}
+
+Melody bass()
+{
+    const float g3 = get_frequency(3, 7);
+    const float c3 = get_frequency(3, 0);
+
+    Melody m;
+    m.add_note(g3, 1);
+    m.add_note(c3, 1);
+    return m;
 }
