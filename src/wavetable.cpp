@@ -159,6 +159,27 @@ Wavetable a_cool_additive_wavetable(void)
     return additive_factory.get();
 }
 
+static float square_fourier_amplitude(u32 n)
+{
+    if (n % 2 == 0)
+        return 0;
+    return 1 / static_cast<float>(n);
+}
+
+Wavetable band_limited_square(u32 top_harmonic)
+{
+    AdditiveWavetableFactory factory;
+
+    for (u32 i = 2; i <= top_harmonic; i++)
+        factory.add_harmonic(i, square_fourier_amplitude(i));
+
+    return factory.get();
+}
+
+
+static float triangle_fourier_amplitude(u32 n);
+static float saw_fourier_amplitude(u32 n);
+
 }  // namespace Wavetables
 
 AdditiveWavetableFactory::AdditiveWavetableFactory()

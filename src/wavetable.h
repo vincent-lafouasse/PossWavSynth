@@ -24,6 +24,10 @@ Wavetable get_saw();
 Wavetable get_triangle();
 Wavetable get_harmonic(u32 multiplier);
 Wavetable a_cool_additive_wavetable(void);
+
+Wavetable band_limited_square(u32 top_harmonic);
+Wavetable band_limited_triangle(u32 top_harmonic);
+Wavetable band_limited_saw(u32 top_harmonic);
 }  // namespace Wavetables
 
 struct Harmonic
