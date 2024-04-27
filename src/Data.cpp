@@ -19,12 +19,12 @@ Data32::Data32(Signal& signal, u32 sample_rate)
         data[i] = static_cast<u32>(INT32_MAX * signal.data[i]);
 }
 
-void* Data32::get()
+void* Data32::get() const
 {
     return static_cast<void*>(data);
 }
 
-void Data32::write(FILE* file)
+void Data32::write(FILE* file) const
 {
     printf("writing");
     (void)file;

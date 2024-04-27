@@ -7,8 +7,8 @@
 class Data
 {
 public:
-   virtual void write(FILE* file) = 0;
-   virtual void* get() = 0;
+   virtual void write(FILE* file) const = 0;
+   virtual void* get() const = 0 ;
 
    u32 size;
    u32 sample_rate;
@@ -22,8 +22,8 @@ public:
    Data32();
    Data32(Signal& signal, u32 sample_rate);
    ~Data32();
-   void write(FILE* file);
-   void* get();
+   void write(FILE* file) const;
+   void* get() const;
 
    i32* data;
 };
