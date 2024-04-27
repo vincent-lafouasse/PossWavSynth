@@ -20,6 +20,8 @@ src/melody.h
 src/oscillator.h
 src/wav.h
 src/wavetable.h
+src/Data.cpp
+src/Data.h
 )
 
 # LSP stuff, don't worry about it
