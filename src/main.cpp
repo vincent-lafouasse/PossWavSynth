@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "parse_midi/parse_midi.h"
 #include "DSP/Signal.h"
 #include "melody/melody.h"
 #include "synth/oscillator.h"
@@ -32,7 +33,7 @@ const MyWavetables band_limited = {
 
 int main()
 {
-    Midi mid{"./mid/a_melody.mid"};
+    auto voices = parse_midi("./mid/a_melody.mid");
 
     Oscillator sine1(&band_limited.sine, SAMPLE_RATE);
     Oscillator sine2(&band_limited.sine, SAMPLE_RATE);
