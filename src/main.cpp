@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 
 #include "Signal.h"
 #include "WavData.hpp"
@@ -21,6 +20,19 @@
 #define QUARTER_NOTE_SEC (60.0f / TEMPO_BPM)
 #define EIGTH_TRIPLET_SEC (QUARTER_NOTE_SEC / 3.0f)
 
+class Sample
+{
+   public:
+    u16 bit_depth;
+    bool is_signed;
+};
+
+class Sample32Bit : Sample
+{
+   public:
+    i32 data;
+};
+
 Melody a_cool_melody(void);
 Wavetable a_cool_additive_wavetable(void);
 
@@ -32,6 +44,12 @@ int main()
     Oscillator oscillator = Oscillator::init(&additive_wavetable, SAMPLE_RATE);
 
     u32 n_samples = melody.get_total_n_samples(SAMPLE_RATE) * N_CHANNELS;
+
+    Sample foo;
+    foo.is_signed = false;
+
+    Sample32Bit bar;
+    bar.data = -34;
 
     Signal buffer(&melody, &oscillator);
 
