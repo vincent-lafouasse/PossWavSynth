@@ -24,16 +24,16 @@ Signal::Signal(Melody* melody, Oscillator* oscillator)
     }
 }
 
-Signal Signal::sum(const Signal& s1, const Signal& s2)
+Signal Signal::sum(const Signal& s1, const Signal& s2, float amp1, float amp2)
 {
     u32 size = std::max<u32>(s1.size, s2.size);
 
     Signal s(size);
 
     for (u32 i = 0; i < s1.size; i++)
-        s.data[i] += s1.data[i];
+        s.data[i] += amp1 * s1.data[i];
     for (u32 i = 0; i < s2.size; i++)
-        s.data[i] += s2.data[i];
+        s.data[i] += amp2 * s2.data[i];
     s.normalize();
     return s;
 }

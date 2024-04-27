@@ -61,7 +61,7 @@ int main()
     Melody bass_melody = bass();
     Signal bass(&bass_melody, &triangle8);
 
-    Signal signal = Signal::sum(soprano, bass);
+    Signal signal = Signal::sum(soprano, bass, 1.5, 1);
 
     Data32 data(signal, SAMPLE_RATE);
 
