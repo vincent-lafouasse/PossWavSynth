@@ -17,14 +17,14 @@ struct Wavetable
 
 namespace Wavetables
 {
-    Wavetable get_empty();
-    Wavetable get_sine();
-    Wavetable get_square();
-    Wavetable get_saw();
-    Wavetable get_triangle();
-    Wavetable get_harmonic(u32 multiplier);
-    Wavetable a_cool_additive_wavetable(void);
-}
+Wavetable get_empty();
+Wavetable get_sine();
+Wavetable get_square();
+Wavetable get_saw();
+Wavetable get_triangle();
+Wavetable get_harmonic(u32 multiplier);
+Wavetable a_cool_additive_wavetable(void);
+}  // namespace Wavetables
 
 struct Harmonic
 {
@@ -42,4 +42,3 @@ struct AdditiveWavetableFactory
 
     std::vector<Harmonic> harmonics;
 };
-

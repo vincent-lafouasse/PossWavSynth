@@ -11,10 +11,10 @@
 
 struct MyWavetables
 {
-    Wavetable sine;  
-    Wavetable square;  
-    Wavetable triangle;  
-    Wavetable saw;  
+    Wavetable sine;
+    Wavetable square;
+    Wavetable triangle;
+    Wavetable saw;
 };
 
 const MyWavetables pure_wavetables = {

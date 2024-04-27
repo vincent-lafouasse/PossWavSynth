@@ -159,7 +159,7 @@ Wavetable a_cool_additive_wavetable(void)
     return additive_factory.get();
 }
 
-}
+}  // namespace Wavetables
 
 AdditiveWavetableFactory::AdditiveWavetableFactory()
 {
