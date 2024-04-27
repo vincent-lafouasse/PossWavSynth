@@ -9,7 +9,6 @@ Data32::Data32()
     this->size = 0;
     this->sample_rate = 0;
     this->bit_depth = 32;
-    this->signedness = true;
 }
 
 Data32::Data32(Signal& signal, u32 sample_rate)

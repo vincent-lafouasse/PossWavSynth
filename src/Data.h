@@ -12,7 +12,6 @@ public:
     u32 size;
     u32 sample_rate;
     u16 bit_depth;
-    bool signedness;
 };
 
 class Data32: public Data
