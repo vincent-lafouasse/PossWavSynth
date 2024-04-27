@@ -22,7 +22,8 @@
 
 class Sample
 {
-   public:
+public:
+    virtual void write(FILE* file) = 0;
     u16 bit_depth;
     bool is_signed;
 };
@@ -31,6 +32,7 @@ class Sample32Bit : Sample
 {
    public:
     i32 data;
+    void write(FILE* file) {};
 };
 
 Melody a_cool_melody(void);
@@ -44,9 +46,6 @@ int main()
     Oscillator oscillator = Oscillator::init(&additive_wavetable, SAMPLE_RATE);
 
     u32 n_samples = melody.get_total_n_samples(SAMPLE_RATE) * N_CHANNELS;
-
-    Sample foo;
-    foo.is_signed = false;
 
     Sample32Bit bar;
     bar.data = -34;
