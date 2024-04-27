@@ -6,7 +6,7 @@
 
 class Data
 {
-public:
+   public:
     virtual void write(FILE* file) = 0;
 
     u32 size;
@@ -15,9 +15,9 @@ public:
     u16 bit_depth;
 };
 
-class Data32: public Data
+class Data32 : public Data
 {
-public:
+   public:
     Data32();
     Data32(Signal& signal, u32 sample_rate);
     ~Data32();

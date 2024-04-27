@@ -14,13 +14,14 @@ static void fill_four_char_code(void* dest, const char fourcc[4]);
 
 WavHeader::WavHeader(const Data& data)
 {
-    init(data.size * data.sample_size_byte, N_CHANNELS_FOR_NOW, data.sample_rate, data.bit_depth);
+    init(data.size * data.sample_size_byte, N_CHANNELS_FOR_NOW,
+         data.sample_rate, data.bit_depth);
 }
 
 void WavHeader::init(i32 data_size,
-                          i16 n_channels,
-                          i32 sample_rate,
-                          i32 bit_depth)
+                     i16 n_channels,
+                     i32 sample_rate,
+                     i32 bit_depth)
 {
     fill_four_char_code(this->main_chunk_ID, "RIFF");
     this->chunk_size = (sizeof(*this) - CHUNK_HEADER_SIZE) + data_size;

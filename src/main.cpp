@@ -23,7 +23,7 @@
 
 class Sample
 {
-public:
+   public:
     virtual void write(FILE* file) = 0;
     u16 bit_depth;
     bool is_signed;
@@ -52,7 +52,6 @@ int main()
     bar.data = -34;
 
     Signal buffer(&melody, &oscillator);
-
 
     WavData<SAMPLE_TYPE> data(&buffer, BIT_DEPTH, SAMPLE_IS_SIGNED);
 
