@@ -1,6 +1,8 @@
 #include "data.h"
 
-FloatData::FloatData(Melody* melody, Oscillator* oscillator)
+#include <cmath>
+
+Signal::Signal(Melody* melody, Oscillator* oscillator)
 {
     size = melody->get_total_n_samples(oscillator->sample_rate);
     data = new float[size];
@@ -20,7 +22,7 @@ FloatData::FloatData(Melody* melody, Oscillator* oscillator)
     }
 }
 
-FloatData::FloatData(u32 size_)
+Signal::Signal(u32 size_)
 {
     size = size_;
     data = new float[size];
@@ -29,12 +31,12 @@ FloatData::FloatData(u32 size_)
         data[i] = 0.0f;
 }
 
-FloatData::~FloatData()
+Signal::~Signal()
 {
     delete[] data;
 }
 
-void FloatData::normalize(void)
+void Signal::normalize(void)
 {
     float max_abs = 0.0f;
     float current;
@@ -55,7 +57,7 @@ void FloatData::normalize(void)
     }
 }
 
-void FloatData::write_to_csv(void)
+void Signal::write_to_csv(void)
 {
     std::ofstream csv;
     csv.open("float_data.csv");

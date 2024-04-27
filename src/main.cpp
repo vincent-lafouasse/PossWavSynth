@@ -32,7 +32,7 @@ int main()
 
     u32 n_samples = melody.get_total_n_samples(SAMPLE_RATE) * N_CHANNELS;
 
-    FloatData buffer(&melody, &oscillator);
+    Signal buffer(&melody, &oscillator);
 
     Data<SAMPLE_TYPE> data(&buffer, BIT_DEPTH, SAMPLE_IS_SIGNED);
 

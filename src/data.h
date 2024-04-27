@@ -6,11 +6,11 @@
 #include "melody.h"
 #include "oscillator.h"
 
-struct FloatData
+struct Signal
 {
-    FloatData(Melody* melody, Oscillator* oscillator);
-    FloatData(u32 size_);
-    ~FloatData();
+    Signal(Melody* melody, Oscillator* oscillator);
+    Signal(u32 size_);
+    ~Signal();
 
     void write_to_csv(void);
     void normalize(void);
@@ -23,7 +23,7 @@ template <typename T>
 struct Data
 {
     Data();
-    Data(FloatData* float_data, u32 bit_depth_, bool sample_is_signed);
+    Data(Signal* float_data, u32 bit_depth_, bool sample_is_signed);
     ~Data();
 
     void write_to_csv(void);
@@ -57,7 +57,7 @@ Data<T>::~Data()
 }
 
 template <typename T>
-Data<T>::Data(FloatData* float_data, u32 bit_depth_, bool sample_is_signed)
+Data<T>::Data(Signal* float_data, u32 bit_depth_, bool sample_is_signed)
 {
     size = float_data->size;
     data = new T[size];
