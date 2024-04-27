@@ -34,7 +34,7 @@ int main()
 
     Signal buffer(&melody, &oscillator);
 
-    Data<SAMPLE_TYPE> data(&buffer, BIT_DEPTH, SAMPLE_IS_SIGNED);
+    WavData<SAMPLE_TYPE> data(&buffer, BIT_DEPTH, SAMPLE_IS_SIGNED);
 
     WavHeader header = WavHeader::init(n_samples * (BIT_DEPTH / 8), N_CHANNELS,
                                        SAMPLE_RATE, BIT_DEPTH);

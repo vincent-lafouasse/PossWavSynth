@@ -20,11 +20,11 @@ struct Signal
 };
 
 template <typename T>
-struct Data
+struct WavData
 {
-    Data();
-    Data(Signal* float_data, u32 bit_depth_, bool sample_is_signed);
-    ~Data();
+    WavData();
+    WavData(Signal* float_data, u32 bit_depth_, bool sample_is_signed);
+    ~WavData();
 
     void write_to_csv(void);
 
@@ -40,7 +40,7 @@ template <typename T>
 static T max_binary_value(u32 bit_depth, bool sample_is_signed);
 
 template <typename T>
-Data<T>::Data()
+WavData<T>::WavData()
 {
     data = nullptr;
     size = 0;
@@ -48,7 +48,7 @@ Data<T>::Data()
 }
 
 template <typename T>
-Data<T>::~Data()
+WavData<T>::~WavData()
 {
     if (data == nullptr)
         return;
@@ -57,7 +57,7 @@ Data<T>::~Data()
 }
 
 template <typename T>
-Data<T>::Data(Signal* float_data, u32 bit_depth_, bool sample_is_signed)
+WavData<T>::WavData(Signal* float_data, u32 bit_depth_, bool sample_is_signed)
 {
     size = float_data->size;
     data = new T[size];
@@ -75,7 +75,7 @@ Data<T>::Data(Signal* float_data, u32 bit_depth_, bool sample_is_signed)
 }
 
 template <typename T>
-void Data<T>::write_to_csv(void)
+void WavData<T>::write_to_csv(void)
 {
     std::ofstream csv;
     csv.open("int_data.csv");
