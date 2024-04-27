@@ -33,7 +33,7 @@ const MyWavetables band_limited = {
 
 int main()
 {
-    auto voices = parse_midi("./mid/a_melody.mid");
+    std::vector<Melody> voices = parse_midi("./mid/a_melody.mid");
 
     Oscillator sine1(&band_limited.sine, SAMPLE_RATE);
     Oscillator sine2(&band_limited.sine, SAMPLE_RATE);
