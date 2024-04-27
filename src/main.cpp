@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "Data.h"
 #include "Signal.h"
 #include "WavData.hpp"
 #include "cool_ints.h"
@@ -51,6 +52,12 @@ int main()
     bar.data = -34;
 
     Signal buffer(&melody, &oscillator);
+
+    Data32 data32(buffer, SAMPLE_RATE);
+
+    Data* data_ptr = &data32;
+
+    data_ptr->write(NULL);
 
     WavData<SAMPLE_TYPE> data(&buffer, BIT_DEPTH, SAMPLE_IS_SIGNED);
 
