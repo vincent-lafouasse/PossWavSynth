@@ -11,14 +11,44 @@
 
 static Melody a_cool_melody(void);
 
+Melody soprano()
+{
+    const float b4 = get_frequency(4, 11);
+    const float c5 = get_frequency(5, 0);
+
+    Melody m;
+    m.add_note(b4, 2);
+    m.add_note(c5, 2);
+    return m;
+}
+
+Melody bass()
+{
+    const float g3 = get_frequency(3, 7);
+    const float c3 = get_frequency(3, 0);
+
+    Melody m;
+    m.add_note(g3, 2);
+    m.add_note(c3, 2);
+    return m;
+}
+
 int main()
 {
-    Melody melody = a_cool_melody();
 
-    Wavetable triangle_wave = Wavetable::get_triangle();
-    Oscillator oscillator(&triangle_wave, SAMPLE_RATE);
+    Wavetable triangle = Wavetable::get_triangle();
+    Oscillator triangle_osc(&triangle, SAMPLE_RATE);
 
-    Signal signal(&melody, &oscillator);
+    Wavetable square = Wavetable::get_square();
+    Oscillator square_osc(&square, SAMPLE_RATE);
+
+    Melody soprano_melody = soprano();
+    Signal soprano(&soprano_melody, &square_osc);
+
+    Melody bass_melody = bass();
+    Signal bass(&bass_melody, &triangle_osc);
+
+    Signal signal = Signal::sum(soprano, bass);
 
     Data32 data(signal, SAMPLE_RATE);
 
