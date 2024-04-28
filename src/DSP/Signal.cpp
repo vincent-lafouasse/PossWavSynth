@@ -78,7 +78,7 @@ void Signal::normalize(void)
     for (u32 i = 0; i < size; i++)
     {
         current = fabs(data[i]);
-        if (isgreater(current, max_abs))
+        if (std::isgreater(current, max_abs))
             max_abs = current;
     }
 
