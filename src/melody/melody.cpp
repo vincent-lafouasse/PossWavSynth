@@ -59,7 +59,7 @@ const float g3 = get_frequency(4, 7);
 const float fs3 = get_frequency(4, 6);
 const float f3 = get_frequency(4, 5);
 const float e3 = get_frequency(4, 4);
-const float d3 = get_frequency(4, 2);
+const float d3_ref = get_frequency(4, 2);
 const float c3 = get_frequency(4, 0);
 const float bb2 = get_frequency(3, 10);
 const float a2 = get_frequency(3, 9);
@@ -69,43 +69,60 @@ const float e2 = get_frequency(3, 4);
 const float d2 = get_frequency(3, 2);
 const float rest = 0;
 
-Melody soprano_melody()
+enum Direction
 {
-    Melody m;
-    m.add_note(d3, whole);
-    m.add_note(fs3, half);
-    m.add_note(rest, quarter);
-    m.add_note(e3, quarter);
-    m.add_note(f3, half);
-    m.add_note(g3, half);
-    m.add_note(fs3, whole);
-    return m;
+    Up, Down,
+};
+
+float transpose(float ref, float multiplier, Direction direction) {
+    if (direction == Down)
+        multiplier = 1 / multiplier;
+    return ref * multiplier;
 }
+
+float maj2(float ref, Direction direction) { return transpose(ref, 1.125, direction); }
+float min3(float ref, Direction direction) { return transpose(ref, 1.2, direction); }
+float maj3(float ref, Direction direction) { return transpose(ref, 1.25, direction); }
+float p4(float ref, Direction direction) { return transpose(ref, 4.0 / 3.0, direction); }
+float p5(float ref, Direction direction) { return transpose(ref, 1.5, direction); }
 
 Melody alto_melody()
 {
     Melody m;
-    m.add_note(d3, 4 * whole);
+    m.add_note(d3_ref, 4 * whole);
+    return m;
+}
+
+Melody soprano_melody()
+{
+    Melody m;
+    m.add_note(d3_ref, whole);
+    m.add_note(maj3(d3_ref, Up), half);
+    m.add_note(rest, quarter);
+    m.add_note(maj2(d3_ref, Up), quarter);
+    m.add_note(min3(d3_ref, Up), half);
+    m.add_note(p4(d3_ref, Up), half);
+    m.add_note(maj3(d3_ref, Up), whole);
     return m;
 }
 
 Melody tenor_melody()
 {
     Melody m;
-    m.add_note(d3, half);
+    m.add_note(d3_ref, half);
     m.add_note(c3, whole);
     m.add_note(rest, quarter);
     m.add_note(bb2, quarter);
     m.add_note(bb2, half);
     m.add_note(bb2, half);
-    m.add_note(a2, whole);
+    m.add_note(d2 * 1.5, whole);
     return m;
 }
 
 Melody bass_melody()
 {
     Melody m;
-    m.add_note(d3, half);
+    m.add_note(d3_ref, half);
     m.add_note(c3, half);
     m.add_note(a2, half);
     m.add_note(rest, quarter);
