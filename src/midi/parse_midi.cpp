@@ -8,15 +8,7 @@
 #include "Midi.h"
 #include "MidiTempo.h"
 #include "TrackChunk.h"
-
-void process_mtrk_event(const MTrkEvent& mtrk_event, u32* tick)
-{
-    const Event* event = mtrk_event.getEvent();
-
-    std::cout << "event happening at tick " << *tick << std::endl;
-    u32 delta_time = mtrk_event.getDeltaTime().getData();
-    *tick += delta_time;
-}
+#include "types.h"
 
 class MelodyConstructor
 {
@@ -38,12 +30,47 @@ double midi_note_to_frequency(u16 midi_note)
     return 440.0 * std::exp2(offset_from_a4 / 12);
 }
 
+bool is_midi_event(const Event* event)
+{
+    return event->getType() == MidiType::EventType::MidiEvent;
+}
+bool is_meta_event(const Event* event)
+{
+    return event->getType() == MidiType::EventType::MetaEvent;
+}
+
+bool is_note_on(const MidiEvent* event)
+{
+    return event->getStatus() == MidiType::MidiMessageStatus::NoteOn;
+}
+
+bool is_note_off(const MidiEvent* event)
+{
+    return (event->getStatus() == MidiType::MidiMessageStatus::NoteOff) || (is_note_on(event) && !event->getVelocity());
+}
+
 Melody MelodyConstructor::construct_melody()
 {
     Melody m;
     u32 current_note = 0;
+    u32 current_note_start = 0;
+
     u32 current_tick = 0;
     double timestamp = 0;
+
+    for (const MTrkEvent& mtrk_event: events)
+    {
+        const Event* event = mtrk_event.getEvent();
+        if (is_midi_event(event))
+        {
+            const MidiEvent* midi_event = (const MidiEvent*)mtrk_event.getEvent();
+            if (is_note_off(midi_event))
+                std::cout << "Note off " << +midi_event->getNote() << std::endl;
+            if (is_note_on(midi_event))
+                std::cout << "Note on " << +midi_event->getNote() << " with velocity " << +midi_event->getVelocity() << std::endl;
+        }
+        current_tick += mtrk_event.getDeltaTime().getData();
+    }
 
     return m;
 }
