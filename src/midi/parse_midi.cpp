@@ -1,6 +1,7 @@
 #include "parse_midi.h"
 
 #include <iostream>
+#include <cmath>
 
 #include "HeaderChunk.h"
 #include "MTrkEvent.h"
@@ -30,9 +31,19 @@ public:
 
 };
 
+double midi_note_to_frequency(u16 midi_note)
+{
+    double offset_from_a4 = midi_note - 69;
+
+    return 440.0 * std::exp2(offset_from_a4 / 12);
+}
+
 Melody MelodyConstructor::construct_melody()
 {
     Melody m;
+    u32 current_note = 0;
+    u32 current_tick = 0;
+    double timestamp = 0;
 
     return m;
 }
