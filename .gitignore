@@ -4,3 +4,4 @@
 build
 aux/
 .DS_Store
+**/**.asd
