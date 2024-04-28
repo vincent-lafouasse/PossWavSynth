@@ -1,6 +1,7 @@
 #include "MidiTempo.h"
 
 #include <iostream>
+#include <stdexcept>
 
 MidiTempo* MidiTempo::parse(const HeaderChunk& header)
 {
@@ -9,10 +10,11 @@ MidiTempo* MidiTempo::parse(const HeaderChunk& header)
     bool top_bit = 1 & (raw_time >> 15);
     u16 data = raw_time & 0x7FFF;
 
-    if (top_bit)
-        return new FPSMidiTempo(data);
-    else
-        return new PPQMidiTempo(data);
+    bool is_fps = top_bit;
+    if (is_fps)
+        throw std::invalid_argument("Not Implemented");
+
+    return new FPSMidiTempo(data);
 }
 
 constexpr double default_beat_len_ms = 500000.0;  // 120 bpm
