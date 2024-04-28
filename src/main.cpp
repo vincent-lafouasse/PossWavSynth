@@ -8,8 +8,6 @@
 #include "wav/Data.h"
 #include "wav/wav.h"
 
-#include "Midi.h"
-
 #define SAMPLE_RATE 44100
 
 struct MyWavetables

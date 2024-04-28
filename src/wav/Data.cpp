@@ -21,11 +21,6 @@ Data32::Data32(Signal& signal, u32 sample_rate)
         data[i] = static_cast<u32>(INT32_MAX * headroom * signal.data[i]);
 }
 
-void* Data32::get() const
-{
-    return static_cast<void*>(data);
-}
-
 void Data32::write(FILE* file, u32 max_bytes) const
 {
     printf("writing data");
