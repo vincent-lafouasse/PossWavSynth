@@ -31,10 +31,10 @@ int main()
 {
     std::vector<Melody> voices = parse_midi("./mid/a_melody.mid");
 
-    Oscillator osc_s(&wavetables.square8, SAMPLE_RATE);
-    Oscillator osc_a(&wavetables.triangle, SAMPLE_RATE);
+    Oscillator osc_s(&wavetables.triangle8, SAMPLE_RATE);
+    Oscillator osc_a(&wavetables.square8, SAMPLE_RATE);
     Oscillator osc_t(&wavetables.triangle8, SAMPLE_RATE);
-    Oscillator osc_b(&wavetables.sine, SAMPLE_RATE);
+    Oscillator osc_b(&wavetables.square8, SAMPLE_RATE);
 
     Signal soprano(soprano_melody(), &osc_s);
     Signal alto(alto_melody(), &osc_a);

@@ -89,7 +89,7 @@ float p5(Direction direction) { return transpose(d3_ref, 1.5, direction); }
 Melody alto_melody()
 {
     Melody m;
-    m.add_note(d3_ref, 4 * whole);
+    m.add_note(d3_ref, 5 * whole);
     return m;
 }
 
@@ -102,7 +102,7 @@ Melody soprano_melody()
     m.add_note(maj2(Up), quarter);
     m.add_note(min3(Up), half);
     m.add_note(p4(Up), half);
-    m.add_note(maj3(Up), whole);
+    m.add_note(maj3(Up), 2 * whole);
     return m;
 }
 
@@ -115,7 +115,7 @@ Melody tenor_melody()
     m.add_note(maj3(Down), quarter);
     m.add_note(maj3(Down), half);
     m.add_note(maj3(Down), half);
-    m.add_note(p4(Down), whole);
+    m.add_note(p4(Down), 2 * whole);
     return m;
 }
 
@@ -129,6 +129,6 @@ Melody bass_melody()
     m.add_note(0.5 * p4(Up), quarter);
     m.add_note(0.5 * min3(Up), half);
     m.add_note(0.5 * maj2(Up), half);
-    m.add_note(0.5 * d3_ref, whole);
+    m.add_note(0.5 * d3_ref, 2 * whole);
     return m;
 }
