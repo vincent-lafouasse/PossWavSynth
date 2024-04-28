@@ -1,3 +1,5 @@
+#include <cassert>
+
 #include "parse_midi.h"
 
 #include "Midi.h"
@@ -21,6 +23,7 @@ Melody track_to_melody(const TrackChunk& track, float secs_per_tick)
     Midi mid {path};
 
     const HeaderChunk& header = mid.getHeader();
+    assert(strcmp(header.getName(), "MThd") == 0);
     float secs_per_tick = parse_time_division(header);
 
     const std::list<TrackChunk> tracks = mid.getTracks();
