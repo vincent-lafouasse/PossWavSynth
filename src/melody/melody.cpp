@@ -80,11 +80,11 @@ float transpose(float ref, float multiplier, Direction direction) {
     return ref * multiplier;
 }
 
-float maj2(float ref, Direction direction) { return transpose(ref, 1.125, direction); }
-float min3(float ref, Direction direction) { return transpose(ref, 1.2, direction); }
-float maj3(float ref, Direction direction) { return transpose(ref, 1.25, direction); }
-float p4(float ref, Direction direction) { return transpose(ref, 4.0 / 3.0, direction); }
-float p5(float ref, Direction direction) { return transpose(ref, 1.5, direction); }
+float maj2(Direction direction) { return transpose(d3_ref, 1.125, direction); }
+float min3(Direction direction) { return transpose(d3_ref, 1.2, direction); }
+float maj3(Direction direction) { return transpose(d3_ref, 1.25, direction); }
+float p4(Direction direction) { return transpose(d3_ref, 4.0 / 3.0, direction); }
+float p5(Direction direction) { return transpose(d3_ref, 1.5, direction); }
 
 Melody alto_melody()
 {
@@ -97,12 +97,12 @@ Melody soprano_melody()
 {
     Melody m;
     m.add_note(d3_ref, whole);
-    m.add_note(maj3(d3_ref, Up), half);
+    m.add_note(maj3(Up), half);
     m.add_note(rest, quarter);
-    m.add_note(maj2(d3_ref, Up), quarter);
-    m.add_note(min3(d3_ref, Up), half);
-    m.add_note(p4(d3_ref, Up), half);
-    m.add_note(maj3(d3_ref, Up), whole);
+    m.add_note(maj2(Up), quarter);
+    m.add_note(min3(Up), half);
+    m.add_note(p4(Up), half);
+    m.add_note(maj3(Up), whole);
     return m;
 }
 
@@ -110,12 +110,12 @@ Melody tenor_melody()
 {
     Melody m;
     m.add_note(d3_ref, half);
-    m.add_note(c3, whole);
+    m.add_note(maj2(Down), whole);
     m.add_note(rest, quarter);
-    m.add_note(bb2, quarter);
-    m.add_note(bb2, half);
-    m.add_note(bb2, half);
-    m.add_note(d2 * 1.5, whole);
+    m.add_note(maj3(Down), quarter);
+    m.add_note(maj3(Down), half);
+    m.add_note(maj3(Down), half);
+    m.add_note(p4(Down), whole);
     return m;
 }
 
@@ -123,12 +123,12 @@ Melody bass_melody()
 {
     Melody m;
     m.add_note(d3_ref, half);
-    m.add_note(c3, half);
-    m.add_note(a2, half);
+    m.add_note(maj2(Down), half);
+    m.add_note(p4(Down), half);
     m.add_note(rest, quarter);
-    m.add_note(g2, quarter);
-    m.add_note(f2, half);
-    m.add_note(e2, half);
-    m.add_note(d2, whole);
+    m.add_note(0.5 * p4(Up), quarter);
+    m.add_note(0.5 * min3(Up), half);
+    m.add_note(0.5 * maj2(Up), half);
+    m.add_note(0.5 * d3_ref, whole);
     return m;
 }
