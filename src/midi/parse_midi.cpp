@@ -43,7 +43,9 @@ MidiMelody::MidiMelody(const std::list<MTrkEvent>& events, MidiTempo* tempo)
         {
             const MidiEvent* midi_event = (const MidiEvent*)mtrk_event.getEvent();
             if (is_note_on(midi_event))
-                messages.emplace_back(NoteOn, midi_event->getNote(), midi_event->getVelocity(), current_tick * tempo->tick_len_ms());
+                messages.push_back({NoteOn, midi_event->getNote(), midi_event->getVelocity(), current_tick * tempo->tick_len_ms()});
+            if (is_note_off(midi_event))
+                messages.push_back({NoteOff, midi_event->getNote(), midi_event->getVelocity(), current_tick * tempo->tick_len_ms()});
         }
         current_tick += mtrk_event.getDeltaTime().getData();
     }
