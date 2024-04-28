@@ -2,8 +2,8 @@
 
 #include "DSP/Signal.h"
 #include "melody/melody.h"
-#include "midi/parse_midi.h"
 #include "midi/MidiMelody.h"
+#include "midi/parse_midi.h"
 #include "synth/oscillator.h"
 #include "synth/wavetable.h"
 #include "wav/Data.h"
