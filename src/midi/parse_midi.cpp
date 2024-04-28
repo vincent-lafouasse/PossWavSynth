@@ -23,7 +23,7 @@ Melody track_to_melody(const TrackChunk& track, MidiTempo* tempo)
 
     u32 current_tick = 0;
 
-    for (const MTrkEvent& event: track.getEvents())
+    for (const MTrkEvent& event : track.getEvents())
         log_mtrk_event(event, &current_tick);
 
     return m;
@@ -46,6 +46,6 @@ std::vector<Melody> parse_midi(const char* path)
 
     for (const TrackChunk& track : tracks)
         voices.push_back(track_to_melody(track, tempo));
-    
+
     return voices;
 }

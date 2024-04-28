@@ -13,7 +13,7 @@ MidiTempo* MidiTempo::parse(const HeaderChunk& header)
     bool is_fps = top_bit;
     if (is_fps)
         throw std::invalid_argument("FPS tempo not implemented (yet)");
-        // return new FPSMidiTempo(data);
+    // return new FPSMidiTempo(data);
 
     return new PPQMidiTempo(data);
 }
