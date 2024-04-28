@@ -1,4 +1,5 @@
 #include <cassert>
+#include <cstring>
 
 #include "parse_midi.h"
 
@@ -15,6 +16,7 @@ Melody track_to_melody(const TrackChunk& track, float secs_per_tick)
 {
     Melody m;
     (void)track;
+    (void)secs_per_tick;
     return m;
 }
 
