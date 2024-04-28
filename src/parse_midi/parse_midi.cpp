@@ -14,11 +14,17 @@ class MidiTempo
 
 class PPQMidiTempo : public MidiTempo
 {
+   public:
+    PPQMidiTempo(u16 raw_data);
+
    private:
     double bpm;
 };
 class FPSMidiTempo : public MidiTempo
 {
+   public:
+    FPSMidiTempo(u16 raw_data);
+
    private:
     double fps;
 };
