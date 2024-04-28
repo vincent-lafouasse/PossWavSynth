@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "parse_midi/parse_midi.h"
 #include "DSP/Signal.h"
 #include "melody/melody.h"
+#include "parse_midi/parse_midi.h"
 #include "synth/oscillator.h"
 #include "synth/wavetable.h"
 #include "wav/Data.h"

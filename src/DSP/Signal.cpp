@@ -73,9 +73,7 @@ Signal::Signal(u32 size_)
         data[i] = 0.0f;
 }
 
-Signal::~Signal()
-{
-}
+Signal::~Signal() {}
 
 void Signal::normalize(void)
 {

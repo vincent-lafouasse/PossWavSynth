@@ -8,18 +8,20 @@
 
 class MidiTempo
 {
-public:
+   public:
     virtual double get_microsecs_per_tick() = 0;
 };
 
-class PPQMidiTempo : public MidiTempo{
-private:
+class PPQMidiTempo : public MidiTempo
+{
+   private:
     double bpm;
-}; 
-class FPSMidiTempo : public MidiTempo{
-private:
+};
+class FPSMidiTempo : public MidiTempo
+{
+   private:
     double fps;
-}; 
+};
 
 float parse_time_division(const HeaderChunk& header)
 {
@@ -40,9 +42,9 @@ Melody track_to_melody(const TrackChunk& track, float secs_per_tick)
     return m;
 }
 
-    std::vector<Melody> parse_midi(const char* path)
+std::vector<Melody> parse_midi(const char* path)
 {
-    Midi mid {path};
+    Midi mid{path};
 
     const HeaderChunk& header = mid.getHeader();
     assert(strcmp(header.getName(), "MThd") == 0);
@@ -50,9 +52,9 @@ Melody track_to_melody(const TrackChunk& track, float secs_per_tick)
     float secs_per_tick = parse_time_division(header);
 
     const std::list<TrackChunk> tracks = mid.getTracks();
-    std::vector<Melody> voices {};
+    std::vector<Melody> voices{};
 
-    for (const TrackChunk& track: tracks)
+    for (const TrackChunk& track : tracks)
         voices.push_back(track_to_melody(track, secs_per_tick));
     return voices;
 }
