@@ -26,10 +26,13 @@ void* Data32::get() const
     return static_cast<void*>(data);
 }
 
-void Data32::write(FILE* file) const
+void Data32::write(FILE* file, u32 max_bytes) const
 {
-    printf("writing");
-    (void)file;
+    printf("writing data");
+    u32 max_n = std::min<u32>(size, max_bytes / sample_size_byte);
+
+    for (u32 i = 0; i < max_n; i++)
+        fwrite(data + i, sample_size_byte, 1, file);
 }
 
 Data32::~Data32()

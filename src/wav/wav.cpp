@@ -40,12 +40,6 @@ void WavHeader::init(i32 data_size,
     this->data_size = data_size;
 }
 
-WavFile::WavFile(const Data& data)
-{
-    header = WavHeader(data);
-    this->binary_data = data.get();
-}
-
 bool WavFile::write(const char* name)
 {
     FILE* file = fopen(name, "w+b");
@@ -53,7 +47,7 @@ bool WavFile::write(const char* name)
         return false;
 
     fwrite(&header, sizeof(header), 1, file);
-    fwrite(binary_data, header.data_size, 1, file);
+    data.write(file, header.data_size);
 
     fclose(file);
 
