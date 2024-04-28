@@ -2,6 +2,6 @@
 
 #include <vector>
 
-#include "melody/melody.h"
+#include "MidiMelody.h"
 
-std::vector<Melody> parse_midi(const char* path);
+std::vector<MidiMelody> parse_midi(const char* path);

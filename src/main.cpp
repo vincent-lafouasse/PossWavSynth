@@ -3,6 +3,7 @@
 #include "DSP/Signal.h"
 #include "melody/melody.h"
 #include "midi/parse_midi.h"
+#include "midi/MidiMelody.h"
 #include "synth/oscillator.h"
 #include "synth/wavetable.h"
 #include "wav/Data.h"
@@ -29,7 +30,7 @@ const WavetableBank wavetables = {
 
 int main()
 {
-    std::vector<Melody> voices = parse_midi("./mid/licc.mid");
+    std::vector<MidiMelody> voices = parse_midi("./mid/licc.mid");
 
     Oscillator osc_s(&wavetables.triangle8, SAMPLE_RATE);
     Oscillator osc_a(&wavetables.square8, SAMPLE_RATE);
