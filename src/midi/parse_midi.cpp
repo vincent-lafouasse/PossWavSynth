@@ -64,10 +64,11 @@ Melody MelodyConstructor::construct_melody()
         if (is_midi_event(event))
         {
             const MidiEvent* midi_event = (const MidiEvent*)mtrk_event.getEvent();
-            if (is_note_off(midi_event))
-                std::cout << "Note off " << +midi_event->getNote() << std::endl;
-            if (is_note_on(midi_event))
-                std::cout << "Note on " << +midi_event->getNote() << " with velocity " << +midi_event->getVelocity() << std::endl;
+            if (is_note_on(midi_event) && current_note == 0)
+            {
+                current_note = midi_event->getNote();
+                current_note_start = current_tick;
+            }
         }
         current_tick += mtrk_event.getDeltaTime().getData();
     }
