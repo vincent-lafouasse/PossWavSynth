@@ -26,5 +26,7 @@ class MidiMelody
     MidiMelody() = default;
     MidiMelody(const std::list<MTrkEvent>& events, MidiTempo* tempo);
 
+    void regularize();
+
     std::list<Message> messages;
 };

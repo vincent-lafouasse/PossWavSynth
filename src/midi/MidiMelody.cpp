@@ -30,6 +30,16 @@ MidiMelody::MidiMelody(const std::list<MTrkEvent>& events, MidiTempo* tempo)
                                     timestamp});
         }
     }
+    regularize();
+}
+
+void MidiMelody::regularize()
+{
+    for (Message& message: messages)
+    {
+        if (message.velocity == 0 && message.status == NoteOn)
+            message.status = NoteOff;
+    }
 }
 
 bool is_midi_event(const Event* event)
