@@ -8,7 +8,7 @@
 #include "MidiTempo.h"
 #include "TrackChunk.h"
 
-void log_mtrk_event(const MTrkEvent& mtrk_event, u32* tick)
+void process_mtrk_event(const MTrkEvent& mtrk_event, u32* tick)
 {
     const Event* event = mtrk_event.getEvent();
 
@@ -17,14 +17,22 @@ void log_mtrk_event(const MTrkEvent& mtrk_event, u32* tick)
     *tick += delta_time;
 }
 
-Melody track_to_melody(const TrackChunk& track, MidiTempo* tempo)
+class MelodyConstructor
+{
+public:
+    MelodyConstructor();
+    MelodyConstructor(const std::list<MTrkEvent>& events, MidiTempo* tempo) : events(events), tempo(tempo) {};
+
+    Melody construct_melody();
+
+    const std::list<MTrkEvent> events;
+    MidiTempo* tempo;
+
+};
+
+Melody MelodyConstructor::construct_melody()
 {
     Melody m;
-
-    u32 current_tick = 0;
-
-    for (const MTrkEvent& event : track.getEvents())
-        log_mtrk_event(event, &current_tick);
 
     return m;
 }
@@ -45,7 +53,11 @@ std::vector<Melody> parse_midi(const char* path)
     std::vector<Melody> voices{};
 
     for (const TrackChunk& track : tracks)
-        voices.push_back(track_to_melody(track, tempo));
+    {
+        MelodyConstructor constructor(track.getEvents(), tempo);
+        Melody melody = constructor.construct_melody();
+        voices.push_back(melody);
+    }
 
     return voices;
 }
