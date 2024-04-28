@@ -13,6 +13,7 @@ target_sources(PossWavSynth PRIVATE
 
 	src/midi/parse_midi.cpp
 	src/midi/MidiTempo.cpp
+	src/midi/MidiMelody.cpp
 
 	src/synth/wavetable.cpp
 	src/synth/oscillator.cpp
