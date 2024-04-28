@@ -13,6 +13,8 @@ MidiMelody::MidiMelody(const std::list<MTrkEvent>& events, MidiTempo* tempo)
 
     for (const MTrkEvent& mtrk_event : events)
     {
+        current_tick += mtrk_event.getDeltaTime().getData();
+        double timestamp = current_tick * tempo->tick_len_ms() / 1000000;
         const Event* event = mtrk_event.getEvent();
         if (is_midi_event(event))
         {
@@ -21,13 +23,12 @@ MidiMelody::MidiMelody(const std::list<MTrkEvent>& events, MidiTempo* tempo)
             if (is_note_on(midi_event))
                 messages.push_back({NoteOn, midi_event->getNote(),
                                     midi_event->getVelocity(),
-                                    current_tick * tempo->tick_len_ms()});
-            if (is_note_off(midi_event))
+                                    timestamp});
+            else if (is_note_off(midi_event))
                 messages.push_back({NoteOff, midi_event->getNote(),
                                     midi_event->getVelocity(),
-                                    current_tick * tempo->tick_len_ms()});
+                                    timestamp});
         }
-        current_tick += mtrk_event.getDeltaTime().getData();
     }
 }
 
