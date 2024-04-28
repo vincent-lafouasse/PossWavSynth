@@ -71,20 +71,37 @@ const float rest = 0;
 
 enum Direction
 {
-    Up, Down,
+    Up,
+    Down,
 };
 
-float transpose(float ref, float multiplier, Direction direction) {
+float transpose(float ref, float multiplier, Direction direction)
+{
     if (direction == Down)
         multiplier = 1 / multiplier;
     return ref * multiplier;
 }
 
-float maj2(Direction direction) { return transpose(d3_ref, 1.125, direction); }
-float min3(Direction direction) { return transpose(d3_ref, 1.2, direction); }
-float maj3(Direction direction) { return transpose(d3_ref, 1.25, direction); }
-float p4(Direction direction) { return transpose(d3_ref, 4.0 / 3.0, direction); }
-float p5(Direction direction) { return transpose(d3_ref, 1.5, direction); }
+float maj2(Direction direction)
+{
+    return transpose(d3_ref, 1.125, direction);
+}
+float min3(Direction direction)
+{
+    return transpose(d3_ref, 1.2, direction);
+}
+float maj3(Direction direction)
+{
+    return transpose(d3_ref, 1.25, direction);
+}
+float p4(Direction direction)
+{
+    return transpose(d3_ref, 4.0 / 3.0, direction);
+}
+float p5(Direction direction)
+{
+    return transpose(d3_ref, 1.5, direction);
+}
 
 Melody alto_melody()
 {

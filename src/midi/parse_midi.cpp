@@ -2,8 +2,8 @@
 
 #include "HeaderChunk.h"
 #include "Midi.h"
-#include "TrackChunk.h"
 #include "MidiTempo.h"
+#include "TrackChunk.h"
 
 Melody track_to_melody(const TrackChunk& track, MidiTempo* tempo)
 {

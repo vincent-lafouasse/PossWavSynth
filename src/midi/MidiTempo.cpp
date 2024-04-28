@@ -15,13 +15,13 @@ MidiTempo* MidiTempo::parse(const HeaderChunk& header)
         return new PPQMidiTempo(data);
 }
 
-constexpr double default_beat_len_ms = 500000.0; // 120 bpm
+constexpr double default_beat_len_ms = 500000.0;  // 120 bpm
 
-PPQMidiTempo::PPQMidiTempo(u16 data) {
+PPQMidiTempo::PPQMidiTempo(u16 data)
+{
     ticks_per_beat = data;
     beat_len_ms = default_beat_len_ms;
 };
-
 
 void PPQMidiTempo::log()
 {
@@ -30,12 +30,11 @@ void PPQMidiTempo::log()
     std::cout << "Ticks in ms\t" << tick_len_ms() << "\n";
 }
 
-FPSMidiTempo::FPSMidiTempo(u16 data) {
+FPSMidiTempo::FPSMidiTempo(u16 data)
+{
     (void)data;
     (void)fps;
     (void)frame_len_ticks;
 };
 
-void FPSMidiTempo::log()
-{
-}
+void FPSMidiTempo::log() {}
