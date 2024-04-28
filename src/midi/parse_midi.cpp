@@ -1,7 +1,7 @@
 #include "parse_midi.h"
 
-#include <iostream>
 #include <cmath>
+#include <iostream>
 
 #include "HeaderChunk.h"
 #include "MTrkEvent.h"
@@ -20,15 +20,15 @@ void process_mtrk_event(const MTrkEvent& mtrk_event, u32* tick)
 
 class MelodyConstructor
 {
-public:
+   public:
     MelodyConstructor();
-    MelodyConstructor(const std::list<MTrkEvent>& events, MidiTempo* tempo) : events(events), tempo(tempo) {};
+    MelodyConstructor(const std::list<MTrkEvent>& events, MidiTempo* tempo)
+        : events(events), tempo(tempo){};
 
     Melody construct_melody();
 
     const std::list<MTrkEvent> events;
     MidiTempo* tempo;
-
 };
 
 double midi_note_to_frequency(u16 midi_note)
