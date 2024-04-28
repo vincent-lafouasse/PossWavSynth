@@ -7,6 +7,7 @@
 
 struct Signal
 {
+    Signal(const Signal& other);
     Signal(const Melody& melody, Oscillator* oscillator);
     Signal(u32 size_);
     ~Signal();
@@ -21,6 +22,6 @@ struct Signal
     void write_to_csv(void);
     void normalize(void);
 
-    float* data;
+    std::unique_ptr<float[]> data;
     u32 size;
 };

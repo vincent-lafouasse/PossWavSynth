@@ -7,7 +7,7 @@
 Signal::Signal(const Melody& melody, Oscillator* oscillator)
 {
     size = melody.get_total_n_samples(oscillator->sample_rate);
-    data = new float[size];
+    data = std::make_unique<float[]>(size);
 
     u32 i = 0;
     u32 note_n_samples;
@@ -22,6 +22,14 @@ Signal::Signal(const Melody& melody, Oscillator* oscillator)
             oscillator->advance();
         }
     }
+}
+
+Signal::Signal(const Signal& other)
+{
+    size = other.size;
+    data = std::make_unique<float[]>(size);
+    for (size_t i{0}; i < size; i++)
+        data[i] = other.data[i];
 }
 
 Signal Signal::sum(const Signal& s1, const Signal& s2, float amp1, float amp2)
@@ -59,7 +67,7 @@ Signal Signal::sum(const std::vector<std::pair<const Signal&, float>>& signals)
 Signal::Signal(u32 size_)
 {
     size = size_;
-    data = new float[size];
+    data = std::make_unique<float[]>(size);
 
     for (u32 i = 0; i < size; i++)
         data[i] = 0.0f;
@@ -67,7 +75,6 @@ Signal::Signal(u32 size_)
 
 Signal::~Signal()
 {
-    delete[] data;
 }
 
 void Signal::normalize(void)
