@@ -32,6 +32,8 @@ class PPQMidiTempo : public MidiTempo
     u16 ticks_per_beat;
     double beat_len_ms;
 };
+
+#if 0
 class FPSMidiTempo : public MidiTempo
 {
    public:
@@ -45,3 +47,4 @@ class FPSMidiTempo : public MidiTempo
     double fps;
     double frame_len_ticks;
 };
+#endif

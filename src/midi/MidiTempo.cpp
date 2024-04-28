@@ -14,7 +14,7 @@ MidiTempo* MidiTempo::parse(const HeaderChunk& header)
     if (is_fps)
         throw std::invalid_argument("Not Implemented");
 
-    return new FPSMidiTempo(data);
+    return new PPQMidiTempo(data);
 }
 
 constexpr double default_beat_len_ms = 500000.0;  // 120 bpm
@@ -32,6 +32,7 @@ void PPQMidiTempo::log()
     std::cout << "Ticks in ms\t" << tick_len_ms() << "\n";
 }
 
+#if 0
 FPSMidiTempo::FPSMidiTempo(u16 data)
 {
     (void)data;
@@ -40,3 +41,4 @@ FPSMidiTempo::FPSMidiTempo(u16 data)
 };
 
 void FPSMidiTempo::log() {}
+#endif
