@@ -6,6 +6,21 @@
 #include "Midi.h"
 #include "TrackChunk.h"
 
+class MidiTempo
+{
+public:
+    virtual double get_microsecs_per_tick() = 0;
+};
+
+class PPQMidiTempo : public MidiTempo{
+private:
+    double bpm;
+}; 
+class FPSMidiTempo : public MidiTempo{
+private:
+    double fps;
+}; 
+
 float parse_time_division(const HeaderChunk& header)
 {
     u16 raw_time = header.getDivision();
@@ -31,6 +46,7 @@ Melody track_to_melody(const TrackChunk& track, float secs_per_tick)
 
     const HeaderChunk& header = mid.getHeader();
     assert(strcmp(header.getName(), "MThd") == 0);
+
     float secs_per_tick = parse_time_division(header);
 
     const std::list<TrackChunk> tracks = mid.getTracks();
