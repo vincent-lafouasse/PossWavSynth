@@ -10,21 +10,19 @@
 
 #define SAMPLE_RATE 44100
 
-struct MyWavetables
+struct WavetableBank
 {
     Wavetable sine;
     Wavetable square;
     Wavetable triangle;
+    Wavetable square8;
+    Wavetable triangle8;
 };
 
-const MyWavetables pure_wavetables = {
+const WavetableBank wavetables = {
     Wavetables::get_sine(),
     Wavetables::get_square(),
     Wavetables::get_triangle(),
-};
-
-const MyWavetables band_limited = {
-    Wavetables::get_sine(),
     Wavetables::band_limited_square(8),
     Wavetables::band_limited_triangle(8),
 };
@@ -33,15 +31,15 @@ int main()
 {
     std::vector<Melody> voices = parse_midi("./mid/a_melody.mid");
 
-    Oscillator sine1(&band_limited.sine, SAMPLE_RATE);
-    Oscillator sine2(&band_limited.sine, SAMPLE_RATE);
-    Oscillator sine3(&band_limited.sine, SAMPLE_RATE);
-    Oscillator sine4(&band_limited.sine, SAMPLE_RATE);
+    Oscillator osc_s(&wavetables.square8, SAMPLE_RATE);
+    Oscillator osc_a(&wavetables.triangle, SAMPLE_RATE);
+    Oscillator osc_t(&wavetables.triangle8, SAMPLE_RATE);
+    Oscillator osc_b(&wavetables.sine, SAMPLE_RATE);
 
-    Signal soprano(soprano_melody(), &sine1);
-    Signal alto(alto_melody(), &sine2);
-    Signal tenor(tenor_melody(), &sine3);
-    Signal bass(bass_melody(), &sine4);
+    Signal soprano(soprano_melody(), &osc_s);
+    Signal alto(alto_melody(), &osc_a);
+    Signal tenor(tenor_melody(), &osc_t);
+    Signal bass(bass_melody(), &osc_b);
 
     Signal signal = Signal::sum({
         std::make_pair(soprano, 1),
