@@ -29,7 +29,7 @@ const WavetableBank wavetables = {
 
 int main()
 {
-    std::vector<Melody> voices = parse_midi("./mid/a_melody.mid");
+    std::vector<Melody> voices = parse_midi("./mid/licc.mid");
 
     Oscillator osc_s(&wavetables.triangle8, SAMPLE_RATE);
     Oscillator osc_a(&wavetables.square8, SAMPLE_RATE);

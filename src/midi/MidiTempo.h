@@ -7,10 +7,11 @@ class MidiTempo
 {
    public:
     ~MidiTempo() = default;
-    virtual double tick_len_ms() = 0;
-    static MidiTempo* parse(const HeaderChunk& header);
 
+    virtual double tick_len_ms() = 0;
     virtual void log() = 0;
+
+    static MidiTempo* parse(const HeaderChunk& header);
 };
 
 class PPQMidiTempo : public MidiTempo

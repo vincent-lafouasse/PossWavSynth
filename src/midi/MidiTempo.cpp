@@ -18,10 +18,9 @@ MidiTempo* MidiTempo::parse(const HeaderChunk& header)
     return new PPQMidiTempo(data);
 }
 
-constexpr double default_beat_len_ms = 500000.0;  // 120 bpm
-
 PPQMidiTempo::PPQMidiTempo(u16 data)
 {
+    constexpr double default_beat_len_ms = 500000.0;  // 120 bpm
     ticks_per_beat = data;
     beat_len_ms = default_beat_len_ms;
 };
