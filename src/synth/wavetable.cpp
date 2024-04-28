@@ -37,8 +37,8 @@ void Wavetable::normalize(void)
 
     for (u32 i = 0; i < size; i++)
     {
-        current = fabs(data[i]);
-        if (isgreater(current, max_abs))
+        current = std::fabs(data[i]);
+        if (std::isgreater(current, max_abs))
             max_abs = current;
     }
 
@@ -199,7 +199,7 @@ Wavetable band_limited_square(u32 top_harmonic)
     return factory.get();
 }
 
-static float saw_fourier_amplitude(u32 n);
+// static float saw_fourier_amplitude(u32 n);
 
 }  // namespace Wavetables
 
