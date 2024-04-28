@@ -9,30 +9,11 @@
 #include "TrackChunk.h"
 #include "MidiTempo.h"
 
-float parse_time_division(const HeaderChunk& header)
-{
-    (void)header;
-    return 0;
-}
-
-MidiTempo* MidiTempo::parse(const HeaderChunk& header)
-{
-    u16 raw_time = header.getDivision();
-
-    bool top_bit = 1 & (raw_time >> 15);
-    u16 data = raw_time & 0x7FFF;
-
-    if (top_bit)
-        return new FPSMidiTempo(data);
-    else
-        return new PPQMidiTempo(data);
-}
-
-Melody track_to_melody(const TrackChunk& track, float secs_per_tick)
+Melody track_to_melody(const TrackChunk& track, std::unique_ptr<MidiTempo>& tempo)
 {
     Melody m;
     (void)track;
-    (void)secs_per_tick;
+    (void)tempo;
     return m;
 }
 
@@ -48,6 +29,6 @@ std::vector<Melody> parse_midi(const char* path)
     std::vector<Melody> voices{};
 
     for (const TrackChunk& track : tracks)
-        voices.push_back(track_to_melody(track, 0));
+        voices.push_back(track_to_melody(track, tempo));
     return voices;
 }

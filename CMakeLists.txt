@@ -11,7 +11,8 @@ add_executable(PossWavSynth)
 target_sources(PossWavSynth PRIVATE
 	src/main.cpp
 
-	src/parse_midi/parse_midi.cpp
+	src/midi/parse_midi.cpp
+	src/midi/MidiTempo.cpp
 
 	src/synth/wavetable.cpp
 	src/synth/oscillator.cpp
