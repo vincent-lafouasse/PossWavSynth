@@ -6,14 +6,19 @@
 class MidiTempo
 {
 public:
+   ~MidiTempo() = default;
    virtual double tick_len_ms() = 0;
    static MidiTempo* parse(const HeaderChunk& header);
+
+   virtual void log() = 0;
 };
 
 class PPQMidiTempo : public MidiTempo
 {
 public:
    PPQMidiTempo(u16 data);
+   ~PPQMidiTempo() = default;
+
    double tick_len_ms() { return beat_len_ms / ticks_per_beat; };
    void set_beat_len_ms(double beat_len_ms) { this->beat_len_ms = beat_len_ms; };
 
@@ -28,7 +33,10 @@ class FPSMidiTempo : public MidiTempo
 {
 public:
    FPSMidiTempo(u16 data);
+   ~FPSMidiTempo() = default;
    double tick_len_ms() { return 0; }
+
+   void log();
 
 private:
    double fps;

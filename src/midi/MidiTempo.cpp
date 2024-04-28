@@ -35,3 +35,7 @@ FPSMidiTempo::FPSMidiTempo(u16 data) {
     (void)fps;
     (void)frame_len_ticks;
 };
+
+void FPSMidiTempo::log()
+{
+}

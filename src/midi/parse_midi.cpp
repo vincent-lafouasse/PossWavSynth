@@ -1,7 +1,3 @@
-#include <cassert>
-#include <cstring>
-#include <memory>
-
 #include "parse_midi.h"
 
 #include "HeaderChunk.h"
@@ -9,7 +5,7 @@
 #include "TrackChunk.h"
 #include "MidiTempo.h"
 
-Melody track_to_melody(const TrackChunk& track, std::unique_ptr<MidiTempo>& tempo)
+Melody track_to_melody(const TrackChunk& track, MidiTempo* tempo)
 {
     Melody m;
     (void)track;
@@ -23,7 +19,8 @@ std::vector<Melody> parse_midi(const char* path)
 
     const HeaderChunk& header = mid.getHeader();
 
-    std::unique_ptr<MidiTempo> tempo(MidiTempo::parse(header));
+    MidiTempo* tempo = MidiTempo::parse(header);
+    tempo->log();
 
     const std::list<TrackChunk> tracks = mid.getTracks();
     std::vector<Melody> voices{};
