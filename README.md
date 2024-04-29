@@ -6,8 +6,7 @@ Following roughly [this tutorial](https://blog.demofox.org/diy-synthesizer/)
 
 ## todo
 
-
-- loading `mid` info (thanks to @MStefan99's [parser](https://github.com/MStefan99/Midi-Parser/tree/master))
+- parse tempo from midi
 - VCA envelopes
 - maybe write some algorithmic reverb to make it sound good _good_
 - a sequencer maybe ??
@@ -20,6 +19,8 @@ Following roughly [this tutorial](https://blog.demofox.org/diy-synthesizer/)
 - compose and load some basic melodies into it
 - polyphonic capabilities (summing `Signal` instances)
 - Band limited wavetables (using the additive engine + brushing up on Fourier series)
+- fetch `mid` events (thanks to @MStefan99's [parser](https://github.com/MStefan99/Midi-Parser/tree/master))
+        - partial midi support
 
 ## ressources that helped me
 
