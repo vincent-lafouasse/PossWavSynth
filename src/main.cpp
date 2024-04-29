@@ -1,10 +1,9 @@
 #include <iostream>
 
 #include "DSP/Signal.h"
-#include "DSP/MonoSignalSmoother.hpp"
 #include "midi/MidiMelody.h"
 #include "midi/parse_midi.h"
-#include "synth/oscillator.h"
+#include "synth/Synth.h"
 #include "synth/wavetable.h"
 #include "wav/Data.h"
 #include "wav/wav.h"
@@ -27,84 +26,6 @@ const WavetableBank wavetables = {
     Wavetables::band_limited_square(8),
     Wavetables::band_limited_triangle(8),
 };
-
-enum NoteStatus
-{
-    On,
-    Off
-};
-
-class VCA
-{
-public:
-    VCA() : level(0) {};
-    VCA(float level) : level(level) {};
-    float get_amplitude() { return level; };
-    void set_level(float level) { this->level = level; }
-    void set_level(u32 velocity) { this->level = static_cast<float>(velocity)/127; }
-
-    float level;
-};
-
-class Synth
-{
-public:
-    Synth() = default;
-    Synth(const Wavetable* wavetable, u32 sample_rate)
-    {
-        osc = Oscillator(wavetable, sample_rate);
-    }
-    Signal realize(const MidiMelody& melody);
-
-    Oscillator osc;
-    VCA vca;
-};
-
-#include <cmath>
-float f_12tet(u32 note)
-{
-    i32 offset_from_a4 = note - 69;
-    float f_offset = static_cast<float>(offset_from_a4);
-
-    return 440.0 * std::exp2(f_offset / 12.0);
-}
-
-Signal Synth::realize(const MidiMelody& melody)
-{
-    assert(melody.messages.back().status == NoteOff);
-    std::vector<Message> messages = melody.messages;
-    u32 signal_size = messages.back().timestamp_quantized;
-
-    auto msg = messages.cbegin();
-
-    MonoSignalSmoother<float> smoothed_amplitude(0.7);
-
-    Signal out(signal_size);
-
-    for (u32 tick = 0; tick < out.size; tick++)
-    {
-        while (msg != messages.cend() && msg->timestamp_quantized <= tick)
-        {
-            if (msg->status == NoteOn)
-            {
-                osc.set_frequency(f_12tet(msg->note));
-                vca.set_level(msg->velocity);
-            }
-            if (msg->status == NoteOff)
-            {
-                vca.set_level(0.0f);
-            }
-            msg++;
-        }
-
-        smoothed_amplitude.set_target(vca.get_amplitude());
-        
-        out.data[tick] = smoothed_amplitude.get() * osc.get();
-        osc.advance();
-    }
-
-    return out;
-}
 
 int main()
 {
