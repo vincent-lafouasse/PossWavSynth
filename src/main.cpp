@@ -4,28 +4,11 @@
 #include "midi/MidiMelody.h"
 #include "midi/parse_midi.h"
 #include "synth/Synth.h"
-#include "synth/wavetable.h"
+#include "synth/wavetable_bank.h"
 #include "wav/Data.h"
 #include "wav/wav.h"
 
 #define SAMPLE_RATE 44100
-
-struct WavetableBank
-{
-    Wavetable sine;
-    Wavetable square;
-    Wavetable triangle;
-    Wavetable square8;
-    Wavetable triangle8;
-};
-
-const WavetableBank wavetables = {
-    Wavetables::get_sine(),
-    Wavetables::get_square(),
-    Wavetables::get_triangle(),
-    Wavetables::band_limited_square(8),
-    Wavetables::band_limited_triangle(8),
-};
 
 int main()
 {
@@ -56,12 +39,10 @@ int main()
     Synth square(&wavetables.square8, SAMPLE_RATE);
 
     Signal signal = square.realize(voices[0]);
-    // signal.write_to_csv();
 
+    // serializing data
     Data32 data(signal, SAMPLE_RATE);
-
     WavFile wav_file(data);
-
     const char* status = wav_file.write("wave.wav") ? "success" : "rip";
     std::cout << status << std::endl;
 }
