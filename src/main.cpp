@@ -32,6 +32,9 @@ int main()
 {
     std::vector<MidiMelody> voices = parse_midi("./mid/licc.mid");
 
+    for (MidiMelody& melody: voices)
+         melody.quantize(SAMPLE_RATE);
+
     Oscillator osc_s(&wavetables.triangle8, SAMPLE_RATE);
     Oscillator osc_a(&wavetables.square8, SAMPLE_RATE);
     Oscillator osc_t(&wavetables.triangle8, SAMPLE_RATE);
