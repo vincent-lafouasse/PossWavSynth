@@ -1,5 +1,6 @@
 #pragma once
 
+#include <vector>
 #include <list>
 
 #include "MTrkEvent.h"
@@ -30,5 +31,5 @@ class MidiMelody
     void regularize();
     void quantize(u32 sample_rate);
 
-    std::list<Message> messages;
+    std::vector<Message> messages;
 };
