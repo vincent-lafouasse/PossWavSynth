@@ -34,24 +34,16 @@ enum NoteStatus
     Off
 };
 
-class QuantizedVCA
+class VCA
 {
 public:
-    QuantizedVCA();
-    QuantizedVCA(float attack_ms, float sustain, float release_ms, u32 sample_rate);
-    float get_amplitude(NoteStatus note_status, u32 ticks_since_message);
+    VCA() = default;
+    float get_amplitude() { return level; };
+    void set_level(float level) { this->level = level; }
+    void set_level(u8 velocity) { this->level = static_cast<float>(velocity)/127; }
 
-    u32 attack_ticks;
-    u32 release_ticks;
-    float sustain;
+    float level;
 };
-
-QuantizedVCA::QuantizedVCA(float attack_ms, float sustain, float release_ms, u32 sample_rate)
-{
-    this->sustain = sustain;
-    this->attack_ticks = static_cast<u32>(attack_ms * sample_rate / 1000.0);
-    this->release_ticks = static_cast<u32>(release_ms * sample_rate / 1000.0);
-}
 
 int main()
 {
