@@ -63,9 +63,10 @@ public:
 #include <cmath>
 float f_12tet(u32 note)
 {
-    float offset_from_a4 = 69 - note;
+    i32 offset_from_a4 = note - 69;
+    float f_offset = static_cast<float>(offset_from_a4);
 
-    return 440.0 * std::exp2(offset_from_a4 / 12.0);
+    return 440.0 * std::exp2(f_offset / 12.0);
 }
 
 Signal Synth::realize(const MidiMelody& melody)
@@ -130,7 +131,7 @@ int main()
     Synth square(&wavetables.square8, SAMPLE_RATE);
 
     Signal signal = square.realize(voices[0]);
-    signal.write_to_csv();
+    // signal.write_to_csv();
 
     Data32 data(signal, SAMPLE_RATE);
 

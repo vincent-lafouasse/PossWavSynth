@@ -1,5 +1,7 @@
 #include "oscillator.h"
 
+#include <cmath>
+
 Oscillator::Oscillator(const Wavetable* wavetable, u32 sample_rate)
 {
     this->wavetable = wavetable;
@@ -25,5 +27,6 @@ float Oscillator::get()
 void Oscillator::advance()
 {
     phase += increment;
-    phase -= (phase >= 1.0f);
+    while (std::isgreater(phase, 1.0f))
+        phase -= 1.0f;
 }
