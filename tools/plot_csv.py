@@ -1,6 +1,8 @@
 import csv
 import sys
 import numpy as np
+import matplotlib.pyplot as plt
+
 
 def main():
     if (len(sys.argv) != 2):
@@ -11,7 +13,11 @@ def main():
     print(f"Plotting {csv_path}")
 
     values = np.genfromtxt(csv_path, delimiter=',')
-    print(values)
+    indices = np.arange(0, len(values))
+
+    fig, ax = plt.subplots()
+    ax.plot(indices, values)
+    plt.show()
 
 if __name__ == '__main__':
     main()
