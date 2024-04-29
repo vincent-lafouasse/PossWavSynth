@@ -11,14 +11,16 @@ enum NoteStatus
 class VCA
 {
    public:
-    VCA() : level(0){};
-    VCA(float level) : level(level){};
-    float get_amplitude() { return level; };
-    void set_level(float level) { this->level = level; }
-    void set_level(u32 velocity)
-    {
-        this->level = static_cast<float>(velocity) / 127;
-    }
+    VCA();
+    VCA(float level);
+    float get_amplitude();
+    void set_level(float level);
+    void set_level(u32 velocity);
+    void set_adsr(float attack_ms, float decay_ms, float sustain, float release_ms, u32 sample_rate);
 
     float level;
+    u32 attack_ticks;
+    u32 decay_ticks;
+    float sustain;
+    u32 release_ticks;
 };

@@ -17,6 +17,7 @@ target_sources(PossWavSynth PRIVATE
 
 	src/synth/wavetable.cpp
 	src/synth/oscillator.cpp
+	src/synth/VCA.cpp
 	src/synth/Synth.cpp
 
 	src/DSP/Signal.cpp
