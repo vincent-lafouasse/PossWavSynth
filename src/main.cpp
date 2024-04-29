@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "DSP/Signal.h"
-#include "melody/melody.h"
+#include "DSP/MonoSignalSmoother.hpp"
 #include "midi/MidiMelody.h"
 #include "midi/parse_midi.h"
 #include "synth/oscillator.h"
@@ -77,6 +77,8 @@ Signal Synth::realize(const MidiMelody& melody)
 
     auto msg = messages.cbegin();
 
+    MonoSignalSmoother<float> smoothed_amplitude;
+
     Signal out(signal_size);
 
     for (u32 tick = 0; tick < out.size; tick++)
@@ -94,8 +96,10 @@ Signal Synth::realize(const MidiMelody& melody)
             }
             msg++;
         }
+
+        smoothed_amplitude.set_target(vca.get_amplitude());
         
-        out.data[tick] = vca.get_amplitude() * osc.get();
+        out.data[tick] = smoothed_amplitude.get() * osc.get();
         osc.advance();
     }
 
