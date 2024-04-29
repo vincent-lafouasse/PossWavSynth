@@ -15,6 +15,7 @@ MidiMelody::MidiMelody(const std::list<MTrkEvent>& events, MidiTempo* tempo)
     {
         current_tick += mtrk_event.getDeltaTime().getData();
         double timestamp = current_tick * tempo->tick_len_ms() / 1000000;
+
         const Event* event = mtrk_event.getEvent();
         if (is_midi_event(event))
         {
@@ -46,10 +47,12 @@ bool is_midi_event(const Event* event)
 {
     return event->getType() == MidiType::EventType::MidiEvent;
 }
+/*
 bool is_meta_event(const Event* event)
 {
     return event->getType() == MidiType::EventType::MetaEvent;
 }
+*/
 
 bool is_note_on(const MidiEvent* event)
 {
