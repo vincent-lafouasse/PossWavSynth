@@ -1,6 +1,7 @@
 #include "Synth.h"
 #include <cmath>
 #include "DSP/MonoSignalSmoother.hpp"
+#include "midi/MidiMelody.h"
 
 static float f_12tet(u32 note)
 {
@@ -16,6 +17,9 @@ Signal Synth::realize(const MidiMelody& melody)
     std::vector<Message> messages = melody.messages;
     u32 signal_size = messages.back().timestamp_quantized;
 
+    u32 last_update = 0;
+    MessageStatus status;
+
     auto msg = messages.cbegin();
 
     MonoSignalSmoother<float> smoothed_amplitude(0.7);
@@ -30,15 +34,19 @@ Signal Synth::realize(const MidiMelody& melody)
             {
                 osc.set_frequency(f_12tet(msg->note));
                 vca.set_level(msg->velocity);
+                last_update = tick;
+                status = msg->status;
             }
             if (msg->status == NoteOff)
             {
                 vca.set_level(0.0f);
+                last_update = tick;
+                status = msg->status;
             }
             msg++;
         }
 
-        smoothed_amplitude.set_target(vca.get_amplitude());
+        smoothed_amplitude.set_target(vca.get_amplitude(status, last_update));
 
         out.data[tick] = smoothed_amplitude.get() * osc.get();
         osc.advance();
