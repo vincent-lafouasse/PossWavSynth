@@ -28,10 +28,10 @@ float interpolate(u32 current,
                   float target_start,
                   float target_end)
 {
-    float low_contribution = current - start;
-    low_contribution /= (end - start);
-    float high_contribution = end - current;
+    float high_contribution = current - start;
     high_contribution /= (end - start);
+    float low_contribution = end - current;
+    low_contribution /= (end - start);
 
     return target_start * low_contribution + target_end * high_contribution;
 }
