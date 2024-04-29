@@ -1,6 +1,6 @@
 #include "Synth.h"
-#include "DSP/MonoSignalSmoother.hpp"
 #include <cmath>
+#include "DSP/MonoSignalSmoother.hpp"
 
 static float f_12tet(u32 note)
 {
@@ -39,7 +39,7 @@ Signal Synth::realize(const MidiMelody& melody)
         }
 
         smoothed_amplitude.set_target(vca.get_amplitude());
-        
+
         out.data[tick] = smoothed_amplitude.get() * osc.get();
         osc.advance();
     }

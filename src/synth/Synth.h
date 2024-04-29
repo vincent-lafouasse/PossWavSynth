@@ -1,13 +1,13 @@
 #pragma once
 
-#include "VCA.h"
-#include "oscillator.h"
-#include "midi/MidiMelody.h"
 #include "DSP/Signal.h"
+#include "VCA.h"
+#include "midi/MidiMelody.h"
+#include "oscillator.h"
 
 class Synth
 {
-public:
+   public:
     Synth() = default;
     Synth(const Wavetable* wavetable, u32 sample_rate)
     {

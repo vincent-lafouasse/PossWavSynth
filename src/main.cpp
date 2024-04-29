@@ -50,8 +50,8 @@ int main()
 
     std::vector<MidiMelody> voices = parse_midi("./mid/licc.mid");
 
-    for (MidiMelody& melody: voices)
-         melody.quantize(SAMPLE_RATE);
+    for (MidiMelody& melody : voices)
+        melody.quantize(SAMPLE_RATE);
 
     Synth square(&wavetables.square8, SAMPLE_RATE);
 

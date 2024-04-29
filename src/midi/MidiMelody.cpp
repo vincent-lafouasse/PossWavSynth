@@ -45,7 +45,8 @@ void MidiMelody::quantize(u32 sample_rate)
 {
     for (Message& message : messages)
     {
-        message.timestamp_quantized = static_cast<u32>(message.timestamp_secs * sample_rate);
+        message.timestamp_quantized =
+            static_cast<u32>(message.timestamp_secs * sample_rate);
         message.timestamp_secs = 0;
     }
 }

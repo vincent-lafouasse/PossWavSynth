@@ -1,7 +1,7 @@
 #pragma once
 
-#include <vector>
 #include <list>
+#include <vector>
 
 #include "MTrkEvent.h"
 #include "MidiTempo.h"
