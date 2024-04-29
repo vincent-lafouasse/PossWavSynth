@@ -37,13 +37,31 @@ enum NoteStatus
 class VCA
 {
 public:
-    VCA() = default;
+    VCA() : level(0) {};
+    VCA(float level) : level(level) {};
     float get_amplitude() { return level; };
     void set_level(float level) { this->level = level; }
     void set_level(u8 velocity) { this->level = static_cast<float>(velocity)/127; }
 
     float level;
 };
+
+class Synth
+{
+public:
+    Synth() = default;
+    Synth(const Wavetable* wavetable, u32 sample_rate)
+    {
+        osc = Oscillator(wavetable, sample_rate);
+    }
+    Signal realize(const MidiMelody& melody);
+
+    Oscillator osc;
+    VCA vca;
+};
+
+Signal Synth::realize(const MidiMelody& melody)
+{}
 
 int main()
 {
