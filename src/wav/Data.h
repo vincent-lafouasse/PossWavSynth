@@ -8,7 +8,7 @@ class Data
 {
    public:
     virtual void write(FILE* file, u32 max_bytes) const = 0;
-    //virtual void write_csv(const char* name) const = 0;
+    // virtual void write_csv(const char* name) const = 0;
 
     u32 size;
     u32 sample_rate;
@@ -23,7 +23,7 @@ class Data32 : public Data
     Data32(Signal& signal, u32 sample_rate);
     ~Data32();
     void write(FILE* file, u32 max_bytes) const;
-    //void write_csv(const char* name) const;
+    // void write_csv(const char* name) const;
 
     i32* data;
 };

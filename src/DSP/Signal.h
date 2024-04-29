@@ -1,8 +1,8 @@
 #pragma once
 #include "melody/melody.h"
 
-#include <vector>
 #include <memory>
+#include <vector>
 
 #include "synth/oscillator.h"
 
