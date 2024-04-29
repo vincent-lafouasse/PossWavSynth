@@ -91,6 +91,7 @@ Signal Synth::realize(const MidiMelody& melody)
             {
                 vca.set_level(0.0f);
             }
+            msg++;
         }
         
         out.data[tick] = vca.get_amplitude() * osc.get();
@@ -102,11 +103,7 @@ Signal Synth::realize(const MidiMelody& melody)
 
 int main()
 {
-    std::vector<MidiMelody> voices = parse_midi("./mid/licc.mid");
-
-    for (MidiMelody& melody: voices)
-         melody.quantize(SAMPLE_RATE);
-
+    /*
     Oscillator osc_s(&wavetables.triangle8, SAMPLE_RATE);
     Oscillator osc_a(&wavetables.square8, SAMPLE_RATE);
     Oscillator osc_t(&wavetables.triangle8, SAMPLE_RATE);
@@ -123,6 +120,16 @@ int main()
         std::make_pair(tenor, 1),
         std::make_pair(bass, 1),
     });
+    */
+
+    std::vector<MidiMelody> voices = parse_midi("./mid/licc.mid");
+
+    for (MidiMelody& melody: voices)
+         melody.quantize(SAMPLE_RATE);
+
+    Synth square(&wavetables.square8, SAMPLE_RATE);
+
+    Signal signal = square.realize(voices[0]);
 
     Data32 data(signal, SAMPLE_RATE);
 
