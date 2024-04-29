@@ -23,11 +23,11 @@ MidiMelody::MidiMelody(const std::list<MTrkEvent>& events, MidiTempo* tempo)
             if (is_note_on(midi_event))
                 messages.push_back({NoteOn, midi_event->getNote(),
                                     midi_event->getVelocity(),
-                                    timestamp});
+                                    timestamp, 0});
             else if (is_note_off(midi_event))
                 messages.push_back({NoteOff, midi_event->getNote(),
                                     midi_event->getVelocity(),
-                                    timestamp});
+                                    timestamp, 0});
         }
     }
     regularize();

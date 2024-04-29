@@ -17,7 +17,8 @@ struct Message
     MessageStatus status;
     u32 note;
     u32 velocity;
-    double timestamp;
+    double timestamp_secs;
+    u64 timestamp_quantized;
 };
 
 class MidiMelody
