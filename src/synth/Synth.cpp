@@ -46,9 +46,11 @@ Signal Synth::realize(const MidiMelody& melody)
             msg++;
         }
 
-        smoothed_amplitude.set_target(vca.get_amplitude(status, last_update - tick));
+        float new_target_amp = vca.get_amplitude(status, last_update - tick);
+        smoothed_amplitude.set_target(new_target_amp);
+        float effective_amp = smoothed_amplitude.get();
 
-        out.data[tick] = smoothed_amplitude.get() * osc.get();
+        out.data[tick] = effective_amp * osc.get();
         osc.advance();
     }
 
