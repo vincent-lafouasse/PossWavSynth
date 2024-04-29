@@ -2,6 +2,7 @@
 #include "melody/melody.h"
 
 #include <vector>
+#include <memory>
 
 #include "synth/oscillator.h"
 

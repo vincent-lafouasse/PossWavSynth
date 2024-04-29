@@ -1,5 +1,6 @@
 #include "Synth.h"
 #include <cmath>
+#include <cassert>
 #include "DSP/MonoSignalSmoother.hpp"
 #include "midi/MidiMelody.h"
 

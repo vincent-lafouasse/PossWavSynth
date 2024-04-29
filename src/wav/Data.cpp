@@ -30,6 +30,7 @@ void Data32::write(FILE* file, u32 max_bytes) const
         fwrite(data + i, sample_size_byte, 1, file);
 }
 
+/*
 void Data32::write_csv(const char* name) const
 {
     FILE* csv = fopen(name, "w");
@@ -37,6 +38,7 @@ void Data32::write_csv(const char* name) const
     for (u32 i = 0; i < size - 1; i++)
         fprintf(csv, "");
 }
+*/
 
 Data32::~Data32()
 {

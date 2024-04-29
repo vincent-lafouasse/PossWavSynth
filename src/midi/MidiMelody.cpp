@@ -1,7 +1,7 @@
 #include "MidiMelody.h"
 
 static bool is_midi_event(const Event* event);
-static bool is_meta_event(const Event* event);
+// static bool is_meta_event(const Event* event);
 static bool is_note_on(const MidiEvent* event);
 static bool is_note_off(const MidiEvent* event);
 
