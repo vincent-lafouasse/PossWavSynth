@@ -99,7 +99,7 @@ void Signal::normalize(void)
 void Signal::write_to_csv(void)
 {
     std::ofstream csv;
-    csv.open("float_data.csv");
+    csv.open("signal.csv");
     for (u32 i = 0; i < size; i++)
     {
         csv << data[i] << ",";

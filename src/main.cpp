@@ -130,6 +130,7 @@ int main()
     Synth square(&wavetables.square8, SAMPLE_RATE);
 
     Signal signal = square.realize(voices[0]);
+    signal.write_to_csv();
 
     Data32 data(signal, SAMPLE_RATE);
 
