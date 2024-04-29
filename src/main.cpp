@@ -28,6 +28,31 @@ const WavetableBank wavetables = {
     Wavetables::band_limited_triangle(8),
 };
 
+enum NoteStatus
+{
+    On,
+    Off
+};
+
+class QuantizedVCA
+{
+public:
+    QuantizedVCA();
+    QuantizedVCA(float attack_ms, float sustain, float release_ms, u32 sample_rate);
+    float get_amplitude(NoteStatus note_status, u32 ticks_since_message);
+
+    u32 attack_ticks;
+    u32 release_ticks;
+    float sustain;
+};
+
+QuantizedVCA::QuantizedVCA(float attack_ms, float sustain, float release_ms, u32 sample_rate)
+{
+    this->sustain = sustain;
+    this->attack_ticks = static_cast<u32>(attack_ms * sample_rate / 1000.0);
+    this->release_ticks = static_cast<u32>(release_ms * sample_rate / 1000.0);
+}
+
 int main()
 {
     std::vector<MidiMelody> voices = parse_midi("./mid/licc.mid");
