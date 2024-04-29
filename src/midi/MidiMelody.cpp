@@ -41,6 +41,15 @@ void MidiMelody::regularize()
     }
 }
 
+void MidiMelody::quantize(u32 sample_rate)
+{
+    for (Message& message : messages)
+    {
+        message.timestamp_quantized = static_cast<u32>(message.timestamp_secs * sample_rate);
+        message.timestamp_secs = 0;
+    }
+}
+
 bool is_midi_event(const Event* event)
 {
     return event->getType() == MidiType::EventType::MidiEvent;

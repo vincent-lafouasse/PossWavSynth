@@ -28,6 +28,7 @@ class MidiMelody
     MidiMelody(const std::list<MTrkEvent>& events, MidiTempo* tempo);
 
     void regularize();
+    void quantize(u32 sample_rate);
 
     std::list<Message> messages;
 };
