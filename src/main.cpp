@@ -41,7 +41,7 @@ public:
     VCA(float level) : level(level) {};
     float get_amplitude() { return level; };
     void set_level(float level) { this->level = level; }
-    void set_level(u8 velocity) { this->level = static_cast<float>(velocity)/127; }
+    void set_level(u32 velocity) { this->level = static_cast<float>(velocity)/127; }
 
     float level;
 };
@@ -60,8 +60,45 @@ public:
     VCA vca;
 };
 
+#include <cmath>
+float f_12tet(u32 note)
+{
+    float offset_from_a4 = 69 - note;
+
+    return 440.0 * std::exp2(offset_from_a4 / 12.0);
+}
+
 Signal Synth::realize(const MidiMelody& melody)
-{}
+{
+    assert(melody.messages.back().status == NoteOff);
+    std::vector<Message> messages = melody.messages;
+    u32 signal_size = messages.back().timestamp_quantized;
+
+    auto msg = messages.cbegin();
+
+    Signal out(signal_size);
+
+    for (u32 tick = 0; tick < out.size; tick++)
+    {
+        while (msg != messages.cend() && msg->timestamp_quantized <= tick)
+        {
+            if (msg->status == NoteOn)
+            {
+                osc.set_frequency(f_12tet(msg->note));
+                vca.set_level(msg->velocity);
+            }
+            if (msg->status == NoteOff)
+            {
+                vca.set_level(0.0f);
+            }
+        }
+        
+        out.data[tick] = vca.get_amplitude() * osc.get();
+        osc.advance();
+    }
+
+    return out;
+}
 
 int main()
 {
