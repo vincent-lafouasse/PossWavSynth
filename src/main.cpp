@@ -77,7 +77,7 @@ Signal Synth::realize(const MidiMelody& melody)
 
     auto msg = messages.cbegin();
 
-    MonoSignalSmoother<float> smoothed_amplitude;
+    MonoSignalSmoother<float> smoothed_amplitude(0.7);
 
     Signal out(signal_size);
 
