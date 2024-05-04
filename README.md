@@ -24,7 +24,8 @@ Following roughly [this tutorial](https://blog.demofox.org/diy-synthesizer/)
 
 ## ressources that helped me
 
-- [the tutorial this is based on](https://blog.demofox.org/diy-synthesizer/)
+- [WAV format specifications](https://www.mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html)
+- [the tutorial that inspired this](https://blog.demofox.org/diy-synthesizer/)
 
 ## LICENSE
 
