@@ -14,7 +14,7 @@ Data32::Data32(Signal& signal, u32 sample_rate)
 
     data = new i32[signal.size];
 
-    constexpr float headroom = 0.7f;
+    constexpr float headroom = 1;
 
     signal.normalize();
     for (u32 i = 0; i < size; i++)

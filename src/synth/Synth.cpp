@@ -51,7 +51,7 @@ Signal Synth::realize(const MidiMelody& melody)
         smoothed_amplitude.set_target(new_target_amp);
         float effective_amp = smoothed_amplitude.get();
 
-        out.data[tick] = effective_amp * osc.get();
+        out.data[tick] = effective_amp;
         osc.advance();
     }
 
