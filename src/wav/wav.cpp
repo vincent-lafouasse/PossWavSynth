@@ -24,7 +24,7 @@ void WavHeader::init(i32 data_size,
                      i32 bit_depth)
 {
     fill_four_char_code(this->main_chunk_ID, "RIFF");
-    this->chunk_size = (sizeof(*this) - CHUNK_HEADER_SIZE) + data_size;
+    this->chunk_size = (sizeof(WavHeader) - CHUNK_HEADER_SIZE) + data_size;
     fill_four_char_code(this->riff_type, "WAVE");
 
     fill_four_char_code(this->fmt_chunk_ID, "fmt ");
