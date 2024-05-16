@@ -238,7 +238,7 @@ Harmonic::Harmonic(float multiplier, float amplitude)
     this->amplitude = amplitude;
 }
 
-void Wavetable::write_to_csv(const std::string& output_filename)
+void Wavetable::write_to_csv(const std::string& output_filename) const
 {
     std::ofstream csv(output_filename);
 

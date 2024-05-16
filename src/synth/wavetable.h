@@ -10,7 +10,7 @@ struct Wavetable
     float at(u32 pos) const;
     void normalize(void);
 
-    void write_to_csv(const std::string& output_filename);
+    void write_to_csv(const std::string& output_filename) const;
 
     std::vector<float> data;
     u32 size;
