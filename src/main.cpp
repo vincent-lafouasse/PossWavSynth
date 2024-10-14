@@ -1,10 +1,13 @@
 #include <iostream>
 
 #include "DSP/Signal.h"
+
 #include "midi/MidiMelody.h"
 #include "midi/parse_midi.h"
+
 #include "synth/Synth.h"
 #include "synth/wavetable_bank.h"
+
 #include "wav/Data.h"
 #include "wav/wav.h"
 
@@ -30,6 +33,8 @@ int main()
         std::make_pair(bass, 1),
     });
     */
+
+    wavetables.square8.write_to_csv("");
 
     std::vector<MidiMelody> voices = parse_midi("./mid/licc.mid");
 
