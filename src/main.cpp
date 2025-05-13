@@ -8,49 +8,16 @@
 #include "wav/Data.h"
 #include "wav/wav.h"
 
+#include "midi/Header.hpp"
+#include "midi/FileBuffer.hpp"
+
 #define SAMPLE_RATE 44100
 
 int main()
 {
-    #if 1
-    Oscillator osc_s(&wavetables.triangle8, SAMPLE_RATE);
-    Oscillator osc_a(&wavetables.square8, SAMPLE_RATE);
-    Oscillator osc_t(&wavetables.triangle8, SAMPLE_RATE);
-    Oscillator osc_b(&wavetables.square8, SAMPLE_RATE);
+    FileBuffer midi_file("./mid/licc.mid");
 
-    Signal soprano(soprano_melody(), &osc_s);
-    Signal alto(alto_melody(), &osc_a);
-    Signal tenor(tenor_melody(), &osc_t);
-    Signal bass(bass_melody(), &osc_b);
-
-    Signal signal = Signal::sum({
-        std::make_pair(soprano, 1),
-        std::make_pair(alto, 1),
-        std::make_pair(tenor, 1),
-        std::make_pair(bass, 1),
-    });
-
-    #else
-
-    wavetables.square8.write_to_csv("");
-
-    std::vector<MidiMelody> voices = parse_midi("./mid/licc.mid");
-
-    for (MidiMelody& melody : voices)
-        melody.quantize(SAMPLE_RATE);
-
-    Synth square(&wavetables.square8, SAMPLE_RATE);
-
-    Signal signal = square.realize(voices[0]);
-    signal.write_to_csv();
-    #endif
-
-    // serializing data
-    Data32 data(signal, SAMPLE_RATE);
-    WavFile wav_file(data);
-    const char* status = wav_file.write("wave.wav") ? "success" : "rip";
-    std::cout << status << std::endl;
-
+    Midi::Header h(midi_file);
 }
 
 /*

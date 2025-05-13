@@ -21,6 +21,15 @@ target_sources(PossWavSynth PRIVATE
 	src/wav/wav.cpp
 	src/wav/Data.cpp
 
+	src/midi/Buffer.hpp
+	src/midi/Clock.hpp
+	src/midi/Event.hpp
+	src/midi/FileBuffer.hpp
+	src/midi/Header.hpp
+	src/midi/Midi.h
+	src/midi/read.h
+	src/midi/types.h
+
 	src/melody/melody.cpp
 )
 target_include_directories(PossWavSynth PUBLIC src)
