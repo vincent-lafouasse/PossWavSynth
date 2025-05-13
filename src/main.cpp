@@ -2,9 +2,6 @@
 
 #include "DSP/Signal.h"
 
-#include "midi/MidiMelody.h"
-#include "midi/parse_midi.h"
-
 #include "synth/Synth.h"
 #include "synth/wavetable_bank.h"
 
@@ -46,6 +43,7 @@ int main()
 
     Signal signal = square.realize(voices[0]);
     signal.write_to_csv();
+    #endif
 
     // serializing data
     Data32 data(signal, SAMPLE_RATE);
@@ -53,7 +51,6 @@ int main()
     const char* status = wav_file.write("wave.wav") ? "success" : "rip";
     std::cout << status << std::endl;
 
-    #endif
 }
 
 /*
