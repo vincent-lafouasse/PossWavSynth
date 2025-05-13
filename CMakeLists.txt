@@ -17,7 +17,6 @@ target_sources(PossWavSynth PRIVATE
 
 	src/synth/wavetable.cpp
 	src/synth/oscillator.cpp
-	src/synth/VCA.cpp
 	src/synth/Synth.cpp
 
 	src/DSP/Signal.cpp
@@ -29,6 +28,3 @@ target_sources(PossWavSynth PRIVATE
 	src/melody/melody.cpp
 )
 target_include_directories(PossWavSynth PUBLIC src)
-
-add_subdirectory(lib)
-target_link_libraries(PossWavSynth libParser)

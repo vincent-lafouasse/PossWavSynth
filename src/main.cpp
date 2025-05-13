@@ -15,7 +15,7 @@
 
 int main()
 {
-    /*
+    #if 1
     Oscillator osc_s(&wavetables.triangle8, SAMPLE_RATE);
     Oscillator osc_a(&wavetables.square8, SAMPLE_RATE);
     Oscillator osc_t(&wavetables.triangle8, SAMPLE_RATE);
@@ -32,7 +32,8 @@ int main()
         std::make_pair(tenor, 1),
         std::make_pair(bass, 1),
     });
-    */
+
+    #else
 
     wavetables.square8.write_to_csv("");
 
@@ -51,6 +52,8 @@ int main()
     WavFile wav_file(data);
     const char* status = wav_file.write("wave.wav") ? "success" : "rip";
     std::cout << status << std::endl;
+
+    #endif
 }
 
 /*
