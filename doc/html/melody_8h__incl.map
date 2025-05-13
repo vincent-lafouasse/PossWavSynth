@@ -1,9 +1,0 @@
-<map id="src/melody.h" name="src/melody.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="34,5,128,31"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,63,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,33,52,67,48,64,71,30"/>
-<area shape="rect" id="Node000003" href="$cool__ints_8h.html" title=" " alt="" coords="87,79,171,105"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="91,30,114,64,110,67,86,33"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="99,153,159,178"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="131,105,131,137,126,137,126,105"/>
-</map>

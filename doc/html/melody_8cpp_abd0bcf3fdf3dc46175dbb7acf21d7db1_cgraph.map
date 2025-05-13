@@ -1,7 +1,0 @@
-<map id="get_frequency" name="get_frequency">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,109,56"/>
-<area shape="rect" id="Node000002" href="$melody_8cpp.html#a102aff87b9528f465666dbf6c501bd50" title=" " alt="" coords="164,5,252,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,32,148,25,149,31,110,37"/>
-<area shape="rect" id="Node000003" href="$melody_8cpp.html#a111ba7ad763c31a017138effe43011a6" title=" " alt="" coords="157,55,259,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="110,49,142,54,141,60,109,54"/>
-</map>

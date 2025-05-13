@@ -1,9 +1,0 @@
-<map id="WavHeader" name="WavHeader">
-<area shape="rect" id="Node000001" title=" " alt="" coords="142,194,223,259"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,99,71"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="53,70,59,119,67,145,79,168,101,189,128,204,125,209,98,193,75,171,62,147,54,120,48,71"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="153,5,212,71"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="185,70,185,177,180,177,180,70"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="284,5,343,71"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="316,71,309,120,300,147,286,171,265,192,240,207,238,203,262,188,282,168,295,145,304,119,311,70"/>
-</map>

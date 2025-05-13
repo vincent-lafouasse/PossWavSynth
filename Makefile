@@ -4,7 +4,7 @@ EXEC = $(BUILD_DIR)/PossWavSynth
 all: build
 
 update:
-	cmake -B "$(BUILD_DIR)"
+	cmake -B "$(BUILD_DIR)" -G Ninja
 
 build: $(EXEC)
 
